@@ -1,0 +1,424 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>对象初始化的方法 | Blog</title>
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="/css/pages/comments.css">
+
+    <!--script-->
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+
+
+<script src="/js/thirdParty/gitment.browser.min.js"></script>
+<script>
+  var labels = "blog,gitment";
+  labels = labels.split(",");
+  var gitment = new Gitment({
+    id: window.location.pathname,
+    owner: "GeekaholicLin",
+    repo: "geekaholiclin.github.io",
+    oauth: {
+      client_id: "aa2215dfc8ee944d1205",
+      client_secret: "77cd2afa5d161bc0ab04639ed81300d808c6e22b"
+    },
+    perPage: "20",
+    labels: labels
+  });
+</script>
+
+    
+    
+</head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">Blog</h1>
+        </a>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        
+            <li><a href="https://www.github.com/oven-yang"><i class="fa fa-github"></i>github</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>Search</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>你好</p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">Categories</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/C-11/"><i class="fa" aria-hidden="true">C++11</i></a><span class="category-list-count">1</span></li></ul></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">Archives</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/"><i class="fa" aria-hidden="true">June 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts">
+    <h3 class="fa fa-thermometer-3 widget-title">Popular Posts</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
+
+    
+    
+<li class="widget widget-normal tags">
+  <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
+  <div class="tagcloud-content">
+    
+      <a href="/tags/C/" style="font-size: 0.14rem; color: #69c">C++</a> <a href="/tags/C-11/" style="font-size: 0.14rem; color: #69c">C++11</a> <a href="/tags/对象初始化/" style="font-size: 0.14rem; color: #69c">对象初始化</a>
+  </div>
+</li>
+
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">Friends</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="对象初始化的方法">
+                
+                对象初始化的方法
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>C++11</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            C++
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2017/11/08</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="对象初始化的方法"
+              data-leadcloud-url="/2017/11/08/object-initilize-methods/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <ul>
+<li><h2 id="初始化的含义"><a href="#初始化的含义" class="headerlink" title="初始化的含义"></a>初始化的含义</h2>  所谓初始化，就是给一个变量一个初始值，在使用一个变量的值之前，<br>  需要对其进行初始化，否则，得到的就是一个无意义的值。</li>
+<li><h2 id="初始化的方法"><a href="#初始化的方法" class="headerlink" title="初始化的方法"></a>初始化的方法</h2></li>
+<li><h3 id="用圆括号：type-var-expression-list"><a href="#用圆括号：type-var-expression-list" class="headerlink" title="用圆括号：type var(expression-list)"></a>用圆括号：<strong>type var(expression-list)</strong></h3>圆括号中是我们提供给构造函数的参数，看下面的例子</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i</span><span class="params">(<span class="number">1</span>)</span> </span>;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">s</span><span class="params">(<span class="string">"hello"</span>)</span> </span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> i ;</span><br><span class="line">    <span class="built_in">string</span> s ;</span><br><span class="line">    MyClass();</span><br><span class="line">    MyClass(<span class="keyword">int</span> , <span class="keyword">const</span> <span class="built_in">string</span>&amp;) ;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">MyClass <span class="title">obj</span><span class="params">(<span class="number">1</span> , <span class="string">"hello"</span>)</span> </span>;</span><br></pre></td></tr></table></figure>
+<p>这是一种显示初始化的方式，相当于主动调用对应类型的构造函数。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i</span><span class="params">(<span class="number">1.1</span>)</span> </span>;</span><br><span class="line"><span class="function">MyClass <span class="title">obj</span><span class="params">(<span class="number">1.1</span> , <span class="string">"hello"</span>)</span> </span>;</span><br></pre></td></tr></table></figure></p>
+<p> 注意，如果想采用默认初始化方式初始化一个变量，下面的做法是错误的：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i</span><span class="params">()</span> </span>;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">s</span><span class="params">()</span> </span>;</span><br><span class="line"><span class="function">MyClass <span class="title">obj</span><span class="params">()</span> </span>;</span><br></pre></td></tr></table></figure></p>
+<p>因为编译器会将其看作是函数声明，而不是变量定义。正确的做法应该1是：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i ;</span><br><span class="line"><span class="keyword">int</span> ii&#123;&#125; ;</span><br><span class="line"><span class="built_in">string</span> s ;</span><br><span class="line"><span class="built_in">string</span> ss&#123;&#125; ;</span><br><span class="line">MyClass obj ;</span><br><span class="line">MyClass objj&#123;&#125; ;</span><br></pre></td></tr></table></figure></p>
+<p>说到这里，就不得不提到 <strong><em>the Most Vexing Parse</em></strong> ，请看下面：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Timer</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    Timer();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TimeKeeper</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    TimeKeeper(<span class="keyword">const</span> Timer&amp; t);</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_time</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TimeKeeper time_keeper(Timer());  // 1</span><br><span class="line">    <span class="keyword">return</span> time_keeper.get_time();    <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>代码来自 <a href="https://en.wikipedia.org/wiki/Most_vexing_parse" title="most vexing parse" target="_blank" rel="noopener">维基百科</a></p>
+</blockquote>
+<p>上面代码的标注1的那行会被看作是一个名字为<em>time_keep</em>的函数，返回值是 <em>TimeKeeper</em> 类型，参数是一个返回值为<em>Timer</em>类型的函数指针，而不是对象定义。要实现后者，可以这样：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TimeKeeper time_keeper((Timer());</span><br></pre></td></tr></table></figure>
+<p>更好的做法是使用C++11定义的用{}来初始化对象,可以避免很多错误。</p>
+<ul>
+<li><h3 id="用等于号：type-var-expression"><a href="#用等于号：type-var-expression" class="headerlink" title="用等于号：type var = expression"></a>用等于号：<strong>type var = expression</strong></h3>对于内置类型来说，=初始化和()初始化几乎没有区别(我也不知道区别在哪里)。</li>
+</ul>
+<p>对于类类型，=初始化调用的是copy构造函数，而赋值是调用重载的=操作符。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass c1 = c0 ;   <span class="comment">// call MyClass(const MyClass&amp;)</span></span><br><span class="line">c1 = c0 ;           <span class="comment">// call operator =(const MyClass&amp;)</span></span><br></pre></td></tr></table></figure>
+<p>等于号经常和大括号{}一起用于初始化,</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyClass c = &#123;<span class="number">1</span> , <span class="string">"123"</span>&#125; ;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="用大括号：type-var-initializer-list-C-11推荐"><a href="#用大括号：type-var-initializer-list-C-11推荐" class="headerlink" title="用大括号：type var{initializer-list} //C++11推荐"></a>用大括号：<strong>type var{initializer-list}</strong> //C++11推荐</h3><p>C++11为了解决C++98混乱的初始化方式而提出的一种初始化方式: <strong><em>uniform initialization</em></strong> ，保证它可以用于所有的初始化。实现方式就是采用大括号。下面介绍一些{}与而其他初始化语法的不同之处：</p>
+<ul>
+<li>大括号初始化不允许对内置类型进行隐式的窄化类型转换(<strong><em>implicit narrowing conversion</em></strong>)，而但是注意，这个类型转换不仅仅依据类型，还会依据值的大小。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c1&#123;<span class="number">10</span>&#125; ;   <span class="comment">// 正确，10是int 类型，但是可以char大小可以保存</span></span><br><span class="line"><span class="keyword">char</span> c2&#123;<span class="number">256</span>&#125; ;  <span class="comment">// 错误，256超过了char可保存的大小</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i1</span><span class="params">(<span class="number">11.11</span>)</span> </span>; <span class="comment">// 正确，i1 == 11</span></span><br><span class="line"><span class="keyword">int</span> i2&#123;<span class="number">11.11</span>&#125; ; <span class="comment">// 错误，会出现精度损失</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>想要在定义非静态类成员时为成员赋初值(称为 <strong><em>default member initialize</em></strong>)，只能使用=和{}来初始化，不允许使用()。</p>
+</li>
+<li><p>初始化数组和标准库容器</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[<span class="number">10</span>]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; ;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; ;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化不可复制的对象(<strong><em>uncopyable objects</em></strong>)，比如 <strong><em>std::atomic</em></strong> ,这里就只能用 {} 和 () ，而不能用 = 。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai_1&#123;<span class="number">0</span>&#125; ;    <span class="comment">//正确</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai_1(<span class="number">0</span>) ;    <span class="comment">//正确</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai_1 = <span class="number">0</span> ;   <span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="什么也不用：type-var"><a href="#什么也不用：type-var" class="headerlink" title="什么也不用：type var"></a>什么也不用：<strong>type var</strong></h3>有时候我们可能直接定义一个对象，没有添加=、{}、()以显式地初始化，比如：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i ;</span><br><span class="line"><span class="built_in">string</span> s ;</span><br><span class="line">MyClass c ;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这种情况下根据定义所在的位置和对象类型的不同，有不同的初始化行为。</p>
+<ul>
+<li><p>对于类类型，会自动调用类的默认构造函数来初始化对象。</p>
+</li>
+<li><p>对于内置类型，当变量在全局作用域或者被定义为局部静态变量时，会被<strong>默认初始化</strong>，一般是<strong>零初始化</strong>。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i ;   <span class="comment">// i == 0</span></span><br><span class="line"><span class="keyword">double</span> d ;<span class="comment">// d == 0</span></span><br><span class="line"><span class="keyword">bool</span> b ;  <span class="comment">// b == false</span></span><br><span class="line">MyClass c ;   <span class="comment">// 调用MyClass()构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i ;  <span class="comment">// i == 0</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>而对于自动变量，则默认初始化得到的是一个不定值。绝大多数情况下使用这个变量都会是一个未定义的行为，例外请参考：<a href="http://en.cppreference.com/w/cpp/language/default_initialization" title="默认初始化" target="_blank" rel="noopener">cppreference</a></li>
+</ul>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="/" alt="avatar"/>
+                
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  Author:
+                  
+                    
+                    <a href="/">Oven Yang</a>
+                </li>
+                
+                <li>Published Date: <span>2017-11-08  00:00:00</span></li>
+                
+                <li>Updated Date: <span>2018-06-08  15:27:52</span></li>
+                
+                <li class="post-category">
+                    Categories:
+                    
+                    <a href="/categories/C/">C++</a>
+                    
+                    <a href="/categories/C/C-11/">C++11</a>
+                    
+                </li>
+                <li class="post-tags">
+                    Tags:
+                    
+                    <a href="/tags/C/">C++</a>
+                    
+                    <a href="/tags/C-11/">C++11</a>
+                    
+                    <a href="/tags/对象初始化/">对象初始化</a>
+                    
+                </li>
+                
+                <li> License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/2018/06/08/hello-world/" class="pre-post fa fa-caret-left">Hello World</a>
+        
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitment.render(document.getElementById("comments"));
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div>
+        
+        <a href="/" class="copyright-links">Oven Yang</a>&copy;2015 - 2018.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第 <span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span> 位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化的含义"><span class="toc-number">1.</span> <span class="toc-text">初始化的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化的方法"><span class="toc-number">2.</span> <span class="toc-text">初始化的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用圆括号：type-var-expression-list"><span class="toc-number">2.1.</span> <span class="toc-text">用圆括号：type var(expression-list)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用等于号：type-var-expression"><span class="toc-number">2.2.</span> <span class="toc-text">用等于号：type var = expression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用大括号：type-var-initializer-list-C-11推荐"><span class="toc-number">2.3.</span> <span class="toc-text">用大括号：type var{initializer-list} //C++11推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么也不用：type-var"><span class="toc-number">2.4.</span> <span class="toc-text">什么也不用：type var</span></a></li></ol></li></ol>
+
+
+
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>
