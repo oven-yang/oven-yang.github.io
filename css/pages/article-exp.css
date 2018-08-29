@@ -27,10 +27,6 @@
   -moz-box-shadow: #666666 0 3px 10px;
   box-shadow: #666666 0 3px 10px;
 }
-#main > .article-excerpt-wrap .article-excerpt {
-  width: 65%;
-  margin-left: 33%;
-}
 #main > .article-excerpt-wrap .article-title-link {
   display: block;
   margin-bottom: 0.12rem;

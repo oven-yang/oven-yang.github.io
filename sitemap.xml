@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://oven-yang.github.io/categories/index.html</loc>
+    <loc>https://oven-yang.github.io/2017/11/08/object-initilize-methods/</loc>
     
-    <lastmod>2018-06-08T08:24:36.582Z</lastmod>
+    <lastmod>2018-08-29T14:14:02.462Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://oven-yang.github.io/2017/11/08/object-initilize-methods/</loc>
+    <loc>https://oven-yang.github.io/2018/08/29/inside-the-cpp-object-model-c1/</loc>
     
-    <lastmod>2018-06-08T07:27:52.488Z</lastmod>
+    <lastmod>2018-08-29T08:44:02.282Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://oven-yang.github.io/categories/index.html</loc>
+    
+    <lastmod>2018-06-08T08:24:36.582Z</lastmod>
     
   </url>
   
