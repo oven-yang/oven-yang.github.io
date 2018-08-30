@@ -154,7 +154,7 @@
     
     
     <li  class="article-excerpt-wrap " _href = "/2018/08/29/inside-the-cpp-object-model-c1/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -171,18 +171,22 @@
   对象直接保存成员的值. C++中采用的就是这种方法.
 
 表格驱动对象模型(A Table-driven Object Model)
-  对象中的每个成员对应一个指针, 指针指向成员实际的值. C++虚表采用这种方法  实现.
+  对象中的每个成员对应一个指针, 指针指向成员实际的值. C++虚表采用这种方法
+  实现.
 
 
 
 C++对象模型
- 每个类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保 存指向vtable的指针vptr, 在类的构造函数, 析构函数, 复制运算符被调用时自动处 理vptr的值.
- 一般每个对象只有一个vptr, 而当存在虚继承时, 虚继承的直接子类还会产生一个附 加的vptr, 指向自身的virtual table.
+ 每个类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保
+ 存指向vtable的指针vptr, 在类的构造函数, 析构函数, 复制运算符被调用时自动处
+ 理vptr的值.
+ 一般每个对象只有一个vptr, 而当存在虚继承时, 虚继承的直接子类还会产生一个附
+ 加的vptr, 指向自身的virtual table.
 
 单继承, 无虚继承时的对象模型
   对象的开始处保存一个vptr指针, 非静态数据成员按继承顺序排列.
 
-单继承, 有...
+单继...
             </p>
             <div class="article-meta">
     
@@ -226,7 +230,7 @@ C++对象模型
     
     
     <li  class="article-excerpt-wrap " _href = "/2017/11/08/object-initilize-methods/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -236,14 +240,13 @@ C++对象模型
             </a>
             
             <p class="article-content">
-                
-初始化的含义  所谓初始化，就是给一个变量一个初始值，在使用一个变量的值之前，  需要对其进行初始化，否则，得到的就是一个无意义的值。
-初始化的方法
-用圆括号：type var(expression-list)圆括号中是我们提供给构造函数的参数，看下面的例子
-
+                初始化的含义所谓初始化，就是给一个变量一个初始值，在使用一个变量的值之前，
+需要对其进行初始化，否则，得到的就是一个无意义的值。
+初始化的方法用圆括号：type var(expression-list) 圆括号中是我们提供给构造函数的参数，看下面的例子
 12345678910int i(1) ;string s("hello") ;class MyClass&#123;    int i ;    string s ;    MyClass();    MyClass(int , const string&amp;) ;&#125;;MyClass obj(1 , "hello") ;
-这是一种显示初始化的方式，相当于主动调用对应类型的构造函数。12int i(1.1) ;MyClass obj(1.1 , "hello") ;
- 注意，如果想采用默认初始化方式初始化一个变...
+这是一种显示初始化的方式，相当于主动调用对应类型的构造函数。
+12int i(1.1) ;MyClass obj(1.1 , "hello") ;
+ 注意，如果想采用默认初始化方式初始化一个变量，下面...
             </p>
             <div class="article-meta">
     
