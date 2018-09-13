@@ -154,7 +154,7 @@
     
     
     <li  class="article-excerpt-wrap " _href = "/2018/08/29/inside-the-cpp-object-model-c1/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -164,29 +164,22 @@
             </a>
             
             <p class="article-content">
-                
-对象模型
-
+                对象模型
 简单对象模型(A Simple Object Model)
-  对象直接保存成员的值. C++中采用的就是这种方法.
+对象直接保存成员的值. C++中采用的就是这种方法.
 
 表格驱动对象模型(A Table-driven Object Model)
-  对象中的每个成员对应一个指针, 指针指向成员实际的值. C++虚表采用这种方法
-  实现.
+对象中的每个成员对应一个指针, 指针指向成员实际的值. C++虚表采用这种方法实现.
 
 
+C++对象模型每个有虚函数的类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保存指向
+vtable的指针vptr.
+在调用类的虚函数时, 会沿着虚函数表搜索, 第一个满足条件的就是要调用的函数.
+单继承且无继承时, 每个对象只有一个vptr, 而当存在虚继承时, 虚继承的直接子类还会产生一个附加的
+vptr, 指向自身的virtual table. 当存在多继承时, 会为每个父类产生一个vptr. 下面针对这些情况
+详细举例说明.
 
-C++对象模型
- 每个类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保
- 存指向vtable的指针vptr, 在类的构造函数, 析构函数, 复制运算符被调用时自动处
- 理vptr的值.
- 一般每个对象只有一个vptr, 而当存在虚继承时, 虚继承的直接子类还会产生一个附
- 加的vptr, 指向自身的virtual table.
-
-单继承, 无虚继承时的对象模型
-  对象的开始处保存一个vptr指针, 非静态数据成员按继承顺序排列.
-
-单继...
+单继承, 无虚继承时的对象...
             </p>
             <div class="article-meta">
     
@@ -230,7 +223,7 @@ C++对象模型
     
     
     <li  class="article-excerpt-wrap " _href = "/2017/11/08/object-initilize-methods/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
