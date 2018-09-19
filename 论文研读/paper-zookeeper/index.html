@@ -22,16 +22,17 @@
 <meta name="verify" content=all />
     <!--Title-->
 
-<title>Archives: 2018 | 杨文的博客</title>
+<title>论文研读之ZooKeeper | 杨文的博客</title>
 
 
 <link rel="icon" href="/favicon.ico">
 
     
 <link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/pages/archive.css">
+<link rel="stylesheet" href="/css/pages/post.css">
 <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="/.css">
 
     <!--script-->
 
@@ -145,54 +146,16 @@
 </ul>
 
 
-        
-<div id="main">
-  <div id="post-list">
-    <ul class="archives-post-list">
-        
-      <li class="post-items" _href="/论文研读/paper-gfs/">
-        <p class="info">2018</p>
-        <h2 class="post-item-title">论文研读之GFS</h2>
-          <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">09/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之GFS"
-              data-leadcloud-url="/论文研读/paper-gfs/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-</div>
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
 
-      </li>
-        
-      <li class="post-items" _href="/论文研读/paper-zab/">
-        <p class="info">2018</p>
-        <h2 class="post-item-title">论文研读之Zab协议</h2>
-          <div class="article-meta">
+            <h1 id="论文研读之ZooKeeper">
+                
+                论文研读之ZooKeeper
+                
+            </h1>
+            <div class="article-meta">
     
     
     <span class="categories-meta fa-wrap">
@@ -213,46 +176,7 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">09/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之Zab协议"
-              data-leadcloud-url="/论文研读/paper-zab/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-</div>
-
-      </li>
-        
-      <li class="post-items" _href="/论文研读/paper-zookeeper/">
-        <p class="info">2018</p>
-        <h2 class="post-item-title">论文研读之ZooKeeper</h2>
-          <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">09/18</span>
+        <span class="date-meta ">2018/09/18</span>
     </span>
     
     
@@ -265,90 +189,133 @@
     
 </div>
 
-      </li>
+            
+            
+        </div>
         
-      <li class="post-items" _href="/论文研读/paper-chubby/">
-        <p class="info">2018</p>
-        <h2 class="post-item-title">论文研读之Chubby</h2>
-          <div class="article-meta">
+        <div id="post-body">
+            <p>论文为: ZooKeeper: Wait-free coordination for Internet-scale systems</p>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#原子广播atomic-broadcast">原子广播(atomic broadcast)</a></li>
+<li><a href="#replicated-database">Replicated Database</a></li>
+<li><a href="#client-server-interactions">Client-Server Interactions</a></li>
+</ul>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>ZooKeeper是为分布式应用提供的协调服务的组件, 想法源于谷歌的chubby, 在其上做了很多修改.</p>
+<p>ZooKeeper具有一下特征:</p>
+<ul>
+<li>采用事件驱动机制, 因此能提供 <strong>wait-free</strong> 的接口.</li>
+<li>高可用性, 相比chubby, 更加注重效率.</li>
+<li>对于同一客户端的请求, 能保证FIFO地执行.</li>
+<li>对于所有改变ZooKeeper状态的请求, 能保证全局有序.</li>
+</ul>
+<p>ZooKeeper采用专门设计的 <strong>原子广播协议(<em>atomic broadcast protocol</em>)</strong> — <strong>Zab</strong>来保
+证一致性.</p>
+<p>改变ZooKeeper状态的请求都通过master顺序处理, 读请求则可以通过follower处理, 这是保证ZooKeeper
+高效率的关键.</p>
+<h1 id="原子广播-atomic-broadcast"><a href="#原子广播-atomic-broadcast" class="headerlink" title="原子广播(atomic broadcast)"></a>原子广播(atomic broadcast)</h1><p>由原子广播保证server间的一致性, 提供fail-over.
+在文章<a href="/论文研读/paper-zab/" title="论文研读之Zab协议">论文研读之Zab协议</a>里有总结.</p>
+<p>详情可以参考:</p>
+<ul>
+<li>A simple totally ordered broadcast protocol —简单介绍了Zab.</li>
+<li>Zab: High-performance broadcast for primary-backup systems —相比上一篇更加详细.</li>
+</ul>
+<h1 id="Replicated-Database"><a href="#Replicated-Database" class="headerlink" title="Replicated Database"></a>Replicated Database</h1><p>ZooKeeper周期性地创建快照(snapshots), 复制自身的状态, 但是创建快照时并不对整个文件系统加锁,
+而是深度遍历所有节点, 原子地复制所有节点. 这就导致最后的快照可能不对应任何一个有效状态,  即节
+点间状态不一致. 但是由于所有的写操作都是idempotent的, 所以只需要重放在开始创建快照时刻之后的
+写操作, 即可使快照有效.</p>
+<h1 id="Client-Server-Interactions"><a href="#Client-Server-Interactions" class="headerlink" title="Client-Server Interactions"></a>Client-Server Interactions</h1><p>client可以连接到ZooKeeper中的任何一个server, 与server建立session后, 即可向其发送请求.
+对于读请求, 可以由server在本地处理, 并在回复中附带zxid, 以表明当前server的状态.
+对于写请求, 如果server不是master, 就需要将请求转发到master, 由master处理, 再返回给client.</p>
+<p>读请求的处理方式会导致client读到的数据可能是无效的, 如果client需要保证一定读取最新的数据,
+ZooKeeper提供sync接口, client通过调用sync通知连接的server与master同步状态, 同步完成后再
+读取数据即可获得最新数据.</p>
+<p>ZooKeeper规定, 当client连接到一个新的server时, 必须保证此server的zxid &gt;= client最后请求
+的zxid. 即server的状态不能落后的client观察到的最新的状态. 这对于保证durability非常重要.</p>
+<p>ZooKeeper使用超时机制检测session failure, 设超时时间为session timeout, 建立session的
+client为session client.</p>
+<ul>
+<li><p>当master发现在session timeout内ZooKeeper没有收到session client的请求时, 即认为发生了
+failure. 因此, 客户端必须在一定时间内发送消息给server, 如果没有请求时, 则需要发送heartbeat
+消息.</p>
+</li>
+<li><p>设session timeout为s, 那么当session在 s/3 时间内没有消息时, client向server发送heartbeat
+消息, 在 2s/3 时间内没有收到回复时, 与其他server尝试建立session. 这样做是为了防止当server
+发生failure, 导致master认为client长时间没有发送消息, 而将session关闭.</p>
+</li>
+</ul>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="https://avatars2.githubusercontent.com/u/12467961?s=400&u=ddd6df12f5ad2c663ba98c178343f1dd9d2ead20&v=4" alt="avatar"/>
+                
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  Author:
+                  
+                    
+                    <a href="/about.html">oven yang</a>
+                </li>
+                
+                <li>Published Date: <span>2018-09-18  00:00:00</span></li>
+                
+                <li>Updated Date: <span>2018-09-18  16:14:03</span></li>
+                
+                <li class="post-category">
+                    Categories:
+                    
+                    <a href="/categories/论文研读/">论文研读</a>
+                    
+                </li>
+                <li class="post-tags">
+                    Tags:
+                    
+                    <a href="/tags/分布式/">分布式</a>
+                    
+                </li>
+                
+                <li> License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/论文研读/paper-zab/" class="pre-post fa fa-caret-left">论文研读之Zab协议</a>
+        
+        
+        <a href="/论文研读/paper-chubby/" class="next-post fa">论文研读之Chubby</a>
+        
+    </div>
     
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">09/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之Chubby"
-              data-leadcloud-url="/论文研读/paper-chubby/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
+    <div id="comments">
+        
+
+<script>
+  gitment.render(document.getElementById("comments"));
+</script>
+
+
+
+    </div>
     
 </div>
-
-      </li>
-        
-      <li class="post-items" _href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/">
-        <p class="info">2018</p>
-        <h2 class="post-item-title">第1章 关于对象</h2>
-          <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>深度探索C++对象模型笔记</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            C++
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">08/29</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="第1章 关于对象"
-              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-</div>
-
-      </li>
-        
-    </ul>
-  </div>
-</div>
-
 
 
     </div>
@@ -377,6 +344,8 @@
     <li class="totop-btn fa fa-angle-up"></li>
     <li class="exchange-btn fa fa-exchange"></li>
   
+    <li class="toc-btn fa fa-list-ul"></li>
+    
     
 
     
@@ -396,6 +365,8 @@
         </div>
     </div>
 </div>
+
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原子广播-atomic-broadcast"><span class="toc-number">2.</span> <span class="toc-text">原子广播(atomic broadcast)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Replicated-Database"><span class="toc-number">3.</span> <span class="toc-text">Replicated Database</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client-Server-Interactions"><span class="toc-number">4.</span> <span class="toc-text">Client-Server Interactions</span></a></li></ol>
 
 
 

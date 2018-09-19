@@ -13,6 +13,8 @@
     
     <!--Simple SEO-->
 
+<meta name="description" content=一蓑烟雨任平生/>
+
 
 <meta name="robots" content=all />
 <meta name="google" content=all />
@@ -20,7 +22,7 @@
 <meta name="verify" content=all />
     <!--Title-->
 
-<title>Blog</title>
+<title>杨文的博客</title>
 
 
 <link rel="icon" href="/favicon.ico">
@@ -62,7 +64,7 @@
     <header >
     <div id="site-meta">
         <a href="/" id="logo">
-            <h1 class="title">Blog</h1>
+            <h1 class="title">杨文的博客</h1>
         </a>
         
     </div>
@@ -93,7 +95,7 @@
     
 <li class="widget widget-normal category">
     <h3 class="fa fa-th widget-title">Categories</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">1</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">4</span></li></ul>
 </li>
 
 
@@ -101,7 +103,7 @@
     
 <li class="widget widget-normal archive">
   <h3 class="fa fa-archive widget-title">Archives</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
 </li>
 
 
@@ -121,7 +123,7 @@
   <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
   <div class="tagcloud-content">
     
-      <a href="/tags/C/" style="font-size: 0.14rem; color: #69c">C++</a>
+      <a href="/tags/C/" style="font-size: 0.14rem; color: #69c">C++</a> <a href="/tags/分布式/" style="font-size: 0.5rem; color: #0a407c">分布式</a>
   </div>
 </li>
 
@@ -153,13 +155,302 @@
     
     
     
-    <li  class="article-excerpt-wrap " _href = "/2018/08/29/inside-the-cpp-object-model-c1/">
+    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-gfs/">
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/论文研读/paper-gfs/">
+                <h2 class="article-title">论文研读之GFS</h2>
+            </a>
+            
+            <p class="article-content">
+                GFS是谷歌内部使用的一种分布式文件系统.
+论文为: The Google File System
+
+Assumption and Motivation
+架构
+master的功能
+chunkserver的任务
+操作日志(Operation Log)和checkpoint
+chunk lease
+文件读取
+Append
+容错
+快照(Snapshot)
+
+Assumption and Motivation
+部件错误很常见.
+文件非常大, GB大小的文件很常见.
+绝大多数的文件修改操作是append, 也支持随机写.
+读操作主要是顺序读取大量数据, 随机读取少量数据.
+为多个客户端同时对同一文件append提供高效的同步支持, 保证append的原子性.
+稳定的网络比低延迟更加重要.
+
+架构
+一个master和很多chunkserver, 多个客户端可以并发访问, 见Figure 1. 显...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>论文研读</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            分布式
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/18</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之GFS"
+              data-leadcloud-url="/论文研读/paper-gfs/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/论文研读/paper-gfs/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zab/">
         <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
             
-            <a class="article-title-link" href="/2018/08/29/inside-the-cpp-object-model-c1/">
+            <a class="article-title-link" href="/论文研读/paper-zab/">
+                <h2 class="article-title">论文研读之Zab协议</h2>
+            </a>
+            
+            <p class="article-content">
+                Zab是ZooKeeper中使用的用来保证可用性和一致性的协议.
+论文为: A simple totally ordered broadcast protocol
+
+ZooKeeper对广播协议的要求:
+Two types of Causal Relationships
+Recovery
+Broadcast
+
+写请求都通过一个leader服务器来执行, 这样就可以将非幂等(non-idempotent)的请求转化为幂等(idempotent)
+的请求.
+读请求可以在客户端直接连接的服务器执行, 但是返回的数据可能陈旧的或无效的, 当然, 可以通过参数指
+明采用同步读以从leader读取最新数据.
+ZooKeeper对广播协议的要求:
+Reliabl delivery: If a message, m, is delivered by one server, then it
+will ...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>论文研读</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            分布式
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/18</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之Zab协议"
+              data-leadcloud-url="/论文研读/paper-zab/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/论文研读/paper-zab/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zookeeper/">
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/论文研读/paper-zookeeper/">
+                <h2 class="article-title">论文研读之ZooKeeper</h2>
+            </a>
+            
+            <p class="article-content">
+                论文为: ZooKeeper: Wait-free coordination for Internet-scale systems
+
+Description
+原子广播(atomic broadcast)
+Replicated Database
+Client-Server Interactions
+
+DescriptionZooKeeper是为分布式应用提供的协调服务的组件, 想法源于谷歌的chubby, 在其上做了很多修改.
+ZooKeeper具有一下特征:
+
+采用事件驱动机制, 因此能提供 wait-free 的接口.
+高可用性, 相比chubby, 更加注重效率.
+对于同一客户端的请求, 能保证FIFO地执行.
+对于所有改变ZooKeeper状态的请求, 能保证全局有序.
+
+ZooKeeper采用专门设计的 原子广播协议(atomic broadcast protocol) — ...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>论文研读</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            分布式
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/18</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之ZooKeeper"
+              data-leadcloud-url="/论文研读/paper-zookeeper/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/论文研读/paper-zookeeper/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-chubby/">
+        <div class="article-img img-ajax" data-src= /images/chubby-architecture.png hidden>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/论文研读/paper-chubby/">
+                <h2 class="article-title">论文研读之Chubby</h2>
+            </a>
+            
+            <p class="article-content">
+                Chubby是谷歌提出的在分布式环境下方便节点间的协调的服务.
+论文为: The Chubby lock service for loosely-coupled distributed systems
+
+Motivation
+Design
+Architecture
+Files, directories, and handles
+Locks and sequencers
+Events
+Caching
+Sessions and KeepAlives
+Fail-overs
+
+Motivation
+为primary election问题提供通用的解决方案, 不需要特别实现和人工干预.
+为客户端提供 粗粒度 的同步, 协调服务, 解决客户端的共识问题.
+可靠性和可用性, 支持大量客户端.
+语义简单, 易于使用.
+不要求提供高吞吐率.
+
+Design
+对外提供锁服务来说实现客户端间的协调, 比如...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>论文研读</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            分布式
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/18</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之Chubby"
+              data-leadcloud-url="/论文研读/paper-chubby/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/论文研读/paper-chubby/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/">
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/">
                 <h2 class="article-title">第1章 关于对象</h2>
             </a>
             
@@ -209,11 +500,11 @@ vptr, 指向自身的virtual table. 当存在多继承时, 会为每个父类产
     <span class="fa-wrap" hidden>
             <i class="fa fa-thermometer-three-quarters"></i>
         <span class="hits hits-meta " data-leadcloud-title="第1章 关于对象"
-              data-leadcloud-url="/2018/08/29/inside-the-cpp-object-model-c1/"><i class="fa fa-spinner fa-spin"></i></span>
+              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/"><i class="fa fa-spinner fa-spin"></i></span>
     </span>
     
     
-    <a href="/2018/08/29/inside-the-cpp-object-model-c1/" class="read-article">Read</a>
+    <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/" class="read-article">Read</a>
     
 </div>
 
@@ -222,13 +513,13 @@ vptr, 指向自身的virtual table. 当存在多继承时, 会为每个父类产
     </li>
     
     
-    <li  class="article-excerpt-wrap " _href = "/2017/11/08/object-initilize-methods/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+    <li  class="article-excerpt-wrap " _href = "/C/object-initilize-methods/">
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
             
-            <a class="article-title-link" href="/2017/11/08/object-initilize-methods/">
+            <a class="article-title-link" href="/C/object-initilize-methods/">
                 <h2 class="article-title">对象初始化的方法</h2>
             </a>
             
@@ -269,11 +560,11 @@ vptr, 指向自身的virtual table. 当存在多继承时, 会为每个父类产
     <span class="fa-wrap" hidden>
             <i class="fa fa-thermometer-three-quarters"></i>
         <span class="hits hits-meta " data-leadcloud-title="对象初始化的方法"
-              data-leadcloud-url="/2017/11/08/object-initilize-methods/"><i class="fa fa-spinner fa-spin"></i></span>
+              data-leadcloud-url="/C/object-initilize-methods/"><i class="fa fa-spinner fa-spin"></i></span>
     </span>
     
     
-    <a href="/2017/11/08/object-initilize-methods/" class="read-article">Read</a>
+    <a href="/C/object-initilize-methods/" class="read-article">Read</a>
     
 </div>
 
@@ -290,7 +581,7 @@ vptr, 指向自身的virtual table. 当存在多继承时, 会为每个父类产
     
     <div>
         
-        <a href="/" class="copyright-links">Oven Yang</a>&copy;2017 - 2018.All Rights
+        <a href="/" class="copyright-links">oven yang</a>&copy;2017 - 2018.All Rights
         Reserved.
     </div>
     <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a

@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+<meta name="description" content=一蓑烟雨任平生/>
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>论文研读之GFS | 杨文的博客</title>
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="/.css">
+
+    <!--script-->
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+
+
+    
+    
+</head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">杨文的博客</h1>
+        </a>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        
+            <li><a href="https://www.github.com/oven-yang"><i class="fa fa-github"></i>github</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>Search</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>你好</p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">Categories</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">4</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">Archives</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts" hidden>
+    <h3 class="fa fa-thermometer-3 widget-title">Popular Posts</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal tags">
+  <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
+  <div class="tagcloud-content">
+    
+      <a href="/tags/C/" style="font-size: 0.14rem; color: #69c">C++</a> <a href="/tags/分布式/" style="font-size: 0.5rem; color: #0a407c">分布式</a>
+  </div>
+</li>
+
+
+    
+    
+<li class="widget widget-normal friends-link" hidden>
+    <h3 class="fa fa-globe widget-title">Friends</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="论文研读之GFS">
+                
+                论文研读之GFS
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>论文研读</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            分布式
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/18</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之GFS"
+              data-leadcloud-url="/论文研读/paper-gfs/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <p>GFS是谷歌内部使用的一种分布式文件系统.
+论文为: The Google File System</p>
+<ul>
+<li><a href="#assumption-and-motivation">Assumption and Motivation</a></li>
+<li><a href="#架构">架构</a></li>
+<li><a href="#master的功能">master的功能</a></li>
+<li><a href="#chunkserver的任务">chunkserver的任务</a></li>
+<li><a href="#操作日志operation-log和checkpoint">操作日志(Operation Log)和checkpoint</a></li>
+<li><a href="#chunk-lease">chunk lease</a></li>
+<li><a href="#文件读取">文件读取</a></li>
+<li><a href="#append">Append</a></li>
+<li><a href="#容错">容错</a></li>
+<li><a href="#快照snapshot">快照(Snapshot)</a></li>
+</ul>
+<h1 id="Assumption-and-Motivation"><a href="#Assumption-and-Motivation" class="headerlink" title="Assumption and Motivation"></a>Assumption and Motivation</h1><ul>
+<li>部件错误很常见.</li>
+<li>文件非常大, GB大小的文件很常见.</li>
+<li>绝大多数的文件修改操作是append, 也支持随机写.</li>
+<li>读操作主要是顺序读取大量数据, 随机读取少量数据.</li>
+<li>为多个客户端同时对同一文件append提供高效的同步支持, 保证append的原子性.</li>
+<li>稳定的网络比低延迟更加重要.</li>
+</ul>
+<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><ul>
+<li><p>一个master和很多chunkserver, 多个客户端可以并发访问, 见Figure 1. 显然存在单点故障问题.</p>
+</li>
+<li><p>一个文件被划分为多个固定大小的部分, 称为chunk, 每个chunk都有一个chunk handle唯一标识, 是
+在创建该chunk时由master分配的(由于只有一个master, 可以保证其唯一性).</p>
+</li>
+<li><p>每个chunk会被复制多份(一般是3份), 分散到不同chunkserver, 以保证容错. 由master选择其中一
+个chunk授权, 称为lease, 其余称为replica, 获得lease的chunk所在chunkserver控制了这些副
+本间的同步.</p>
+</li>
+<li><p>chunk由64KB大小的块组成, 称为block, 每个block在<em>内存</em>中有32bit的校验码. master记录了文
+件系统的所有状态, 文件名到对应chunk handle的映射, 所有chunk所在的chunkserver, 同一
+chunk中的lease, 等等。有的信息保存在磁盘, 有的只保存在内存中, 加快了这些信息的返回速度, 但
+是每次master重启时都需要询问chunkserver来获取这些信息(chunk所在服务器地址).</p>
+</li>
+<li><p>master定期和每个chunkserver联系, 以发送指令或获取信息. 客户端和master的交互只涉及控制信
+息, 状态信息等, 而没有数据. 数据直接在chunserver和客户端间流动, 减小了master的负载。</p>
+</li>
+<li><p>客户端不缓存数据, 但是客户端会缓存部分状态信息. 系统或其他部件实现的缓存不在讨论范围内. 在系
+统中, 很容易根据服务器的ip获取最佳路径.</p>
+</li>
+</ul>
+<h1 id="master的功能"><a href="#master的功能" class="headerlink" title="master的功能"></a>master的功能</h1><ul>
+<li>维护层次文件系统结构, 文件系统用<em>前缀树</em>来保存。</li>
+<li>维护filename-chunk映射</li>
+<li>记录每个chunk的位置</li>
+<li>管理并发数据修改操作的顺序, 采用读写锁来实现同步。注意<em>GFS没有目录的概念</em>。</li>
+<li>lease管理</li>
+<li>检测, 处理失效chunk<ul>
+<li>定期检查chunk是否有效, 无效则重复制以保证副本数量。</li>
+<li>采用lazy deletion, 客户端请求删除chunk时, 并不立即删除chunk, 只是将其标记为无效, 定时
+删除这些chunk。</li>
+</ul>
+</li>
+<li>复制chunk, 保证至少有3个副本, 或满足LB的需要, 当某个chunk成为瓶颈时, 会增加此chunk的副本数量。</li>
+<li>副本位置迁移<ul>
+<li>根据访问, 迁移副本的位置, 以提高带宽。</li>
+<li>为了平衡chunkserver的数据量, 迁移副本。</li>
+</ul>
+</li>
+</ul>
+<h1 id="chunkserver的任务"><a href="#chunkserver的任务" class="headerlink" title="chunkserver的任务"></a>chunkserver的任务</h1><ul>
+<li>保存chunk</li>
+<li>同步对chunk的写操作</li>
+</ul>
+<h1 id="操作日志-Operation-Log-和checkpoint"><a href="#操作日志-Operation-Log-和checkpoint" class="headerlink" title="操作日志(Operation Log)和checkpoint"></a>操作日志(Operation Log)和checkpoint</h1><ul>
+<li><p>checkpoint记录了某个时刻master的所有状态, master可以通过一个checkpoint恢复到那个时刻的
+状态.</p>
+</li>
+<li><p>操作日志记录了master的写操作.</p>
+</li>
+<li><p>先载入最近的checkpoint, 再重放此checkpoint之后的所有操作日志, 即可恢复master的状态. 因
+此, 采用日志先写的原则, 并将日志保存到磁盘中. master在日志达到一定大小后就建立checkpoint.</p>
+</li>
+</ul>
+<h1 id="chunk-lease"><a href="#chunk-lease" class="headerlink" title="chunk lease"></a>chunk lease</h1><ul>
+<li>由于每个chunk有多个副本, 因此在写chunk时, 需要考虑如何保证副本间的一致性. GFS使用了<em>Lease</em>
+的概念, 即授予一个chunk lease, 获得lease的chunk所在的服务器协调副本的写, 称此副本为
+primary. 这个想法最初是来自论文
+&lt;\&lt;Leases: An Efficient Fault-Tolerant Mechanism for Distributed File CacheConsistency.pdf&gt;&gt;.
+详细的写入步骤在<a href="#文件append">文件append</a>中.</li>
+</ul>
+<h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><p>下面是理想情况下的步骤:</p>
+<ol>
+<li>client根据文件偏移计算对应chunk号, 向master发送消息询问chunk地址, 消息包含: 文件名,
+chunk号.</li>
+<li>master返回：chunk handle, chunk所在服务器ip列表(因为有多个副本).</li>
+<li>client根据ip计算最近服务器, 发送消息请求数据。消息包含: chunk handle, 要读取的数据范围
+(byte range).</li>
+<li>chunkserver返回数据.</li>
+</ol>
+<p>之后一段时间client会缓存该chunk的地址, 再次读取chunk时不需要与master交互。</p>
+<h1 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h1><p>下面是理想情况下的步骤:</p>
+<ol>
+<li>client询问要append的chunk的primary及其地址。</li>
+<li>master如果发现此chunk还没有授予lease, 就选择一个授予lease. 返回primary和其他副本
+(secondary)的地址.</li>
+<li>client通过所有副本的ip地址, 计算出<em>一条</em>分发数据的路径, 然后推送数据. 中间收到数据的副本
+所在服务器在收到部分数据后就立即向其他副本所在服务器转发. 而不是等到所有数据都受到后才转发.
+收到的数据被还没有写入.</li>
+<li>副本所在服务器收到数据后, 向client返回ack, 并包含一个id以标记此数据.</li>
+<li>client收到所有副本的ack之后, 向primary请求开始写入. 请求中必须包含此数据的id(副本返回的).</li>
+<li>primary收到写入请求, 尝试写入, 如果成功就为之赋予一个序号, 以此将所有写入序列化, 并将请求
+转发到secondary. 如果失败则向client返回错误, return.</li>
+<li>secondary完成写入后, 回复primary.</li>
+<li>当primary收到所有secondary的写入成功回复后, 即回复写入成功. 否则返回写入失败.</li>
+</ol>
+<h1 id="容错"><a href="#容错" class="headerlink" title="容错"></a>容错</h1><ul>
+<li><p>当append时, primary写入失败, 如何处理?</p>
+<p>此时primary chunk有错误数据, 而secondary对应区域没有数据, 关键就是保证副本间的一致性.
+GFS的处理简单粗暴, 放弃这个区域, 重新选择一个区域append.</p>
+</li>
+<li><p>那么又有问题了, 再之后顺序读取中, 如何识别区域是无效的呢?</p>
+<p>好像文章里没有说, 不过实现起来应该很简单. 因为有检验码, 或者有其他标志.</p>
+</li>
+<li><p>如果primary成功, 某些secondary失败呢?</p>
+<p>  参照上面的方法处理.</p>
+</li>
+<li><p>在chunkserver向客户端或其他chunkserver返回数据时, 都会检查每个chunk的校验码, 防止错误数
+据扩散.</p>
+</li>
+<li><p>master的状态会复制到多个机器上, 这些机器作为备份。操作日志会保证先写到这些备份机器上再在
+master执行. master重启速度非常快, 并且从各个chunkserver获取chunk位置的速度也很快.</p>
+</li>
+</ul>
+<h1 id="快照-Snapshot"><a href="#快照-Snapshot" class="headerlink" title="快照(Snapshot)"></a>快照(Snapshot)</h1><p>复制一个文件/目录, 采用copy-on-write策略. 因此每个文件有一个引用计数, 当修改引用计数超过1的
+文件时, 需要将其复制一份才能修改.</p>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="https://avatars2.githubusercontent.com/u/12467961?s=400&u=ddd6df12f5ad2c663ba98c178343f1dd9d2ead20&v=4" alt="avatar"/>
+                
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  Author:
+                  
+                    
+                    <a href="/about.html">oven yang</a>
+                </li>
+                
+                <li>Published Date: <span>2018-09-18  00:00:00</span></li>
+                
+                <li>Updated Date: <span>2018-09-18  16:20:47</span></li>
+                
+                <li class="post-category">
+                    Categories:
+                    
+                    <a href="/categories/论文研读/">论文研读</a>
+                    
+                </li>
+                <li class="post-tags">
+                    Tags:
+                    
+                    <a href="/tags/分布式/">分布式</a>
+                    
+                </li>
+                
+                <li> License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        
+        <a href="/论文研读/paper-zab/" class="next-post fa">论文研读之Zab协议</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitment.render(document.getElementById("comments"));
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div>
+        
+        <a href="/" class="copyright-links">oven yang</a>&copy;2017 - 2018.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第 <span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span> 位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Assumption-and-Motivation"><span class="toc-number">1.</span> <span class="toc-text">Assumption and Motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#架构"><span class="toc-number">2.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#master的功能"><span class="toc-number">3.</span> <span class="toc-text">master的功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chunkserver的任务"><span class="toc-number">4.</span> <span class="toc-text">chunkserver的任务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作日志-Operation-Log-和checkpoint"><span class="toc-number">5.</span> <span class="toc-text">操作日志(Operation Log)和checkpoint</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chunk-lease"><span class="toc-number">6.</span> <span class="toc-text">chunk lease</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件读取"><span class="toc-number">7.</span> <span class="toc-text">文件读取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Append"><span class="toc-number">8.</span> <span class="toc-text">Append</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#容错"><span class="toc-number">9.</span> <span class="toc-text">容错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#快照-Snapshot"><span class="toc-number">10.</span> <span class="toc-text">快照(Snapshot)</span></a></li></ol>
+
+
+
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>

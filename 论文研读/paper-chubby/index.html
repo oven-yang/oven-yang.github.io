@@ -1,0 +1,494 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+<meta name="description" content=一蓑烟雨任平生/>
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>论文研读之Chubby | 杨文的博客</title>
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="/.css">
+
+    <!--script-->
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+
+
+    
+    
+</head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">杨文的博客</h1>
+        </a>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        
+            <li><a href="https://www.github.com/oven-yang"><i class="fa fa-github"></i>github</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>Search</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>你好</p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">Categories</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">4</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">Archives</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts" hidden>
+    <h3 class="fa fa-thermometer-3 widget-title">Popular Posts</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal tags">
+  <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
+  <div class="tagcloud-content">
+    
+      <a href="/tags/C/" style="font-size: 0.14rem; color: #69c">C++</a> <a href="/tags/分布式/" style="font-size: 0.5rem; color: #0a407c">分布式</a>
+  </div>
+</li>
+
+
+    
+    
+<li class="widget widget-normal friends-link" hidden>
+    <h3 class="fa fa-globe widget-title">Friends</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="论文研读之Chubby">
+                
+                论文研读之Chubby
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>论文研读</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            分布式
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/18</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之Chubby"
+              data-leadcloud-url="/论文研读/paper-chubby/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <p>Chubby是谷歌提出的在分布式环境下方便节点间的协调的服务.
+论文为: The Chubby lock service for loosely-coupled distributed systems</p>
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#design">Design</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#files-directories-and-handles">Files, directories, and handles</a></li>
+<li><a href="#locks-and-sequencers">Locks and sequencers</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#caching">Caching</a></li>
+<li><a href="#sessions-and-keepalives">Sessions and KeepAlives</a></li>
+<li><a href="#fail-overs">Fail-overs</a></li>
+</ul>
+<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><ul>
+<li>为primary election问题提供通用的解决方案, 不需要特别实现和人工干预.</li>
+<li>为客户端提供 <strong>粗粒度</strong> 的同步, 协调服务, 解决客户端的共识问题.</li>
+<li>可靠性和可用性, 支持大量客户端.</li>
+<li>语义简单, 易于使用.</li>
+<li>不要求提供高吞吐率.</li>
+</ul>
+<h1 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h1><ul>
+<li>对外提供锁服务来说实现客户端间的协调, 比如客户端leader选举问题, 客户端向chubby申请获取锁,
+获得锁的客户端即为leader. 这样可以保证即使只有一个客户端可用时, 客户端系统仍然可用. 这就相
+当于将部分保证一致性的任务转移到了chubby.</li>
+<li>leader通过将信息写到小文件中来向其他节点广播消息.</li>
+<li>客户端数量可能非常多, 因此需要允许大量客户端observe(观察?)上面提到的小文件, 并且不需要在
+chubby端部署很多服务器.</li>
+<li>客户端可能希望当观察的文件发生变化时得到通知, 因此可以使用事件通知机制, 在客户端订阅的事件发
+生时向其发送通知, 减少客户端的polling.</li>
+<li>需要支持 <strong>consistent caching</strong> 和访问控制.</li>
+<li>使用粗粒度的锁(coarse-grained lock), 因为实际中客户端持有锁的时间可能达到几小时甚至几天,
+并且锁请求的数量与事务的数量是弱相关的. 并且, 锁从一个客户端转移到另一个客户端的代价很大, 所
+以不希望chubby服务的崩溃-恢复丢失对原来锁的记录, 导致客户端服务器重新获取锁.</li>
+</ul>
+<h1 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h1><ul>
+<li>chubby包含两部分: 服务器集群和库, 二者通过RPC通讯. 库可以与客户端应用链接, 为客户端提供接
+口.</li>
+</ul>
+<p><img src="/images/chubby-architecture.png" alt="chubby架构"></p>
+<ul>
+<li><p>服务器集群通过一致性算法选举出leader, 并获得一个leader lease, 副本服务器在lease内不会选
+举新的leader, lease可以由副本服务器定时更新(怎么实现的?怎么进行协商?), 以延长此lease. 
+副本服务器维护数据库的副本, 由master控制对数据库的读写, 副本服务器仅仅是按照master的要求更
+新数据库?(什么意思? 只由master负责响应客户端的对请求吗?)</p>
+</li>
+<li><p>DNS保存了chubby服务器集群的地址列表, 客户端通过向表中的机器发送 <strong>master location request</strong>
+来获得master的地址, 副本服务器将会返回master的位置(地址?).
+客户端获得master的位置后, 将所有请求发送到master, 直到master停止回复(cease to respond,
+什么意思?)或声明不再是master.
+对于写请求, master将其通过一致性协议发送到所有副本服务器, 当大多数副本ack后, master即可向
+客户端发送ack. (<em>如果在这个阶段master lease到期, 怎么处理?</em>)
+对于读请求, 由master直接回复.</p>
+</li>
+<li><p>如果一个副本服务器崩溃, 并且数个小时没有恢复, <strong>replacement system</strong> 就会在从空闲机器池中
+选择一个新的机器来代替它, 并更新DNS. master周期性地检查DNS, 发现这个更改后, 将此更新更新到
+集群所有服务器的数据库中.
+同时, 新的副本服务器通保存在文件服务器的备份和其他活动副本服务器(active replicate)的更新来
+获得最近的数据库副本. 一旦这个新的副本服务器处理了一个当前master等待commit的请求, 即可参与
+到将来的master选举, 在此之前不允许其参与.</p>
+</li>
+</ul>
+<h1 id="Files-directories-and-handles"><a href="#Files-directories-and-handles" class="headerlink" title="Files, directories, and handles"></a>Files, directories, and handles</h1><ul>
+<li><p>chubby向客户端提供了一个类似Unix文件系统接口的接口, 逻辑上对外的数据结构是一个树状的文件
+系统. 文件系统由文件和目录组成, 一个目录可以称为一个chubby cell, 作为一个独立的单位, 在cell
+下可以进行如文件删除创建等操作.</p>
+</li>
+<li><p>文件和目录统称为node. 每个node都有很多<strong>元数据</strong>(meta-data).</p>
+<ul>
+<li>3个ACL(access control list)名字, 分别用来控制对node的读, 写权限和修改ACL名字权限, 这
+些名字分别对应了此cell中权限控制目录下的一个目录, 比如node abc写权限的名字为abc_wr, 那
+么abc所在cell的权限控制目录下有一个目录abc_wr, abc_wr下的文件的名字就对应着一个对abc有
+写权限的用户名. node可以是永久(permant)的或临时(ephemeral)的, 每个node可以被显式地删
+除, 对于临时节点, 满足某些条件时会被自动删除. 比如没有客户端保持对临时节点的打开, 临时目录
+下为空(目录下没有node). 经常用一个临时文件表示客户端是否存活.</li>
+<li>an instance number</li>
+<li>a content generation number(files only)</li>
+<li>a lock generation number</li>
+<li>an ACL generation number</li>
+</ul>
+</li>
+<li><p>成功打开一个node后可以获得一个handle, 以后可以用这个handle来对文件进行各种操作, 类似Unix
+中的文件描述符. Unix中, 只有打开文件描述符时才会进行权限检查, 以后对fd调用操作函数时不会检查
+权限, 但在chubby中, 会对每个操作进行权限检查.
+chubby周期性地检查打开文件/持有锁的客户端是否alive, 当发现客户端已经fail时, 会自动进行相应
+处理.
+handle同样包含元数据:</p>
+<ul>
+<li>check digits: 防止恶意客户端猜测, 非法创建handle.</li>
+<li>a sequence number: master可以通过这个判断此handle是由自己生成还是之前的master生成的.</li>
+<li>mode information: provided at open time to allow the master to recreate its
+state if an old handle is presented to a newly restarted master.
+(当一个master fail-over之后, 收到一个fail-over前创建的handle, 可以用此handle的
+mode information<em>重建自己的状态</em>?)</li>
+</ul>
+</li>
+</ul>
+<h1 id="Locks-and-sequencers"><a href="#Locks-and-sequencers" class="headerlink" title="Locks and sequencers"></a>Locks and sequencers</h1><ul>
+<li>每个node都可以作为一个读写锁, 注意, 这里使用的是advisory lock.</li>
+<li><strong>消息乱序问题</strong>:
+客户端C0获取锁L, 发送一个请求R, R到达之前C0崩溃, 客户端C1获取锁L, 之后, R到达, 由于使用的
+是advisory lock, 因此请求R将被执行. 显然这是非法的. 因此必须保证消息的处理顺序和每个参与者
+观察到的顺序一致.(参与者? 观察到的顺序?) 可以注意到, 这里消息乱序的仅仅指不同客户端的的消息
+乱序, 不包括同一客户端发出的消息. 解决办法是为每个成功的锁请求分配一个 <strong>sequencer</strong>, 包
+含锁的名字, 类型(r/w)和上文提到的lock generation number. 客户端发出请求时附带此
+sequencer, chubby通过验证sequencer来判断顺序是否正确.</li>
+</ul>
+<h1 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h1><p>客户端创建了handle后, 可以订阅一系列事件, 在相应事件发生时, 客户端会收到通知.</p>
+<h1 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h1><p>客户端可以缓存文件数据和元数据(meta-data), 为保证缓存一致性, 当chubby要对数据写时, 首先检查
+数据是否被客户端缓存, 如果是, 那么先向客户端发送命令, 是客户端将其缓存标记为无效, 命令成功后再
+进行写操作.</p>
+<p>不仅如此, 客户端还可以缓存打开的handle, 所以当客户端多次调用open打开一个文件时, 只需要第一次
+将请求发送到chubby集群.</p>
+<p>客户端可以缓存锁. 当有其他客户端请求该锁时, 客户端会收到通知, 已执行相应动作, 如释放锁.</p>
+<h1 id="Sessions-and-KeepAlives"><a href="#Sessions-and-KeepAlives" class="headerlink" title="Sessions and KeepAlives"></a>Sessions and KeepAlives</h1><p>客户端和chubby cell间的连接称为session, 客户端第一次联系cell或master时, 可以请求一个session,
+session通过周期性的KeepAlives消息来维护, 客户端可以主动结束session.下面主要讨论session的
+维持:</p>
+<p>每个session都有一个lease, 在lease未超时前chubby保证session的有效性. 当客户端建立一个session
+时, 立即向cell发送一个KeepAlive请求, cell并不会立即回复, 而是估计lease即将超时时才会回复,
+回复可以延长此lease一定时间, 客户端收到此回复时又立刻发送新的KeepAlive请求, 后面的步骤如上.</p>
+<p>lease在下面3种情况下可以被延长:</p>
+<ul>
+<li>on creation of session</li>
+<li>when a master fail-over occurs</li>
+<li>when a master responses to a KeepAlive RPC from client</li>
+</ul>
+<p>KeepAlive消息附带其他的信息, 比如通知客户端使缓存无效的事件等.</p>
+<p>当lease超时, 即客户端没有及时收到chubby的KeepAlive回复时, lease处于jeopardy, 客户端无法
+确定此时session的状态, 因此会将缓存标记为无效, 等待chubby的KeepAlive回复. 此状态会持续一段
+时间, 这段时间称为grace period. 如果在此时间内客户端和chubby成功交换了一轮KeepAlive消息,
+就会恢复缓存, 开始新的lease, chubby library会向客户端应用发送一个<em>safe event</em>. 如果grace
+period超时, 则向客户端应用发送一个<em>expired event</em>.</p>
+<h1 id="Fail-overs"><a href="#Fail-overs" class="headerlink" title="Fail-overs"></a>Fail-overs</h1><ul>
+<li>master fail后恢复session</li>
+</ul>
+<p>如上所述, 如果chubby能在lease超时前或grace peroid超时前选举新的leader, 恢复session等数据
+到内存中, 客户端只需要通过和新的master通信即可继续维护session.</p>
+<ul>
+<li>新master状态恢复</li>
+</ul>
+<p>可以从下面几个方向重建状态:</p>
+<ul>
+<li>通过记录的磁盘的数据</li>
+<li>通过从客户端获取的数据</li>
+<li>通过客户端的消息中包含的数据(如打开的handle名)</li>
+</ul>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="https://avatars2.githubusercontent.com/u/12467961?s=400&u=ddd6df12f5ad2c663ba98c178343f1dd9d2ead20&v=4" alt="avatar"/>
+                
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  Author:
+                  
+                    
+                    <a href="/about.html">oven yang</a>
+                </li>
+                
+                <li>Published Date: <span>2018-09-18  00:00:00</span></li>
+                
+                <li>Updated Date: <span>2018-09-18  16:09:10</span></li>
+                
+                <li class="post-category">
+                    Categories:
+                    
+                    <a href="/categories/论文研读/">论文研读</a>
+                    
+                </li>
+                <li class="post-tags">
+                    Tags:
+                    
+                    <a href="/tags/分布式/">分布式</a>
+                    
+                </li>
+                
+                <li> License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/论文研读/paper-zookeeper/" class="pre-post fa fa-caret-left">论文研读之ZooKeeper</a>
+        
+        
+        <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/" class="next-post fa">第1章 关于对象</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitment.render(document.getElementById("comments"));
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div>
+        
+        <a href="/" class="copyright-links">oven yang</a>&copy;2017 - 2018.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第 <span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span> 位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Motivation"><span class="toc-number">1.</span> <span class="toc-text">Motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Design"><span class="toc-number">2.</span> <span class="toc-text">Design</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Architecture"><span class="toc-number">3.</span> <span class="toc-text">Architecture</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Files-directories-and-handles"><span class="toc-number">4.</span> <span class="toc-text">Files, directories, and handles</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Locks-and-sequencers"><span class="toc-number">5.</span> <span class="toc-text">Locks and sequencers</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Events"><span class="toc-number">6.</span> <span class="toc-text">Events</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Caching"><span class="toc-number">7.</span> <span class="toc-text">Caching</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sessions-and-KeepAlives"><span class="toc-number">8.</span> <span class="toc-text">Sessions and KeepAlives</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fail-overs"><span class="toc-number">9.</span> <span class="toc-text">Fail-overs</span></a></li></ol>
+
+
+
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>

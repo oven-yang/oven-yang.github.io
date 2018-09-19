@@ -3,8 +3,468 @@
     
     
     <entry>
+        <title><![CDATA[论文研读之GFS]]></title>
+        <url>https://oven-yang.github.io/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/paper-gfs/</url>
+        <content type="html"><![CDATA[<p>GFS是谷歌内部使用的一种分布式文件系统.
+论文为: The Google File System</p>
+<ul>
+<li><a href="#assumption-and-motivation">Assumption and Motivation</a></li>
+<li><a href="#架构">架构</a></li>
+<li><a href="#master的功能">master的功能</a></li>
+<li><a href="#chunkserver的任务">chunkserver的任务</a></li>
+<li><a href="#操作日志operation-log和checkpoint">操作日志(Operation Log)和checkpoint</a></li>
+<li><a href="#chunk-lease">chunk lease</a></li>
+<li><a href="#文件读取">文件读取</a></li>
+<li><a href="#append">Append</a></li>
+<li><a href="#容错">容错</a></li>
+<li><a href="#快照snapshot">快照(Snapshot)</a></li>
+</ul>
+<h1 id="Assumption-and-Motivation"><a href="#Assumption-and-Motivation" class="headerlink" title="Assumption and Motivation"></a>Assumption and Motivation</h1><ul>
+<li>部件错误很常见.</li>
+<li>文件非常大, GB大小的文件很常见.</li>
+<li>绝大多数的文件修改操作是append, 也支持随机写.</li>
+<li>读操作主要是顺序读取大量数据, 随机读取少量数据.</li>
+<li>为多个客户端同时对同一文件append提供高效的同步支持, 保证append的原子性.</li>
+<li>稳定的网络比低延迟更加重要.</li>
+</ul>
+<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><ul>
+<li><p>一个master和很多chunkserver, 多个客户端可以并发访问, 见Figure 1. 显然存在单点故障问题.</p>
+</li>
+<li><p>一个文件被划分为多个固定大小的部分, 称为chunk, 每个chunk都有一个chunk handle唯一标识, 是
+在创建该chunk时由master分配的(由于只有一个master, 可以保证其唯一性).</p>
+</li>
+<li><p>每个chunk会被复制多份(一般是3份), 分散到不同chunkserver, 以保证容错. 由master选择其中一
+个chunk授权, 称为lease, 其余称为replica, 获得lease的chunk所在chunkserver控制了这些副
+本间的同步.</p>
+</li>
+<li><p>chunk由64KB大小的块组成, 称为block, 每个block在<em>内存</em>中有32bit的校验码. master记录了文
+件系统的所有状态, 文件名到对应chunk handle的映射, 所有chunk所在的chunkserver, 同一
+chunk中的lease, 等等。有的信息保存在磁盘, 有的只保存在内存中, 加快了这些信息的返回速度, 但
+是每次master重启时都需要询问chunkserver来获取这些信息(chunk所在服务器地址).</p>
+</li>
+<li><p>master定期和每个chunkserver联系, 以发送指令或获取信息. 客户端和master的交互只涉及控制信
+息, 状态信息等, 而没有数据. 数据直接在chunserver和客户端间流动, 减小了master的负载。</p>
+</li>
+<li><p>客户端不缓存数据, 但是客户端会缓存部分状态信息. 系统或其他部件实现的缓存不在讨论范围内. 在系
+统中, 很容易根据服务器的ip获取最佳路径.</p>
+</li>
+</ul>
+<h1 id="master的功能"><a href="#master的功能" class="headerlink" title="master的功能"></a>master的功能</h1><ul>
+<li>维护层次文件系统结构, 文件系统用<em>前缀树</em>来保存。</li>
+<li>维护filename-chunk映射</li>
+<li>记录每个chunk的位置</li>
+<li>管理并发数据修改操作的顺序, 采用读写锁来实现同步。注意<em>GFS没有目录的概念</em>。</li>
+<li>lease管理</li>
+<li>检测, 处理失效chunk<ul>
+<li>定期检查chunk是否有效, 无效则重复制以保证副本数量。</li>
+<li>采用lazy deletion, 客户端请求删除chunk时, 并不立即删除chunk, 只是将其标记为无效, 定时
+删除这些chunk。</li>
+</ul>
+</li>
+<li>复制chunk, 保证至少有3个副本, 或满足LB的需要, 当某个chunk成为瓶颈时, 会增加此chunk的副本数量。</li>
+<li>副本位置迁移<ul>
+<li>根据访问, 迁移副本的位置, 以提高带宽。</li>
+<li>为了平衡chunkserver的数据量, 迁移副本。</li>
+</ul>
+</li>
+</ul>
+<h1 id="chunkserver的任务"><a href="#chunkserver的任务" class="headerlink" title="chunkserver的任务"></a>chunkserver的任务</h1><ul>
+<li>保存chunk</li>
+<li>同步对chunk的写操作</li>
+</ul>
+<h1 id="操作日志-Operation-Log-和checkpoint"><a href="#操作日志-Operation-Log-和checkpoint" class="headerlink" title="操作日志(Operation Log)和checkpoint"></a>操作日志(Operation Log)和checkpoint</h1><ul>
+<li><p>checkpoint记录了某个时刻master的所有状态, master可以通过一个checkpoint恢复到那个时刻的
+状态.</p>
+</li>
+<li><p>操作日志记录了master的写操作.</p>
+</li>
+<li><p>先载入最近的checkpoint, 再重放此checkpoint之后的所有操作日志, 即可恢复master的状态. 因
+此, 采用日志先写的原则, 并将日志保存到磁盘中. master在日志达到一定大小后就建立checkpoint.</p>
+</li>
+</ul>
+<h1 id="chunk-lease"><a href="#chunk-lease" class="headerlink" title="chunk lease"></a>chunk lease</h1><ul>
+<li>由于每个chunk有多个副本, 因此在写chunk时, 需要考虑如何保证副本间的一致性. GFS使用了<em>Lease</em>
+的概念, 即授予一个chunk lease, 获得lease的chunk所在的服务器协调副本的写, 称此副本为
+primary. 这个想法最初是来自论文
+&lt;\&lt;Leases: An Efficient Fault-Tolerant Mechanism for Distributed File CacheConsistency.pdf&gt;&gt;.
+详细的写入步骤在<a href="#文件append">文件append</a>中.</li>
+</ul>
+<h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><p>下面是理想情况下的步骤:</p>
+<ol>
+<li>client根据文件偏移计算对应chunk号, 向master发送消息询问chunk地址, 消息包含: 文件名,
+chunk号.</li>
+<li>master返回：chunk handle, chunk所在服务器ip列表(因为有多个副本).</li>
+<li>client根据ip计算最近服务器, 发送消息请求数据。消息包含: chunk handle, 要读取的数据范围
+(byte range).</li>
+<li>chunkserver返回数据.</li>
+</ol>
+<p>之后一段时间client会缓存该chunk的地址, 再次读取chunk时不需要与master交互。</p>
+<h1 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h1><p>下面是理想情况下的步骤:</p>
+<ol>
+<li>client询问要append的chunk的primary及其地址。</li>
+<li>master如果发现此chunk还没有授予lease, 就选择一个授予lease. 返回primary和其他副本
+(secondary)的地址.</li>
+<li>client通过所有副本的ip地址, 计算出<em>一条</em>分发数据的路径, 然后推送数据. 中间收到数据的副本
+所在服务器在收到部分数据后就立即向其他副本所在服务器转发. 而不是等到所有数据都受到后才转发.
+收到的数据被还没有写入.</li>
+<li>副本所在服务器收到数据后, 向client返回ack, 并包含一个id以标记此数据.</li>
+<li>client收到所有副本的ack之后, 向primary请求开始写入. 请求中必须包含此数据的id(副本返回的).</li>
+<li>primary收到写入请求, 尝试写入, 如果成功就为之赋予一个序号, 以此将所有写入序列化, 并将请求
+转发到secondary. 如果失败则向client返回错误, return.</li>
+<li>secondary完成写入后, 回复primary.</li>
+<li>当primary收到所有secondary的写入成功回复后, 即回复写入成功. 否则返回写入失败.</li>
+</ol>
+<h1 id="容错"><a href="#容错" class="headerlink" title="容错"></a>容错</h1><ul>
+<li><p>当append时, primary写入失败, 如何处理?</p>
+<p>此时primary chunk有错误数据, 而secondary对应区域没有数据, 关键就是保证副本间的一致性.
+GFS的处理简单粗暴, 放弃这个区域, 重新选择一个区域append.</p>
+</li>
+<li><p>那么又有问题了, 再之后顺序读取中, 如何识别区域是无效的呢?</p>
+<p>好像文章里没有说, 不过实现起来应该很简单. 因为有检验码, 或者有其他标志.</p>
+</li>
+<li><p>如果primary成功, 某些secondary失败呢?</p>
+<p>  参照上面的方法处理.</p>
+</li>
+<li><p>在chunkserver向客户端或其他chunkserver返回数据时, 都会检查每个chunk的校验码, 防止错误数
+据扩散.</p>
+</li>
+<li><p>master的状态会复制到多个机器上, 这些机器作为备份。操作日志会保证先写到这些备份机器上再在
+master执行. master重启速度非常快, 并且从各个chunkserver获取chunk位置的速度也很快.</p>
+</li>
+</ul>
+<h1 id="快照-Snapshot"><a href="#快照-Snapshot" class="headerlink" title="快照(Snapshot)"></a>快照(Snapshot)</h1><p>复制一个文件/目录, 采用copy-on-write策略. 因此每个文件有一个引用计数, 当修改引用计数超过1的
+文件时, 需要将其复制一份才能修改.</p>
+]]></content>
+        
+        <categories>
+            
+            <category> 论文研读 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[论文研读之Zab协议]]></title>
+        <url>https://oven-yang.github.io/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/paper-zab/</url>
+        <content type="html"><![CDATA[<p>Zab是ZooKeeper中使用的用来保证可用性和一致性的协议.
+论文为: A simple totally ordered broadcast protocol</p>
+<ul>
+<li><a href="#zookeeper对广播协议的要求">ZooKeeper对广播协议的要求:</a></li>
+<li><a href="#two-types-of-causal-relationships">Two types of Causal Relationships</a></li>
+<li><a href="#recovery">Recovery</a></li>
+<li><a href="#broadcast">Broadcast</a></li>
+</ul>
+<p>写请求都通过一个leader服务器来执行, 这样就可以将非幂等(non-idempotent)的请求转化为幂等(idempotent)
+的请求.
+读请求可以在客户端直接连接的服务器执行, 但是返回的数据可能陈旧的或无效的, 当然, 可以通过参数指
+明采用同步读以从leader读取最新数据.</p>
+<h1 id="ZooKeeper对广播协议的要求"><a href="#ZooKeeper对广播协议的要求" class="headerlink" title="ZooKeeper对广播协议的要求:"></a>ZooKeeper对广播协议的要求:</h1><ul>
+<li><p><strong>Reliabl delivery</strong>: If a message, <em>m</em>, is delivered by one server, then it
+will be eventually delivered by all correct servers.</p>
+</li>
+<li><p><strong>Total order</strong>: If a message <em>a</em> is delivered before message <em>b</em> by one
+server, then every server that delivers <em>a</em> and <em>b</em> delivers <em>a</em> before <em>b</em>.</p>
+</li>
+<li><p><strong>Causal order</strong>: If a message <em>a</em> causally precedes message <em>b</em> and both 
+messages are delivered, then <em>a</em> must be ordered before <em>b</em>.</p>
+</li>
+<li><p><strong>Prefix property</strong>: If <em>m</em> is the last message delivered for a leader <em>L</em>,
+any message proposed before <em>m</em> by <em>L</em> must also be delivered.</p>
+</li>
+</ul>
+<h1 id="Two-types-of-Causal-Relationships"><a href="#Two-types-of-Causal-Relationships" class="headerlink" title="Two types of Causal Relationships"></a>Two types of <strong>Causal Relationships</strong></h1><ul>
+<li><p>If two messages, <em>a</em> and <em>b</em>, are sent by the same server and <em>a</em> is proposed
+before <em>b</em>, we say that <em>a</em> causally precedes <em>b</em>;</p>
+</li>
+<li><p>Zab assumes a single leader server at a time that can commit proposals. If a
+leader changes, any previously proposed messages causally precedes messages
+proposed by the new leader.</p>
+</li>
+</ul>
+<p>Zab中没有特别说明如何实现leader选举, 主要包含两部分内容:</p>
+<ul>
+<li><strong><a href="#recovery">recovery</a></strong>: 当服务刚刚启动或leader fail后, 就进入recovery mode.</li>
+<li><strong><a href="#broadcast">broadcast</a></strong>: 当产生新的leader, 并且leader已与大多数服务器同步, 即可开
+始broadcast.</li>
+</ul>
+<h1 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery"></a>Recovery</h1><p>当服务刚开始或发生leader failure之后, Zab就进入recovery mode, 直至产生新的leader, 并且
+leader和大多数follower的状态已同步. 而完成这两个步骤之后, leader就可以广播消息.</p>
+<p>选举新的leader时, 需要保证发生fail之前的消息不能被遗忘, 因此规定选举新选举的leader必须具有最
+高的proposal number. 这样还可以避免新的leader向follower同步proposal.</p>
+<p>另一种情况是上一轮被丢弃的消息由于延迟, 在选举出新的leader后出现, 必须保证能够正确丢弃这些
+proposal. 解决办法是为proposal赋予一个 <strong>zxid</strong>, 假设为64bit, 高32bit作为 <strong>epoch</strong>,
+低32bit作为计数器. 每次选举出一个leader, 就产生一个新的 <strong>epoch number</strong>, 并重置计数器为0.
+所有的proposal都会附带当前leader产生的epoch number和计数器. 这样, 即可通过epoch number识
+别proposal是否是陈旧的.</p>
+<h1 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a>Broadcast</h1><p>使用简化版本的两步提交(2-phase commit, 2PC), 由leader向follower发出proposal, follower
+收到proposal时, 将其记录到磁盘, 但并不commit, 并向leader返回ack. 当leader收到大多数
+follower的ack时, 即可commit该proposal, 并向follower发送COMMIT消息, 表明可以commit该
+proposal.</p>
+<p>broadcast使用的是FIFO信道(FIFO channel), 基于TCP即可实现, 这样就能保证消息的有序性.</p>
+<p>leader会为每个proposal消息附带一个zxid, 详情见上文<a href="#recovery">recovery</a>.</p>
+]]></content>
+        
+        <categories>
+            
+            <category> 论文研读 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[论文研读之ZooKeeper]]></title>
+        <url>https://oven-yang.github.io/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/paper-zookeeper/</url>
+        <content type="html"><![CDATA[<p>论文为: ZooKeeper: Wait-free coordination for Internet-scale systems</p>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#原子广播atomic-broadcast">原子广播(atomic broadcast)</a></li>
+<li><a href="#replicated-database">Replicated Database</a></li>
+<li><a href="#client-server-interactions">Client-Server Interactions</a></li>
+</ul>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>ZooKeeper是为分布式应用提供的协调服务的组件, 想法源于谷歌的chubby, 在其上做了很多修改.</p>
+<p>ZooKeeper具有一下特征:</p>
+<ul>
+<li>采用事件驱动机制, 因此能提供 <strong>wait-free</strong> 的接口.</li>
+<li>高可用性, 相比chubby, 更加注重效率.</li>
+<li>对于同一客户端的请求, 能保证FIFO地执行.</li>
+<li>对于所有改变ZooKeeper状态的请求, 能保证全局有序.</li>
+</ul>
+<p>ZooKeeper采用专门设计的 <strong>原子广播协议(<em>atomic broadcast protocol</em>)</strong> — <strong>Zab</strong>来保
+证一致性.</p>
+<p>改变ZooKeeper状态的请求都通过master顺序处理, 读请求则可以通过follower处理, 这是保证ZooKeeper
+高效率的关键.</p>
+<h1 id="原子广播-atomic-broadcast"><a href="#原子广播-atomic-broadcast" class="headerlink" title="原子广播(atomic broadcast)"></a>原子广播(atomic broadcast)</h1><p>由原子广播保证server间的一致性, 提供fail-over.
+在文章<a href="/论文研读/paper-zab/" title="论文研读之Zab协议">论文研读之Zab协议</a>里有总结.</p>
+<p>详情可以参考:</p>
+<ul>
+<li>A simple totally ordered broadcast protocol —简单介绍了Zab.</li>
+<li>Zab: High-performance broadcast for primary-backup systems —相比上一篇更加详细.</li>
+</ul>
+<h1 id="Replicated-Database"><a href="#Replicated-Database" class="headerlink" title="Replicated Database"></a>Replicated Database</h1><p>ZooKeeper周期性地创建快照(snapshots), 复制自身的状态, 但是创建快照时并不对整个文件系统加锁,
+而是深度遍历所有节点, 原子地复制所有节点. 这就导致最后的快照可能不对应任何一个有效状态,  即节
+点间状态不一致. 但是由于所有的写操作都是idempotent的, 所以只需要重放在开始创建快照时刻之后的
+写操作, 即可使快照有效.</p>
+<h1 id="Client-Server-Interactions"><a href="#Client-Server-Interactions" class="headerlink" title="Client-Server Interactions"></a>Client-Server Interactions</h1><p>client可以连接到ZooKeeper中的任何一个server, 与server建立session后, 即可向其发送请求.
+对于读请求, 可以由server在本地处理, 并在回复中附带zxid, 以表明当前server的状态.
+对于写请求, 如果server不是master, 就需要将请求转发到master, 由master处理, 再返回给client.</p>
+<p>读请求的处理方式会导致client读到的数据可能是无效的, 如果client需要保证一定读取最新的数据,
+ZooKeeper提供sync接口, client通过调用sync通知连接的server与master同步状态, 同步完成后再
+读取数据即可获得最新数据.</p>
+<p>ZooKeeper规定, 当client连接到一个新的server时, 必须保证此server的zxid &gt;= client最后请求
+的zxid. 即server的状态不能落后的client观察到的最新的状态. 这对于保证durability非常重要.</p>
+<p>ZooKeeper使用超时机制检测session failure, 设超时时间为session timeout, 建立session的
+client为session client.</p>
+<ul>
+<li><p>当master发现在session timeout内ZooKeeper没有收到session client的请求时, 即认为发生了
+failure. 因此, 客户端必须在一定时间内发送消息给server, 如果没有请求时, 则需要发送heartbeat
+消息.</p>
+</li>
+<li><p>设session timeout为s, 那么当session在 s/3 时间内没有消息时, client向server发送heartbeat
+消息, 在 2s/3 时间内没有收到回复时, 与其他server尝试建立session. 这样做是为了防止当server
+发生failure, 导致master认为client长时间没有发送消息, 而将session关闭.</p>
+</li>
+</ul>
+]]></content>
+        
+        <categories>
+            
+            <category> 论文研读 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+        <title><![CDATA[论文研读之Chubby]]></title>
+        <url>https://oven-yang.github.io/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/paper-chubby/</url>
+        <content type="html"><![CDATA[<p>Chubby是谷歌提出的在分布式环境下方便节点间的协调的服务.
+论文为: The Chubby lock service for loosely-coupled distributed systems</p>
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#design">Design</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#files-directories-and-handles">Files, directories, and handles</a></li>
+<li><a href="#locks-and-sequencers">Locks and sequencers</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#caching">Caching</a></li>
+<li><a href="#sessions-and-keepalives">Sessions and KeepAlives</a></li>
+<li><a href="#fail-overs">Fail-overs</a></li>
+</ul>
+<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><ul>
+<li>为primary election问题提供通用的解决方案, 不需要特别实现和人工干预.</li>
+<li>为客户端提供 <strong>粗粒度</strong> 的同步, 协调服务, 解决客户端的共识问题.</li>
+<li>可靠性和可用性, 支持大量客户端.</li>
+<li>语义简单, 易于使用.</li>
+<li>不要求提供高吞吐率.</li>
+</ul>
+<h1 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h1><ul>
+<li>对外提供锁服务来说实现客户端间的协调, 比如客户端leader选举问题, 客户端向chubby申请获取锁,
+获得锁的客户端即为leader. 这样可以保证即使只有一个客户端可用时, 客户端系统仍然可用. 这就相
+当于将部分保证一致性的任务转移到了chubby.</li>
+<li>leader通过将信息写到小文件中来向其他节点广播消息.</li>
+<li>客户端数量可能非常多, 因此需要允许大量客户端observe(观察?)上面提到的小文件, 并且不需要在
+chubby端部署很多服务器.</li>
+<li>客户端可能希望当观察的文件发生变化时得到通知, 因此可以使用事件通知机制, 在客户端订阅的事件发
+生时向其发送通知, 减少客户端的polling.</li>
+<li>需要支持 <strong>consistent caching</strong> 和访问控制.</li>
+<li>使用粗粒度的锁(coarse-grained lock), 因为实际中客户端持有锁的时间可能达到几小时甚至几天,
+并且锁请求的数量与事务的数量是弱相关的. 并且, 锁从一个客户端转移到另一个客户端的代价很大, 所
+以不希望chubby服务的崩溃-恢复丢失对原来锁的记录, 导致客户端服务器重新获取锁.</li>
+</ul>
+<h1 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h1><ul>
+<li>chubby包含两部分: 服务器集群和库, 二者通过RPC通讯. 库可以与客户端应用链接, 为客户端提供接
+口.</li>
+</ul>
+<p><img src="/images/chubby-architecture.png" alt="chubby架构"></p>
+<ul>
+<li><p>服务器集群通过一致性算法选举出leader, 并获得一个leader lease, 副本服务器在lease内不会选
+举新的leader, lease可以由副本服务器定时更新(怎么实现的?怎么进行协商?), 以延长此lease. 
+副本服务器维护数据库的副本, 由master控制对数据库的读写, 副本服务器仅仅是按照master的要求更
+新数据库?(什么意思? 只由master负责响应客户端的对请求吗?)</p>
+</li>
+<li><p>DNS保存了chubby服务器集群的地址列表, 客户端通过向表中的机器发送 <strong>master location request</strong>
+来获得master的地址, 副本服务器将会返回master的位置(地址?).
+客户端获得master的位置后, 将所有请求发送到master, 直到master停止回复(cease to respond,
+什么意思?)或声明不再是master.
+对于写请求, master将其通过一致性协议发送到所有副本服务器, 当大多数副本ack后, master即可向
+客户端发送ack. (<em>如果在这个阶段master lease到期, 怎么处理?</em>)
+对于读请求, 由master直接回复.</p>
+</li>
+<li><p>如果一个副本服务器崩溃, 并且数个小时没有恢复, <strong>replacement system</strong> 就会在从空闲机器池中
+选择一个新的机器来代替它, 并更新DNS. master周期性地检查DNS, 发现这个更改后, 将此更新更新到
+集群所有服务器的数据库中.
+同时, 新的副本服务器通保存在文件服务器的备份和其他活动副本服务器(active replicate)的更新来
+获得最近的数据库副本. 一旦这个新的副本服务器处理了一个当前master等待commit的请求, 即可参与
+到将来的master选举, 在此之前不允许其参与.</p>
+</li>
+</ul>
+<h1 id="Files-directories-and-handles"><a href="#Files-directories-and-handles" class="headerlink" title="Files, directories, and handles"></a>Files, directories, and handles</h1><ul>
+<li><p>chubby向客户端提供了一个类似Unix文件系统接口的接口, 逻辑上对外的数据结构是一个树状的文件
+系统. 文件系统由文件和目录组成, 一个目录可以称为一个chubby cell, 作为一个独立的单位, 在cell
+下可以进行如文件删除创建等操作.</p>
+</li>
+<li><p>文件和目录统称为node. 每个node都有很多<strong>元数据</strong>(meta-data).</p>
+<ul>
+<li>3个ACL(access control list)名字, 分别用来控制对node的读, 写权限和修改ACL名字权限, 这
+些名字分别对应了此cell中权限控制目录下的一个目录, 比如node abc写权限的名字为abc_wr, 那
+么abc所在cell的权限控制目录下有一个目录abc_wr, abc_wr下的文件的名字就对应着一个对abc有
+写权限的用户名. node可以是永久(permant)的或临时(ephemeral)的, 每个node可以被显式地删
+除, 对于临时节点, 满足某些条件时会被自动删除. 比如没有客户端保持对临时节点的打开, 临时目录
+下为空(目录下没有node). 经常用一个临时文件表示客户端是否存活.</li>
+<li>an instance number</li>
+<li>a content generation number(files only)</li>
+<li>a lock generation number</li>
+<li>an ACL generation number</li>
+</ul>
+</li>
+<li><p>成功打开一个node后可以获得一个handle, 以后可以用这个handle来对文件进行各种操作, 类似Unix
+中的文件描述符. Unix中, 只有打开文件描述符时才会进行权限检查, 以后对fd调用操作函数时不会检查
+权限, 但在chubby中, 会对每个操作进行权限检查.
+chubby周期性地检查打开文件/持有锁的客户端是否alive, 当发现客户端已经fail时, 会自动进行相应
+处理.
+handle同样包含元数据:</p>
+<ul>
+<li>check digits: 防止恶意客户端猜测, 非法创建handle.</li>
+<li>a sequence number: master可以通过这个判断此handle是由自己生成还是之前的master生成的.</li>
+<li>mode information: provided at open time to allow the master to recreate its
+state if an old handle is presented to a newly restarted master.
+(当一个master fail-over之后, 收到一个fail-over前创建的handle, 可以用此handle的
+mode information<em>重建自己的状态</em>?)</li>
+</ul>
+</li>
+</ul>
+<h1 id="Locks-and-sequencers"><a href="#Locks-and-sequencers" class="headerlink" title="Locks and sequencers"></a>Locks and sequencers</h1><ul>
+<li>每个node都可以作为一个读写锁, 注意, 这里使用的是advisory lock.</li>
+<li><strong>消息乱序问题</strong>:
+客户端C0获取锁L, 发送一个请求R, R到达之前C0崩溃, 客户端C1获取锁L, 之后, R到达, 由于使用的
+是advisory lock, 因此请求R将被执行. 显然这是非法的. 因此必须保证消息的处理顺序和每个参与者
+观察到的顺序一致.(参与者? 观察到的顺序?) 可以注意到, 这里消息乱序的仅仅指不同客户端的的消息
+乱序, 不包括同一客户端发出的消息. 解决办法是为每个成功的锁请求分配一个 <strong>sequencer</strong>, 包
+含锁的名字, 类型(r/w)和上文提到的lock generation number. 客户端发出请求时附带此
+sequencer, chubby通过验证sequencer来判断顺序是否正确.</li>
+</ul>
+<h1 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h1><p>客户端创建了handle后, 可以订阅一系列事件, 在相应事件发生时, 客户端会收到通知.</p>
+<h1 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h1><p>客户端可以缓存文件数据和元数据(meta-data), 为保证缓存一致性, 当chubby要对数据写时, 首先检查
+数据是否被客户端缓存, 如果是, 那么先向客户端发送命令, 是客户端将其缓存标记为无效, 命令成功后再
+进行写操作.</p>
+<p>不仅如此, 客户端还可以缓存打开的handle, 所以当客户端多次调用open打开一个文件时, 只需要第一次
+将请求发送到chubby集群.</p>
+<p>客户端可以缓存锁. 当有其他客户端请求该锁时, 客户端会收到通知, 已执行相应动作, 如释放锁.</p>
+<h1 id="Sessions-and-KeepAlives"><a href="#Sessions-and-KeepAlives" class="headerlink" title="Sessions and KeepAlives"></a>Sessions and KeepAlives</h1><p>客户端和chubby cell间的连接称为session, 客户端第一次联系cell或master时, 可以请求一个session,
+session通过周期性的KeepAlives消息来维护, 客户端可以主动结束session.下面主要讨论session的
+维持:</p>
+<p>每个session都有一个lease, 在lease未超时前chubby保证session的有效性. 当客户端建立一个session
+时, 立即向cell发送一个KeepAlive请求, cell并不会立即回复, 而是估计lease即将超时时才会回复,
+回复可以延长此lease一定时间, 客户端收到此回复时又立刻发送新的KeepAlive请求, 后面的步骤如上.</p>
+<p>lease在下面3种情况下可以被延长:</p>
+<ul>
+<li>on creation of session</li>
+<li>when a master fail-over occurs</li>
+<li>when a master responses to a KeepAlive RPC from client</li>
+</ul>
+<p>KeepAlive消息附带其他的信息, 比如通知客户端使缓存无效的事件等.</p>
+<p>当lease超时, 即客户端没有及时收到chubby的KeepAlive回复时, lease处于jeopardy, 客户端无法
+确定此时session的状态, 因此会将缓存标记为无效, 等待chubby的KeepAlive回复. 此状态会持续一段
+时间, 这段时间称为grace period. 如果在此时间内客户端和chubby成功交换了一轮KeepAlive消息,
+就会恢复缓存, 开始新的lease, chubby library会向客户端应用发送一个<em>safe event</em>. 如果grace
+period超时, 则向客户端应用发送一个<em>expired event</em>.</p>
+<h1 id="Fail-overs"><a href="#Fail-overs" class="headerlink" title="Fail-overs"></a>Fail-overs</h1><ul>
+<li>master fail后恢复session</li>
+</ul>
+<p>如上所述, 如果chubby能在lease超时前或grace peroid超时前选举新的leader, 恢复session等数据
+到内存中, 客户端只需要通过和新的master通信即可继续维护session.</p>
+<ul>
+<li>新master状态恢复</li>
+</ul>
+<p>可以从下面几个方向重建状态:</p>
+<ul>
+<li>通过记录的磁盘的数据</li>
+<li>通过从客户端获取的数据</li>
+<li>通过客户端的消息中包含的数据(如打开的handle名)</li>
+</ul>
+]]></content>
+        
+        <categories>
+            
+            <category> 论文研读 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
         <title><![CDATA[第1章 关于对象]]></title>
-        <url>https://oven-yang.github.io/2018/08/29/inside-the-cpp-object-model-c1/</url>
+        <url>https://oven-yang.github.io/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E7%AC%94%E8%AE%B0/inside-the-cpp-object-model-c1/</url>
         <content type="html"><![CDATA[<h3 id="对象模型"><a href="#对象模型" class="headerlink" title="对象模型"></a>对象模型</h3><ul>
 <li><p>简单对象模型(A Simple Object Model)</p>
 <p>对象直接保存成员的值. C++中采用的就是这种方法.</p>
@@ -76,7 +536,7 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
     
     <entry>
         <title><![CDATA[对象初始化的方法]]></title>
-        <url>https://oven-yang.github.io/2017/11/08/object-initilize-methods/</url>
+        <url>https://oven-yang.github.io/C/object-initilize-methods/</url>
         <content type="html"><![CDATA[<h2 id="初始化的含义"><a href="#初始化的含义" class="headerlink" title="初始化的含义"></a>初始化的含义</h2><pre><code>所谓初始化，就是给一个变量一个初始值，在使用一个变量的值之前，
 需要对其进行初始化，否则，得到的就是一个无意义的值。
 </code></pre><h2 id="初始化的方法"><a href="#初始化的方法" class="headerlink" title="初始化的方法"></a>初始化的方法</h2><h3 id="用圆括号：type-var-expression-list"><a href="#用圆括号：type-var-expression-list" class="headerlink" title="用圆括号：type var(expression-list)"></a>用圆括号：<strong>type var(expression-list)</strong></h3><p> 圆括号中是我们提供给构造函数的参数，看下面的例子</p>
