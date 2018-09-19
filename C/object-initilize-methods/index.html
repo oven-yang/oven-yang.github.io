@@ -96,7 +96,7 @@
     
 <li class="widget widget-normal category">
     <h3 class="fa fa-th widget-title">Categories</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">4</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
 </li>
 
 
@@ -104,7 +104,7 @@
     
 <li class="widget widget-normal archive">
   <h3 class="fa fa-archive widget-title">Archives</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
 </li>
 
 
@@ -194,9 +194,9 @@
         </div>
         
         <div id="post-body">
-            <h2 id="初始化的含义"><a href="#初始化的含义" class="headerlink" title="初始化的含义"></a>初始化的含义</h2><pre><code>所谓初始化，就是给一个变量一个初始值，在使用一个变量的值之前，
-需要对其进行初始化，否则，得到的就是一个无意义的值。
-</code></pre><h2 id="初始化的方法"><a href="#初始化的方法" class="headerlink" title="初始化的方法"></a>初始化的方法</h2><h3 id="用圆括号：type-var-expression-list"><a href="#用圆括号：type-var-expression-list" class="headerlink" title="用圆括号：type var(expression-list)"></a>用圆括号：<strong>type var(expression-list)</strong></h3><p> 圆括号中是我们提供给构造函数的参数，看下面的例子</p>
+            <h1 id="初始化的含义"><a href="#初始化的含义" class="headerlink" title="初始化的含义"></a>初始化的含义</h1><p>所谓初始化，就是给一个变量一个初始值，在使用一个变量的值之前，需要对其进行初始化，否则，得到的就</p>
+<p>是一个无意义的值。</p>
+<h1 id="初始化的方法"><a href="#初始化的方法" class="headerlink" title="初始化的方法"></a>初始化的方法</h1><h2 id="用圆括号：type-var-expression-list"><a href="#用圆括号：type-var-expression-list" class="headerlink" title="用圆括号：type var(expression-list)"></a>用圆括号：<strong>type var(expression-list)</strong></h2><p>圆括号中是我们提供给构造函数的参数，看下面的例子</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i</span><span class="params">(<span class="number">1</span>)</span> </span>;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">s</span><span class="params">(<span class="string">"hello"</span>)</span> </span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> i ;</span><br><span class="line">    <span class="built_in">string</span> s ;</span><br><span class="line">    MyClass();</span><br><span class="line">    MyClass(<span class="keyword">int</span> , <span class="keyword">const</span> <span class="built_in">string</span>&amp;) ;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">MyClass <span class="title">obj</span><span class="params">(<span class="number">1</span> , <span class="string">"hello"</span>)</span> </span>;</span><br></pre></td></tr></table></figure>
 <p>这是一种显示初始化的方式，相当于主动调用对应类型的构造函数。
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i</span><span class="params">(<span class="number">1.1</span>)</span> </span>;</span><br><span class="line"><span class="function">MyClass <span class="title">obj</span><span class="params">(<span class="number">1.1</span> , <span class="string">"hello"</span>)</span> </span>;</span><br></pre></td></tr></table></figure></p>
@@ -212,12 +212,12 @@
 <p>上面代码的标注1的那行会被看作是一个名字为<em>time_keep</em>的函数，返回值是 <em>TimeKeeper</em> 类型，参数是一个返回值为<em>Timer</em>类型的函数指针，而不是对象定义。要实现后者，可以这样：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TimeKeeper time_keeper((Timer());</span><br></pre></td></tr></table></figure>
 <p>更好的做法是使用C++11定义的用{}来初始化对象,可以避免很多错误。</p>
-<h3 id="用等于号：type-var-expression"><a href="#用等于号：type-var-expression" class="headerlink" title="用等于号：type var = expression"></a>用等于号：<strong>type var = expression</strong></h3><p>对于内置类型来说，=初始化和()初始化几乎没有区别(我也不知道区别在哪里)。</p>
+<h2 id="用等于号：type-var-expression"><a href="#用等于号：type-var-expression" class="headerlink" title="用等于号：type var = expression"></a>用等于号：<strong>type var = expression</strong></h2><p>对于内置类型来说，=初始化和()初始化几乎没有区别(我也不知道区别在哪里)。</p>
 <p>对于类类型，=初始化调用的是copy构造函数，而赋值是调用重载的=操作符。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass c1 = c0 ;   <span class="comment">// call MyClass(const MyClass&amp;)</span></span><br><span class="line">c1 = c0 ;           <span class="comment">// call operator =(const MyClass&amp;)</span></span><br></pre></td></tr></table></figure>
 <p>等于号经常和大括号{}一起用于初始化,</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyClass c = &#123;<span class="number">1</span> , <span class="string">"123"</span>&#125; ;</span><br></pre></td></tr></table></figure>
-<h3 id="用大括号：type-var-initializer-list-C-11推荐"><a href="#用大括号：type-var-initializer-list-C-11推荐" class="headerlink" title="用大括号：type var{initializer-list} //C++11推荐"></a>用大括号：<strong>type var{initializer-list}</strong> //C++11推荐</h3><p>C++11为了解决C++98混乱的初始化方式而提出的一种初始化方式: <strong><em>uniform initialization</em></strong> ，保证它可以用于所有的初始化。实现方式就是采用大括号。下面介绍一些{}与而其他初始化语法的不同之处：</p>
+<h2 id="用大括号：type-var-initializer-list-C-11推荐"><a href="#用大括号：type-var-initializer-list-C-11推荐" class="headerlink" title="用大括号：type var{initializer-list} //C++11推荐"></a>用大括号：<strong>type var{initializer-list}</strong> //C++11推荐</h2><p>C++11为了解决C++98混乱的初始化方式而提出的一种初始化方式: <strong><em>uniform initialization</em></strong> ，保证它可以用于所有的初始化。实现方式就是采用大括号。下面介绍一些{}与而其他初始化语法的不同之处：</p>
 <pre><code>- 大括号初始化不允许对内置类型进行隐式的窄化类型转换(***implicit narrowing conversion***)，而但是注意，这个类型转换不仅仅依据类型，还会依据值的大小。
 </code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c1&#123;<span class="number">10</span>&#125; ;   <span class="comment">// 正确，10是int 类型，但是可以char大小可以保存</span></span><br><span class="line"><span class="keyword">char</span> c2&#123;<span class="number">256</span>&#125; ;  <span class="comment">// 错误，256超过了char可保存的大小</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i1</span><span class="params">(<span class="number">11.11</span>)</span> </span>; <span class="comment">// 正确，i1 == 11</span></span><br><span class="line"><span class="keyword">int</span> i2&#123;<span class="number">11.11</span>&#125; ; <span class="comment">// 错误，会出现精度损失</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -229,7 +229,7 @@
 </li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai_1&#123;<span class="number">0</span>&#125; ;    <span class="comment">//正确</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai_1(<span class="number">0</span>) ;    <span class="comment">//正确</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai_1 = <span class="number">0</span> ;   <span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
-<h3 id="什么也不用：type-var"><a href="#什么也不用：type-var" class="headerlink" title="什么也不用：type var"></a>什么也不用：<strong>type var</strong></h3><p>有时候我们可能直接定义一个对象，没有添加=、{}、()以显式地初始化，比如：
+<h2 id="什么也不用：type-var"><a href="#什么也不用：type-var" class="headerlink" title="什么也不用：type var"></a>什么也不用：<strong>type var</strong></h2><p>有时候我们可能直接定义一个对象，没有添加=、{}、()以显式地初始化，比如：
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i ;</span><br><span class="line"><span class="built_in">string</span> s ;</span><br><span class="line">MyClass c ;</span><br></pre></td></tr></table></figure></p>
 <p>这种情况下根据定义所在的位置和对象类型的不同，有不同的初始化行为。</p>
 <ul>
@@ -261,7 +261,7 @@
                 
                 <li>Published Date: <span>2017-11-08  00:00:00</span></li>
                 
-                <li>Updated Date: <span>2018-08-30  13:20:58</span></li>
+                <li>Updated Date: <span>2018-09-19  21:13:42</span></li>
                 
                 <li class="post-category">
                     Categories:
@@ -362,7 +362,7 @@
     </div>
 </div>
 
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化的含义"><span class="toc-number">1.</span> <span class="toc-text">初始化的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化的方法"><span class="toc-number">2.</span> <span class="toc-text">初始化的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用圆括号：type-var-expression-list"><span class="toc-number">2.1.</span> <span class="toc-text">用圆括号：type var(expression-list)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用等于号：type-var-expression"><span class="toc-number">2.2.</span> <span class="toc-text">用等于号：type var = expression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用大括号：type-var-initializer-list-C-11推荐"><span class="toc-number">2.3.</span> <span class="toc-text">用大括号：type var{initializer-list} //C++11推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么也不用：type-var"><span class="toc-number">2.4.</span> <span class="toc-text">什么也不用：type var</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化的含义"><span class="toc-number">1.</span> <span class="toc-text">初始化的含义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化的方法"><span class="toc-number">2.</span> <span class="toc-text">初始化的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#用圆括号：type-var-expression-list"><span class="toc-number">2.1.</span> <span class="toc-text">用圆括号：type var(expression-list)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用等于号：type-var-expression"><span class="toc-number">2.2.</span> <span class="toc-text">用等于号：type var = expression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用大括号：type-var-initializer-list-C-11推荐"><span class="toc-number">2.3.</span> <span class="toc-text">用大括号：type var{initializer-list} //C++11推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么也不用：type-var"><span class="toc-number">2.4.</span> <span class="toc-text">什么也不用：type var</span></a></li></ol></li></ol>
 
 
 

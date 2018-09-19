@@ -3,6 +3,89 @@
     
     
     <entry>
+        <title><![CDATA[论文研读之Spinnaker]]></title>
+        <url>https://oven-yang.github.io/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/paper-spinnaker/</url>
+        <content type="html"><![CDATA[<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#replication-protocol">Replication Protocol</a><ul>
+<li><a href="#写请求的处理">写请求的处理</a></li>
+<li><a href="#读请求的处理">读请求的处理</a></li>
+<li><a href="#leader选举">Leader选举</a></li>
+</ul>
+</li>
+<li><a href="#recovery">Recovery</a><ul>
+<li><a href="#follower-recovery">Follower Recovery</a></li>
+<li><a href="#leader-takeover">Leader Takeover</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><p>可扩展性要求: 随着数据量增加, 要求增加新的设备存放数据. 一种做法就是将数据库
+按Key拆分, 分布在不同机器上, 每个机器负责一定Key范围内的数据. 而手动实现拆分
+繁琐, 容易出现问题. 所以需要一种架构支持拆分.
+容错性: 数据库保存在成百上千的普通机器上, 因此非常容易出现问题. 为了保证高可
+用性, 必须实现容错.</p>
+<h1 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h1><ul>
+<li><p>基于Zookeeper, Paxos.</p>
+</li>
+<li><p>将数据库按Key拆分. 如Key为0-500, 可拆分为0-199, 200-399, 400-500三个范围, 分别包
+含对应的行.</p>
+</li>
+<li><p>使用3副本, 每个副本分别存放在不同机器上, 存放一个范围的多个机器称为一个cohort.
+不同范围的数据可以保存在同一机器上, 因此一个机器可以属于多个cohort.</p>
+</li>
+<li><p>log sequence number(LSN): 用于唯一标识cohort中的日志, 随日志单调递增.</p>
+</li>
+<li><p>一般情况下每个请求都是针对一行数据.</p>
+</li>
+</ul>
+<h1 id="Replication-Protocol"><a href="#Replication-Protocol" class="headerlink" title="Replication Protocol"></a>Replication Protocol</h1><h2 id="写请求的处理"><a href="#写请求的处理" class="headerlink" title="写请求的处理"></a>写请求的处理</h2><ol>
+<li>处理写请求W时, 请求首先被导向请求写的数据所属的cohort的Leader, Leader首先在日志中记录此
+请求, 然后, 在将日志写到磁盘的同时, 将W附加到commit queue的末尾, 并发送propose message
+到它的Follower.</li>
+<li>Follower收到写请求时, 记录对应日志到磁盘, 在将W附加到commit queue末尾, 然后向Leader返
+回ack.</li>
+<li>由于使用3副本, Leader只要收到一个ack就可以保证大多数的要求. 所以, 当收到一个ack时, Leader
+将W应用到memtable, 并commit W. 最后回复请求, 表明写请求执行成功.</li>
+<li>Leader周期性地向Leader发送包含一个LSN值的commit message, 通知Follower将小于等于此LSN
+的log都commit. 节点记录最后提交的日志的LSN, 记为last committed LSN, 保存到磁盘中.</li>
+</ol>
+<h2 id="读请求的处理"><a href="#读请求的处理" class="headerlink" title="读请求的处理"></a>读请求的处理</h2><p>读数据时, 可以通过参数指明是strong consistency还是timeline consistency. 前者将向Leader
+请求数据, 后者可以向Follower请求数据, 以减小Leader的负载, 但是可能会读到旧数据.</p>
+<h2 id="Leader选举"><a href="#Leader选举" class="headerlink" title="Leader选举"></a>Leader选举</h2><p>通过Zookeeper实现, 同一cohort的每个机器在相同目录下创建文件, 文件包含了自己的最后一个日志的
+LSN, 记为n.lst. 选择n.lst最大的节点作为Leader.</p>
+<h1 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery"></a>Recovery</h1><h2 id="Follower-Recovery"><a href="#Follower-Recovery" class="headerlink" title="Follower Recovery"></a>Follower Recovery</h2><p>记 <strong>f.cmt</strong> 和 <strong>f.lst</strong> 分别代表节点日志中已commit的最后一个LSN和已保存的最后一个LSN.
+Follower恢复分为两个阶段:</p>
+<ol>
+<li>local recovery
+节点从最近的checkpoint重放小于等于f.cmt的日志, 节点便恢复到f.cmt对应的状态.</li>
+<li>catch up
+节点向Leader发送f.cmt, Leader就可以确定节点的状态, 并向其发送f.cmt之后的日志记录.</li>
+</ol>
+<h2 id="Leader-Takeover"><a href="#Leader-Takeover" class="headerlink" title="Leader Takeover"></a>Leader Takeover</h2><p>当Leader节点发生错误时, 需要选举出新的Leader. 新的Leader必须包含所有之前的Leader已经commit
+的log. 选举策略如上所述.</p>
+<p>但是可能存在这样的情况, 上一个leader fail后, 可能已经commit了部分write操作, 但是消息没有被
+其他follower接收到. 因此产生新的leader后, 它就要查看follower的最后commit的写操作是否落后于
+自己, 如果是, 就再次发送该写消息, 并通知folower commit. 当存在follower已经与leader同步, 
+就可以开始响应客户端的写操作.</p>
+]]></content>
+        
+        <categories>
+            
+            <category> 论文研读 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
         <title><![CDATA[论文研读之GFS]]></title>
         <url>https://oven-yang.github.io/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/paper-gfs/</url>
         <content type="html"><![CDATA[<p>GFS是谷歌内部使用的一种分布式文件系统.
@@ -465,7 +548,7 @@ period超时, 则向客户端应用发送一个<em>expired event</em>.</p>
     <entry>
         <title><![CDATA[第1章 关于对象]]></title>
         <url>https://oven-yang.github.io/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E7%AC%94%E8%AE%B0/inside-the-cpp-object-model-c1/</url>
-        <content type="html"><![CDATA[<h3 id="对象模型"><a href="#对象模型" class="headerlink" title="对象模型"></a>对象模型</h3><ul>
+        <content type="html"><![CDATA[<h1 id="对象模型"><a href="#对象模型" class="headerlink" title="对象模型"></a>对象模型</h1><ul>
 <li><p>简单对象模型(A Simple Object Model)</p>
 <p>对象直接保存成员的值. C++中采用的就是这种方法.</p>
 </li>
@@ -473,7 +556,7 @@ period超时, 则向客户端应用发送一个<em>expired event</em>.</p>
 <p>对象中的每个成员对应一个指针, 指针指向成员实际的值. C++虚表采用这种方法实现.</p>
 </li>
 </ul>
-<h3 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h3><p>每个有虚函数的类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保存指向
+<h1 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h1><p>每个有虚函数的类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保存指向
 vtable的指针vptr.
 在调用类的虚函数时, 会沿着虚函数表搜索, 第一个满足条件的就是要调用的函数.</p>
 <p>单继承且无继承时, 每个对象只有一个vptr, 而当存在虚继承时, 虚继承的直接子类还会产生一个附加的
@@ -500,7 +583,7 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BB</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int64_t</span> m_bb;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B1</span> :</span> <span class="keyword">virtual</span> <span class="keyword">public</span> BB</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> m_b1;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B2</span> :</span> <span class="keyword">virtual</span> <span class="keyword">public</span> BB</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> m_b2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DD</span> :</span> <span class="keyword">public</span> B1, B2</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> m_dd;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// DD对象的结构, gcc 8.2.0, GNU gdb 8.1.1</span></span><br><span class="line">&#123;</span><br><span class="line">    &lt;B1&gt; =</span><br><span class="line">    &#123;</span><br><span class="line">        &lt;BB&gt; =</span><br><span class="line">        &#123;</span><br><span class="line">            _vptr.BB = &lt;vtable <span class="keyword">for</span> DD+<span class="number">160</span>&gt;,</span><br><span class="line">            m_bb = <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        _vptr.B1 = &lt;vtable <span class="keyword">for</span> DD+<span class="number">24</span>&gt;,</span><br><span class="line">        m_b1</span><br><span class="line">    &#125;,</span><br><span class="line">    &lt;B2&gt; =</span><br><span class="line">    &#123;</span><br><span class="line">        _vptr.B2 = &lt;vtable <span class="keyword">for</span> DD+<span class="number">88</span>&gt;,</span><br><span class="line">        m_b2</span><br><span class="line">    &#125;,</span><br><span class="line">    m_dd</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="关键字class和struct的区别"><a href="#关键字class和struct的区别" class="headerlink" title="关键字class和struct的区别"></a>关键字class和struct的区别</h3><p>二者在绝大多数情况下是完全相同的, 可以互换, 只有几点不同.</p>
+<h1 id="关键字class和struct的区别"><a href="#关键字class和struct的区别" class="headerlink" title="关键字class和struct的区别"></a>关键字class和struct的区别</h1><p>二者在绝大多数情况下是完全相同的, 可以互换, 只有几点不同.</p>
 <p>class可以用于模板声明, struct不可以. C++引入class关键字, 保留struct的一个原因是为了体现OO,
 并且兼容C, 而C中不需要模板, 也就不需要保证struct可以用于模板.</p>
 <p>另外, 当用于声明类类型时二者略有差别:</p>
@@ -512,7 +595,7 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BB</span> &#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D1</span> :</span> BB &#123;&#125;; <span class="comment">// private继承</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D2</span> :</span> BB &#123;&#125;; <span class="comment">// public继承</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="运行时多态必须通过public继承实现"><a href="#运行时多态必须通过public继承实现" class="headerlink" title="运行时多态必须通过public继承实现"></a>运行时多态必须通过public继承实现</h3><p>这个设计是符合逻辑的. 可以设想, 如果使用其他继承方式, 那么从逻辑上说, 在类外不应该能访问父类成
+<h1 id="运行时多态必须通过public继承实现"><a href="#运行时多态必须通过public继承实现" class="headerlink" title="运行时多态必须通过public继承实现"></a>运行时多态必须通过public继承实现</h1><p>这个设计是符合逻辑的. 可以设想, 如果使用其他继承方式, 那么从逻辑上说, 在类外不应该能访问父类成
 员. 但是要实现运行时多态, 正常做法是将子类指针/引用赋值给一个父类类型的指针/引用(设为bp), 一旦
 复制成功, 我们就可以通过bp访问父类的public成员, 这显然与前面的逻辑要求矛盾. 所以, 在C++中,
 前面说得”赋值”是违法的. 而没有这个”赋值”操作, 也就无法实现运行时多态, 因此必须通过public继承
@@ -537,9 +620,9 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
     <entry>
         <title><![CDATA[对象初始化的方法]]></title>
         <url>https://oven-yang.github.io/C/object-initilize-methods/</url>
-        <content type="html"><![CDATA[<h2 id="初始化的含义"><a href="#初始化的含义" class="headerlink" title="初始化的含义"></a>初始化的含义</h2><pre><code>所谓初始化，就是给一个变量一个初始值，在使用一个变量的值之前，
-需要对其进行初始化，否则，得到的就是一个无意义的值。
-</code></pre><h2 id="初始化的方法"><a href="#初始化的方法" class="headerlink" title="初始化的方法"></a>初始化的方法</h2><h3 id="用圆括号：type-var-expression-list"><a href="#用圆括号：type-var-expression-list" class="headerlink" title="用圆括号：type var(expression-list)"></a>用圆括号：<strong>type var(expression-list)</strong></h3><p> 圆括号中是我们提供给构造函数的参数，看下面的例子</p>
+        <content type="html"><![CDATA[<h1 id="初始化的含义"><a href="#初始化的含义" class="headerlink" title="初始化的含义"></a>初始化的含义</h1><p>所谓初始化，就是给一个变量一个初始值，在使用一个变量的值之前，需要对其进行初始化，否则，得到的就</p>
+<p>是一个无意义的值。</p>
+<h1 id="初始化的方法"><a href="#初始化的方法" class="headerlink" title="初始化的方法"></a>初始化的方法</h1><h2 id="用圆括号：type-var-expression-list"><a href="#用圆括号：type-var-expression-list" class="headerlink" title="用圆括号：type var(expression-list)"></a>用圆括号：<strong>type var(expression-list)</strong></h2><p>圆括号中是我们提供给构造函数的参数，看下面的例子</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i</span><span class="params">(<span class="number">1</span>)</span> </span>;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">s</span><span class="params">(<span class="string">"hello"</span>)</span> </span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> i ;</span><br><span class="line">    <span class="built_in">string</span> s ;</span><br><span class="line">    MyClass();</span><br><span class="line">    MyClass(<span class="keyword">int</span> , <span class="keyword">const</span> <span class="built_in">string</span>&amp;) ;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">MyClass <span class="title">obj</span><span class="params">(<span class="number">1</span> , <span class="string">"hello"</span>)</span> </span>;</span><br></pre></td></tr></table></figure>
 <p>这是一种显示初始化的方式，相当于主动调用对应类型的构造函数。
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i</span><span class="params">(<span class="number">1.1</span>)</span> </span>;</span><br><span class="line"><span class="function">MyClass <span class="title">obj</span><span class="params">(<span class="number">1.1</span> , <span class="string">"hello"</span>)</span> </span>;</span><br></pre></td></tr></table></figure></p>
@@ -555,12 +638,12 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
 <p>上面代码的标注1的那行会被看作是一个名字为<em>time_keep</em>的函数，返回值是 <em>TimeKeeper</em> 类型，参数是一个返回值为<em>Timer</em>类型的函数指针，而不是对象定义。要实现后者，可以这样：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TimeKeeper time_keeper((Timer());</span><br></pre></td></tr></table></figure>
 <p>更好的做法是使用C++11定义的用{}来初始化对象,可以避免很多错误。</p>
-<h3 id="用等于号：type-var-expression"><a href="#用等于号：type-var-expression" class="headerlink" title="用等于号：type var = expression"></a>用等于号：<strong>type var = expression</strong></h3><p>对于内置类型来说，=初始化和()初始化几乎没有区别(我也不知道区别在哪里)。</p>
+<h2 id="用等于号：type-var-expression"><a href="#用等于号：type-var-expression" class="headerlink" title="用等于号：type var = expression"></a>用等于号：<strong>type var = expression</strong></h2><p>对于内置类型来说，=初始化和()初始化几乎没有区别(我也不知道区别在哪里)。</p>
 <p>对于类类型，=初始化调用的是copy构造函数，而赋值是调用重载的=操作符。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass c1 = c0 ;   <span class="comment">// call MyClass(const MyClass&amp;)</span></span><br><span class="line">c1 = c0 ;           <span class="comment">// call operator =(const MyClass&amp;)</span></span><br></pre></td></tr></table></figure>
 <p>等于号经常和大括号{}一起用于初始化,</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyClass c = &#123;<span class="number">1</span> , <span class="string">"123"</span>&#125; ;</span><br></pre></td></tr></table></figure>
-<h3 id="用大括号：type-var-initializer-list-C-11推荐"><a href="#用大括号：type-var-initializer-list-C-11推荐" class="headerlink" title="用大括号：type var{initializer-list} //C++11推荐"></a>用大括号：<strong>type var{initializer-list}</strong> //C++11推荐</h3><p>C++11为了解决C++98混乱的初始化方式而提出的一种初始化方式: <strong><em>uniform initialization</em></strong> ，保证它可以用于所有的初始化。实现方式就是采用大括号。下面介绍一些{}与而其他初始化语法的不同之处：</p>
+<h2 id="用大括号：type-var-initializer-list-C-11推荐"><a href="#用大括号：type-var-initializer-list-C-11推荐" class="headerlink" title="用大括号：type var{initializer-list} //C++11推荐"></a>用大括号：<strong>type var{initializer-list}</strong> //C++11推荐</h2><p>C++11为了解决C++98混乱的初始化方式而提出的一种初始化方式: <strong><em>uniform initialization</em></strong> ，保证它可以用于所有的初始化。实现方式就是采用大括号。下面介绍一些{}与而其他初始化语法的不同之处：</p>
 <pre><code>- 大括号初始化不允许对内置类型进行隐式的窄化类型转换(***implicit narrowing conversion***)，而但是注意，这个类型转换不仅仅依据类型，还会依据值的大小。
 </code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c1&#123;<span class="number">10</span>&#125; ;   <span class="comment">// 正确，10是int 类型，但是可以char大小可以保存</span></span><br><span class="line"><span class="keyword">char</span> c2&#123;<span class="number">256</span>&#125; ;  <span class="comment">// 错误，256超过了char可保存的大小</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">i1</span><span class="params">(<span class="number">11.11</span>)</span> </span>; <span class="comment">// 正确，i1 == 11</span></span><br><span class="line"><span class="keyword">int</span> i2&#123;<span class="number">11.11</span>&#125; ; <span class="comment">// 错误，会出现精度损失</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -572,7 +655,7 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
 </li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai_1&#123;<span class="number">0</span>&#125; ;    <span class="comment">//正确</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai_1(<span class="number">0</span>) ;    <span class="comment">//正确</span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; ai_1 = <span class="number">0</span> ;   <span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
-<h3 id="什么也不用：type-var"><a href="#什么也不用：type-var" class="headerlink" title="什么也不用：type var"></a>什么也不用：<strong>type var</strong></h3><p>有时候我们可能直接定义一个对象，没有添加=、{}、()以显式地初始化，比如：
+<h2 id="什么也不用：type-var"><a href="#什么也不用：type-var" class="headerlink" title="什么也不用：type var"></a>什么也不用：<strong>type var</strong></h2><p>有时候我们可能直接定义一个对象，没有添加=、{}、()以显式地初始化，比如：
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i ;</span><br><span class="line"><span class="built_in">string</span> s ;</span><br><span class="line">MyClass c ;</span><br></pre></td></tr></table></figure></p>
 <p>这种情况下根据定义所在的位置和对象类型的不同，有不同的初始化行为。</p>
 <ul>

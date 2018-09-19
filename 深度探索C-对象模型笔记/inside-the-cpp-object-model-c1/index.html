@@ -96,7 +96,7 @@
     
 <li class="widget widget-normal category">
     <h3 class="fa fa-th widget-title">Categories</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">4</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
 </li>
 
 
@@ -104,7 +104,7 @@
     
 <li class="widget widget-normal archive">
   <h3 class="fa fa-archive widget-title">Archives</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
 </li>
 
 
@@ -194,7 +194,7 @@
         </div>
         
         <div id="post-body">
-            <h3 id="对象模型"><a href="#对象模型" class="headerlink" title="对象模型"></a>对象模型</h3><ul>
+            <h1 id="对象模型"><a href="#对象模型" class="headerlink" title="对象模型"></a>对象模型</h1><ul>
 <li><p>简单对象模型(A Simple Object Model)</p>
 <p>对象直接保存成员的值. C++中采用的就是这种方法.</p>
 </li>
@@ -202,7 +202,7 @@
 <p>对象中的每个成员对应一个指针, 指针指向成员实际的值. C++虚表采用这种方法实现.</p>
 </li>
 </ul>
-<h3 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h3><p>每个有虚函数的类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保存指向
+<h1 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h1><p>每个有虚函数的类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保存指向
 vtable的指针vptr.
 在调用类的虚函数时, 会沿着虚函数表搜索, 第一个满足条件的就是要调用的函数.</p>
 <p>单继承且无继承时, 每个对象只有一个vptr, 而当存在虚继承时, 虚继承的直接子类还会产生一个附加的
@@ -229,7 +229,7 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BB</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int64_t</span> m_bb;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B1</span> :</span> <span class="keyword">virtual</span> <span class="keyword">public</span> BB</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> m_b1;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B2</span> :</span> <span class="keyword">virtual</span> <span class="keyword">public</span> BB</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> m_b2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DD</span> :</span> <span class="keyword">public</span> B1, B2</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> m_dd;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// DD对象的结构, gcc 8.2.0, GNU gdb 8.1.1</span></span><br><span class="line">&#123;</span><br><span class="line">    &lt;B1&gt; =</span><br><span class="line">    &#123;</span><br><span class="line">        &lt;BB&gt; =</span><br><span class="line">        &#123;</span><br><span class="line">            _vptr.BB = &lt;vtable <span class="keyword">for</span> DD+<span class="number">160</span>&gt;,</span><br><span class="line">            m_bb = <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        _vptr.B1 = &lt;vtable <span class="keyword">for</span> DD+<span class="number">24</span>&gt;,</span><br><span class="line">        m_b1</span><br><span class="line">    &#125;,</span><br><span class="line">    &lt;B2&gt; =</span><br><span class="line">    &#123;</span><br><span class="line">        _vptr.B2 = &lt;vtable <span class="keyword">for</span> DD+<span class="number">88</span>&gt;,</span><br><span class="line">        m_b2</span><br><span class="line">    &#125;,</span><br><span class="line">    m_dd</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="关键字class和struct的区别"><a href="#关键字class和struct的区别" class="headerlink" title="关键字class和struct的区别"></a>关键字class和struct的区别</h3><p>二者在绝大多数情况下是完全相同的, 可以互换, 只有几点不同.</p>
+<h1 id="关键字class和struct的区别"><a href="#关键字class和struct的区别" class="headerlink" title="关键字class和struct的区别"></a>关键字class和struct的区别</h1><p>二者在绝大多数情况下是完全相同的, 可以互换, 只有几点不同.</p>
 <p>class可以用于模板声明, struct不可以. C++引入class关键字, 保留struct的一个原因是为了体现OO,
 并且兼容C, 而C中不需要模板, 也就不需要保证struct可以用于模板.</p>
 <p>另外, 当用于声明类类型时二者略有差别:</p>
@@ -241,7 +241,7 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BB</span> &#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D1</span> :</span> BB &#123;&#125;; <span class="comment">// private继承</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D2</span> :</span> BB &#123;&#125;; <span class="comment">// public继承</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="运行时多态必须通过public继承实现"><a href="#运行时多态必须通过public继承实现" class="headerlink" title="运行时多态必须通过public继承实现"></a>运行时多态必须通过public继承实现</h3><p>这个设计是符合逻辑的. 可以设想, 如果使用其他继承方式, 那么从逻辑上说, 在类外不应该能访问父类成
+<h1 id="运行时多态必须通过public继承实现"><a href="#运行时多态必须通过public继承实现" class="headerlink" title="运行时多态必须通过public继承实现"></a>运行时多态必须通过public继承实现</h1><p>这个设计是符合逻辑的. 可以设想, 如果使用其他继承方式, 那么从逻辑上说, 在类外不应该能访问父类成
 员. 但是要实现运行时多态, 正常做法是将子类指针/引用赋值给一个父类类型的指针/引用(设为bp), 一旦
 复制成功, 我们就可以通过bp访问父类的public成员, 这显然与前面的逻辑要求矛盾. 所以, 在C++中,
 前面说得”赋值”是违法的. 而没有这个”赋值”操作, 也就无法实现运行时多态, 因此必须通过public继承
@@ -265,7 +265,7 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
                 
                 <li>Published Date: <span>2018-08-29  00:00:00</span></li>
                 
-                <li>Updated Date: <span>2018-09-13  10:57:47</span></li>
+                <li>Updated Date: <span>2018-09-19  21:14:03</span></li>
                 
                 <li class="post-category">
                     Categories:
@@ -368,7 +368,7 @@ B2中BB. 可以使用 dynamic_cast 进行干预, 以达到预期目的.</p>
     </div>
 </div>
 
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象模型"><span class="toc-number">1.</span> <span class="toc-text">对象模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-对象模型"><span class="toc-number">2.</span> <span class="toc-text">C++对象模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字class和struct的区别"><span class="toc-number">3.</span> <span class="toc-text">关键字class和struct的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行时多态必须通过public继承实现"><span class="toc-number">4.</span> <span class="toc-text">运行时多态必须通过public继承实现</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#对象模型"><span class="toc-number">1.</span> <span class="toc-text">对象模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-对象模型"><span class="toc-number">2.</span> <span class="toc-text">C++对象模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关键字class和struct的区别"><span class="toc-number">3.</span> <span class="toc-text">关键字class和struct的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行时多态必须通过public继承实现"><span class="toc-number">4.</span> <span class="toc-text">运行时多态必须通过public继承实现</span></a></li></ol>
 
 
 

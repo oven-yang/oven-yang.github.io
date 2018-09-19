@@ -22,7 +22,7 @@
 <meta name="verify" content=all />
     <!--Title-->
 
-<title>论文研读之Zab协议 | 杨文的博客</title>
+<title>论文研读之Spinnaker | 杨文的博客</title>
 
 
 <link rel="icon" href="/favicon.ico">
@@ -150,9 +150,9 @@
     <article id="post">
         <div id="post-header">
 
-            <h1 id="论文研读之Zab协议">
+            <h1 id="论文研读之Spinnaker">
                 
-                论文研读之Zab协议
+                论文研读之Spinnaker
                 
             </h1>
             <div class="article-meta">
@@ -176,14 +176,14 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/09/18</span>
+        <span class="date-meta ">2018/09/19</span>
     </span>
     
     
     <span class="fa-wrap" hidden>
             <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之Zab协议"
-              data-leadcloud-url="/论文研读/paper-zab/"><i class="fa fa-spinner fa-spin"></i></span>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之Spinnaker"
+              data-leadcloud-url="/论文研读/paper-spinnaker/"><i class="fa fa-spinner fa-spin"></i></span>
     </span>
     
     
@@ -194,62 +194,69 @@
         </div>
         
         <div id="post-body">
-            <p>Zab是ZooKeeper中使用的用来保证可用性和一致性的协议.
-论文为: A simple totally ordered broadcast protocol</p>
-<ul>
-<li><a href="#zookeeper对广播协议的要求">ZooKeeper对广播协议的要求:</a></li>
-<li><a href="#two-types-of-causal-relationships">Two types of Causal Relationships</a></li>
-<li><a href="#recovery">Recovery</a></li>
-<li><a href="#broadcast">Broadcast</a></li>
+            <ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#replication-protocol">Replication Protocol</a><ul>
+<li><a href="#写请求的处理">写请求的处理</a></li>
+<li><a href="#读请求的处理">读请求的处理</a></li>
+<li><a href="#leader选举">Leader选举</a></li>
 </ul>
-<p>写请求都通过一个leader服务器来执行, 这样就可以将非幂等(non-idempotent)的请求转化为幂等(idempotent)
-的请求.
-读请求可以在客户端直接连接的服务器执行, 但是返回的数据可能陈旧的或无效的, 当然, 可以通过参数指
-明采用同步读以从leader读取最新数据.</p>
-<h1 id="ZooKeeper对广播协议的要求"><a href="#ZooKeeper对广播协议的要求" class="headerlink" title="ZooKeeper对广播协议的要求:"></a>ZooKeeper对广播协议的要求:</h1><ul>
-<li><p><strong>Reliabl delivery</strong>: If a message, <em>m</em>, is delivered by one server, then it
-will be eventually delivered by all correct servers.</p>
 </li>
-<li><p><strong>Total order</strong>: If a message <em>a</em> is delivered before message <em>b</em> by one
-server, then every server that delivers <em>a</em> and <em>b</em> delivers <em>a</em> before <em>b</em>.</p>
-</li>
-<li><p><strong>Causal order</strong>: If a message <em>a</em> causally precedes message <em>b</em> and both 
-messages are delivered, then <em>a</em> must be ordered before <em>b</em>.</p>
-</li>
-<li><p><strong>Prefix property</strong>: If <em>m</em> is the last message delivered for a leader <em>L</em>,
-any message proposed before <em>m</em> by <em>L</em> must also be delivered.</p>
+<li><a href="#recovery">Recovery</a><ul>
+<li><a href="#follower-recovery">Follower Recovery</a></li>
+<li><a href="#leader-takeover">Leader Takeover</a></li>
+</ul>
 </li>
 </ul>
-<h1 id="Two-types-of-Causal-Relationships"><a href="#Two-types-of-Causal-Relationships" class="headerlink" title="Two types of Causal Relationships"></a>Two types of <strong>Causal Relationships</strong></h1><ul>
-<li><p>If two messages, <em>a</em> and <em>b</em>, are sent by the same server and <em>a</em> is proposed
-before <em>b</em>, we say that <em>a</em> causally precedes <em>b</em>;</p>
+<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><p>可扩展性要求: 随着数据量增加, 要求增加新的设备存放数据. 一种做法就是将数据库
+按Key拆分, 分布在不同机器上, 每个机器负责一定Key范围内的数据. 而手动实现拆分
+繁琐, 容易出现问题. 所以需要一种架构支持拆分.
+容错性: 数据库保存在成百上千的普通机器上, 因此非常容易出现问题. 为了保证高可
+用性, 必须实现容错.</p>
+<h1 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h1><ul>
+<li><p>基于Zookeeper, Paxos.</p>
 </li>
-<li><p>Zab assumes a single leader server at a time that can commit proposals. If a
-leader changes, any previously proposed messages causally precedes messages
-proposed by the new leader.</p>
+<li><p>将数据库按Key拆分. 如Key为0-500, 可拆分为0-199, 200-399, 400-500三个范围, 分别包
+含对应的行.</p>
+</li>
+<li><p>使用3副本, 每个副本分别存放在不同机器上, 存放一个范围的多个机器称为一个cohort.
+不同范围的数据可以保存在同一机器上, 因此一个机器可以属于多个cohort.</p>
+</li>
+<li><p>log sequence number(LSN): 用于唯一标识cohort中的日志, 随日志单调递增.</p>
+</li>
+<li><p>一般情况下每个请求都是针对一行数据.</p>
 </li>
 </ul>
-<p>Zab中没有特别说明如何实现leader选举, 主要包含两部分内容:</p>
-<ul>
-<li><strong><a href="#recovery">recovery</a></strong>: 当服务刚刚启动或leader fail后, 就进入recovery mode.</li>
-<li><strong><a href="#broadcast">broadcast</a></strong>: 当产生新的leader, 并且leader已与大多数服务器同步, 即可开
-始broadcast.</li>
-</ul>
-<h1 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery"></a>Recovery</h1><p>当服务刚开始或发生leader failure之后, Zab就进入recovery mode, 直至产生新的leader, 并且
-leader和大多数follower的状态已同步. 而完成这两个步骤之后, leader就可以广播消息.</p>
-<p>选举新的leader时, 需要保证发生fail之前的消息不能被遗忘, 因此规定选举新选举的leader必须具有最
-高的proposal number. 这样还可以避免新的leader向follower同步proposal.</p>
-<p>另一种情况是上一轮被丢弃的消息由于延迟, 在选举出新的leader后出现, 必须保证能够正确丢弃这些
-proposal. 解决办法是为proposal赋予一个 <strong>zxid</strong>, 假设为64bit, 高32bit作为 <strong>epoch</strong>,
-低32bit作为计数器. 每次选举出一个leader, 就产生一个新的 <strong>epoch number</strong>, 并重置计数器为0.
-所有的proposal都会附带当前leader产生的epoch number和计数器. 这样, 即可通过epoch number识
-别proposal是否是陈旧的.</p>
-<h1 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a>Broadcast</h1><p>使用简化版本的两步提交(2-phase commit, 2PC), 由leader向follower发出proposal, follower
-收到proposal时, 将其记录到磁盘, 但并不commit, 并向leader返回ack. 当leader收到大多数
-follower的ack时, 即可commit该proposal, 并向follower发送COMMIT消息, 表明可以commit该
-proposal.</p>
-<p>broadcast使用的是FIFO信道(FIFO channel), 基于TCP即可实现, 这样就能保证消息的有序性.</p>
-<p>leader会为每个proposal消息附带一个zxid, 详情见上文<a href="#recovery">recovery</a>.</p>
+<h1 id="Replication-Protocol"><a href="#Replication-Protocol" class="headerlink" title="Replication Protocol"></a>Replication Protocol</h1><h2 id="写请求的处理"><a href="#写请求的处理" class="headerlink" title="写请求的处理"></a>写请求的处理</h2><ol>
+<li>处理写请求W时, 请求首先被导向请求写的数据所属的cohort的Leader, Leader首先在日志中记录此
+请求, 然后, 在将日志写到磁盘的同时, 将W附加到commit queue的末尾, 并发送propose message
+到它的Follower.</li>
+<li>Follower收到写请求时, 记录对应日志到磁盘, 在将W附加到commit queue末尾, 然后向Leader返
+回ack.</li>
+<li>由于使用3副本, Leader只要收到一个ack就可以保证大多数的要求. 所以, 当收到一个ack时, Leader
+将W应用到memtable, 并commit W. 最后回复请求, 表明写请求执行成功.</li>
+<li>Leader周期性地向Leader发送包含一个LSN值的commit message, 通知Follower将小于等于此LSN
+的log都commit. 节点记录最后提交的日志的LSN, 记为last committed LSN, 保存到磁盘中.</li>
+</ol>
+<h2 id="读请求的处理"><a href="#读请求的处理" class="headerlink" title="读请求的处理"></a>读请求的处理</h2><p>读数据时, 可以通过参数指明是strong consistency还是timeline consistency. 前者将向Leader
+请求数据, 后者可以向Follower请求数据, 以减小Leader的负载, 但是可能会读到旧数据.</p>
+<h2 id="Leader选举"><a href="#Leader选举" class="headerlink" title="Leader选举"></a>Leader选举</h2><p>通过Zookeeper实现, 同一cohort的每个机器在相同目录下创建文件, 文件包含了自己的最后一个日志的
+LSN, 记为n.lst. 选择n.lst最大的节点作为Leader.</p>
+<h1 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery"></a>Recovery</h1><h2 id="Follower-Recovery"><a href="#Follower-Recovery" class="headerlink" title="Follower Recovery"></a>Follower Recovery</h2><p>记 <strong>f.cmt</strong> 和 <strong>f.lst</strong> 分别代表节点日志中已commit的最后一个LSN和已保存的最后一个LSN.
+Follower恢复分为两个阶段:</p>
+<ol>
+<li>local recovery
+节点从最近的checkpoint重放小于等于f.cmt的日志, 节点便恢复到f.cmt对应的状态.</li>
+<li>catch up
+节点向Leader发送f.cmt, Leader就可以确定节点的状态, 并向其发送f.cmt之后的日志记录.</li>
+</ol>
+<h2 id="Leader-Takeover"><a href="#Leader-Takeover" class="headerlink" title="Leader Takeover"></a>Leader Takeover</h2><p>当Leader节点发生错误时, 需要选举出新的Leader. 新的Leader必须包含所有之前的Leader已经commit
+的log. 选举策略如上所述.</p>
+<p>但是可能存在这样的情况, 上一个leader fail后, 可能已经commit了部分write操作, 但是消息没有被
+其他follower接收到. 因此产生新的leader后, 它就要查看follower的最后commit的写操作是否落后于
+自己, 如果是, 就再次发送该写消息, 并通知folower commit. 当存在follower已经与leader同步, 
+就可以开始响应客户端的写操作.</p>
 
         </div>
         <div id="post-footer">
@@ -267,9 +274,9 @@ proposal.</p>
                     <a href="/about.html">oven yang</a>
                 </li>
                 
-                <li>Published Date: <span>2018-09-18  00:00:00</span></li>
+                <li>Published Date: <span>2018-09-19  00:00:00</span></li>
                 
-                <li>Updated Date: <span>2018-09-18  19:40:50</span></li>
+                <li>Updated Date: <span>2018-09-19  21:11:22</span></li>
                 
                 <li class="post-category">
                     Categories:
@@ -303,10 +310,8 @@ proposal.</p>
     </article>
     <div class="article-nav">
         
-        <a href="/论文研读/paper-gfs/" class="pre-post fa fa-caret-left">论文研读之GFS</a>
         
-        
-        <a href="/论文研读/paper-zookeeper/" class="next-post fa">论文研读之ZooKeeper</a>
+        <a href="/论文研读/paper-gfs/" class="next-post fa">论文研读之GFS</a>
         
     </div>
     
@@ -372,7 +377,7 @@ proposal.</p>
     </div>
 </div>
 
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ZooKeeper对广播协议的要求"><span class="toc-number">1.</span> <span class="toc-text">ZooKeeper对广播协议的要求:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Two-types-of-Causal-Relationships"><span class="toc-number">2.</span> <span class="toc-text">Two types of Causal Relationships</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recovery"><span class="toc-number">3.</span> <span class="toc-text">Recovery</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Broadcast"><span class="toc-number">4.</span> <span class="toc-text">Broadcast</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Motivation"><span class="toc-number">1.</span> <span class="toc-text">Motivation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Architecture"><span class="toc-number">2.</span> <span class="toc-text">Architecture</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Replication-Protocol"><span class="toc-number">3.</span> <span class="toc-text">Replication Protocol</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#写请求的处理"><span class="toc-number">3.1.</span> <span class="toc-text">写请求的处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读请求的处理"><span class="toc-number">3.2.</span> <span class="toc-text">读请求的处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Leader选举"><span class="toc-number">3.3.</span> <span class="toc-text">Leader选举</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recovery"><span class="toc-number">4.</span> <span class="toc-text">Recovery</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Follower-Recovery"><span class="toc-number">4.1.</span> <span class="toc-text">Follower Recovery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Leader-Takeover"><span class="toc-number">4.2.</span> <span class="toc-text">Leader Takeover</span></a></li></ol></li></ol>
 
 
 
