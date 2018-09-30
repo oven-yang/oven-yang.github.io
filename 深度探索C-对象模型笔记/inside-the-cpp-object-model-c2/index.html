@@ -1,0 +1,495 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+<meta name="description" content=一蓑烟雨任平生/>
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>第2章 构造函数语意学 | 杨文的博客</title>
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="/.css">
+
+    <!--script-->
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+
+
+    
+    
+</head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">杨文的博客</h1>
+        </a>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        
+            <li><a href="https://www.github.com/oven-yang"><i class="fa fa-github"></i>github</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>Search</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>你好</p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">Categories</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">Archives</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts" hidden>
+    <h3 class="fa fa-thermometer-3 widget-title">Popular Posts</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal tags">
+  <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
+  <div class="tagcloud-content">
+    
+      <a href="/tags/C/" style="font-size: 0.14rem; color: #69c">C++</a> <a href="/tags/分布式/" style="font-size: 0.5rem; color: #0a407c">分布式</a>
+  </div>
+</li>
+
+
+    
+    
+<li class="widget widget-normal friends-link" hidden>
+    <h3 class="fa fa-globe widget-title">Friends</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="第2章 构造函数语意学">
+                
+                第2章 构造函数语意学
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>深度探索C++对象模型笔记</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            C++
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/30</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="第2章 构造函数语意学"
+              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <p>只有一个参数的构造函数可以被编译器作为转换函数构造函数, 这会带来意料之外的结果. C++增加了关键字
+<em>explicit</em>来阻止对函数的隐式调用.</p>
+<blockquote>
+<p>“只有一个参数的构造函数可以被编译器作为类型转换函数”从C++11起被废止, 新标准规定具有多个参数
+的构造函数也可以作为转换构造函数, 新的标准是”没有被声明为<em>explicit</em>的构造函数就可以作为转换
+构造函数(<em>converting constructor</em>)”.</p>
+</blockquote>
+<h2 id="Default-Constructor的构造操作"><a href="#Default-Constructor的构造操作" class="headerlink" title="Default Constructor的构造操作"></a>Default Constructor的构造操作</h2><p><strong>默认构造函数(default constructor)的定义</strong>:</p>
+<blockquote>
+<p>一个可以以空参数列表调用的构造函数称为默认构造函数, 这有两种情形, 一种是构造函数参数列表为空,
+另一种是每个参数都在声明中给出了默认值.</p>
+</blockquote>
+<p>默认构造函数可以是自己定义的, 也可以由编译器自动生成. 当用户没有定义任何构造函数时, 编译器就会
+为用户生成一个参数列表为空的默认构造函数.</p>
+<p><strong>trivial default constructor(无用默认构造函数)</strong></p>
+<blockquote>
+<p>满足下面所有的条件时, 一个默认构造函数是trivial的:</p>
+<ul>
+<li>不是由用户提供的, 即是由编译器生成的或者声明为default.</li>
+<li>类没有虚成员函数</li>
+<li>类没有虚基类</li>
+<li>类没有默认初始化的非静态成员</li>
+<li>直接基类有trivial default constructor</li>
+<li>非静态类成员有trivial default constructor</li>
+</ul>
+<p>显然, trivial default constructor不进行任何操作. 所有与C语言兼容的数据类型(POD类型)都
+具有trivial default constructor.</p>
+</blockquote>
+<h3 id="带有default-constructor的member-class-object"><a href="#带有default-constructor的member-class-object" class="headerlink" title="带有default constructor的member class object"></a>带有default constructor的member class object</h3><p>编译器会为没有定义构造函数的类合成默认构造函数, 但是这个合成操作只有在构造函数真正需要被调用时才
+会发生.</p>
+<p>那么在C++不同编译模块中, 编译器怎么避免生成多个默认构造函数呢? 解决方法是把合成的默认构造函数,
+复制构造函数, 析构函数, 赋值运算符都作为inline, 而inline函数是静态链接(static linkage)的,
+不会被编译模块(即文件)以外的看到. 如果函数太复杂, 作为inline不合适, 就会合成一个显式non-inline
+静态(explicit non-inline static)实例.</p>
+<p>我们知道, 类对象是必须要初始化的, 当一个类的成员有其他类对象时, 就必须在构造函数中对类成员进行
+初始化. 如果是编译器合成的默认构造函数, 就在合成的默认构造函数中按类成员声明顺序调用它们的默认
+构造函数(当然, 如果没有就会引起错误). 注意一点, 对于显式定义的构造函数函数, 如果没有对部分类成
+员对象的初始化, 编译器会自动插入一些代码, 使得用户代码被执行之前, 先调用必要的默认构造函数, 仍
+然按照它们的声明顺序调用. 但是如果有的对象显式调用了构造函数, 有的没有, 顺序是如何确定的呢? 仍
+然按照它们的声明顺序调用, 具体情况参考后面的讨论(????????where).</p>
+<h3 id="“带有default-constructor”的Base-Class"><a href="#“带有default-constructor”的Base-Class" class="headerlink" title="“带有default constructor”的Base Class"></a>“带有default constructor”的Base Class</h3><p>如果一个子类的基类带有默认构造函数, 那么在合成子类的构造函数时, 会在其中插入对基类的默认构造函
+数会的调用代码, 这个代码在成员的默认构造函数调用代码之前. 即先初始化基类, 再按声明顺序初始化子
+类成员.</p>
+<h3 id="“带有一个Virtual-Function”的Class"><a href="#“带有一个Virtual-Function”的Class" class="headerlink" title="“带有一个Virtual Function”的Class"></a>“带有一个Virtual Function”的Class</h3><p>对于带有虚函数的类, 不论是直接声明的还是直接/间接继承而来的, 都有虚函数表, 对应对象有虚函数表指
+针(vptr)作为数据成员. 那么vptr是如何确定的呢? 显然, 虚函数表是在编译阶段就可以确定的, 因此由
+编译器合成. 但是vptr的确定就要分情况讨论了:</p>
+<ul>
+<li>对于静态初始化的对象, vptr由编译器初始化.</li>
+<li>对于动态初始化的对象, <strong>vptr由构造函数初始化</strong>. 因此编译器会在所有的构造函数中插入一些代码
+来完成这个任务.</li>
+</ul>
+<h3 id="“带有一个Virtual-Base-Class”的Class"><a href="#“带有一个Virtual-Base-Class”的Class" class="headerlink" title="“带有一个Virtual Base Class”的Class"></a>“带有一个Virtual Base Class”的Class</h3><p>当存在虚基类时, 通过虚基类指针/引用访问其非虚函数, 数据成员时, 应该是不属于多态的, 但是仍然在
+运行时才能决定. 指针所指对象的实际类型很多时候是未知的, 在不同类型中, 由于采用了虚继承, 同一变
+量偏移可能不一样(这是由实现决定的), 简而言之就是编译器不知道成员在指针所指对象的什么位置. 因此,
+存在虚基类时, 就需要提供某种方法, 使我们能够通过虚基类指针访问虚基类的非虚函数和数据成员. 一种
+方法是在子类中插入一个指向虚基类的指针, 将原始的通过虚基类指针访问那些成员的代码替换为先访问这个
+指针, 再访问成员的代码. 如下所示:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">virtualBasePointer-&gt;virtualBaseData; <span class="comment">// 原始代码</span></span><br><span class="line">virtualBasePointer-&gt;virtualBaseVptr-&gt;virtualBaseData; <span class="comment">// 编译器替换后的代码</span></span><br></pre></td></tr></table></figure>
+<p>而这个<strong>虚基类指针的初始化</strong>就是由构造函数完成的.</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>类的默认构造函数只有真正需要时才会被合成, 而不是没有定义构造函数时就会合成.</li>
+<li>对于一个类的所有类成员对象, 如果没有显式初始化, 编译器会对其进行默认初始化. 但是对于内置类
+型, 例如int, 指针类型等, 不会进行初始化, 这是程序员的工作.</li>
+</ol>
+<h2 id="Copy-Constructor的构造操作"><a href="#Copy-Constructor的构造操作" class="headerlink" title="Copy Constructor的构造操作"></a>Copy Constructor的构造操作</h2><p>3种情况下会调用复制构造函数:</p>
+<ol>
+<li>用一个对象作为参数初始化另一个对象时.</li>
+<li>对象作为函数参数时, 会用参数对象在函数作用域构造一个新的对象.</li>
+<li>对象作为返回值时, 会用函数内部的对象在返回值所在作用域构造一个新的对象.</li>
+</ol>
+<p>注意, 2, 3不一定会发生, 因为可能会存在右值参数, 返回值优化等, 具体情况不做详述.</p>
+<p>如果不显式定义复制构造函数, 编译器有两种复制对象的方法: bitwise copy和default memberwise copy,
+区别如下:</p>
+<ul>
+<li><p>bitwise copy并不调用复制构造函数, 可能的实现方式如利用memcpy等, 因此效率更高, 复制出的对象
+和原对象完全相同.</p>
+</li>
+<li><p>default memberwise copy就如同对每个成员分别赋值一样, 对于内置类型, 直接初始化, 对于类类型,
+递归调用其默认复制构造函数来初始化. 默认构造函数是由编译器合成的, 或者被声明为default. 其产生
+的新对象的用户定义的数据成员与原对象是一样的, 但是隐式的成员(如vptr), 内存布局(子类初始化父类)
+等不一定相同.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意:</strong><br>
+bitwise copy和浅复制(shallow copy)是不同的, 浅复制更侧重于当在类内部保存指针成员, 用指
+针指向实际数据的时候, 复制时仅仅复制指针的值. 这种情况包含在bitwise copy中.</p>
+</blockquote>
+<p>那么在没有定义复制构造函数的时候, 编译器在什么情况下采用bitwise copy, 在什么情况下合成默认复
+制构造函数(即采用default memberwise copy)? 下面四种情况, 会采用后者, 其他情况采用前者.</p>
+<ol>
+<li>当类含有类对象成员, 且这个成员含有复制构造函数时(不论是编译器合成的还是显式定义的).</li>
+<li>当类继承自一个基类, 并且基类含有复制构造函数时(不论是编译器合成的还是显式定义的).</li>
+<li>当类含有虚函数时.</li>
+<li>当类有虚基类时.</li>
+</ol>
+<p>上面的情况很容易理解. 对于1和2, 由于复制对象时, 要复制数据成员和基类, 既然它们提供了复制构造函
+数, 就可以认为需要在它们的复制构造函数中进行某些bitwise copy无法实现的操作, 因此不能采用bitwise copy.
+对于3, 由于含有虚函数, 所以需要初始化对象的vtpr, 而vptr的值显然不一定等于参数对象的值, 例如
+用子类对象初始化父类对象时. 所以bitwise不能满足需求. 对于4, 由于含有虚基类, 父子基类的内存布
+局可能存在区别, 更不能采用bitwise copy.</p>
+<p>当合成/用户定义的复制构造函数的语意和bitwise copy相同时, 是否应该用bitwise copy替换复制构
+造函数?</p>
+<h2 id="程序转化语意学-Program-Transformation-Semantics"><a href="#程序转化语意学-Program-Transformation-Semantics" class="headerlink" title="程序转化语意学(Program Transformation Semantics)"></a>程序转化语意学(Program Transformation Semantics)</h2><p>尽管在程序中可以使用不同的形式来初始化一个类对象, 但在编译阶段都会被转化成相同的形式. 例如:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span>;</span></span><br><span class="line"><span class="function">X <span class="title">x0</span><span class="params">(paras)</span></span>;</span><br><span class="line">X x1 = X(paras);</span><br><span class="line"><span class="function">X <span class="title">x2</span><span class="params">(x0)</span></span>;</span><br><span class="line">X x3 = x0;</span><br><span class="line">X x4 = X(x0);</span><br></pre></td></tr></table></figure>
+<p>会被转化为:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">X x0; <span class="comment">// 声明但不初始化</span></span><br><span class="line">X x1; <span class="comment">// 声明但不初始化</span></span><br><span class="line">X x2; <span class="comment">// 声明但不初始化</span></span><br><span class="line">X x3; <span class="comment">// 声明但不初始化</span></span><br><span class="line">X x4; <span class="comment">// 声明但不初始化</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用构造函数初始化对象</span></span><br><span class="line">x0.X::X(paras)</span><br><span class="line">x1.X::X(paras)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用复制构造函数初始化对象</span></span><br><span class="line">x2.X::X(x0)</span><br><span class="line">x3.X::X(x0)</span><br><span class="line">x4.X::X(x0)</span><br></pre></td></tr></table></figure>
+<p>参数复制优化和返回值优化(都是指省略不必要的复制构造函数的调用, 后面统称为复制优化或copy elision)</p>
+<p>从C++17开始, 标准规定了必须进行copy elision的情况:</p>
+<ol>
+<li>类似下面的情形:</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T t = T(T(T())); <span class="comment">// 只会调用一次复制/移动构造函数, 要求类型相同(不考虑cv).</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在返回类对象时, 如果直接在return语句中创建对象, 并且该对象与函数返回值类型一致(不考虑cv)
+时, 一般称这个优化为RVO(return value optimization)(注意, RVO在C++17之前都不是强制的,
+从C++17开始才规定为mandatory的.), 如下例子:</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">T <span class="title">f</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ......</span><br><span class="line">    <span class="keyword">return</span> T();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">T t = f(); <span class="comment">// 只会调用一次复制/移动构造函数.</span></span><br></pre></td></tr></table></figure>
+<p>同样也规定了可以实施copy elision, 但不强制的情况, 比如NRVO(named return value optimization),
+是指函数返回一个具名对象, 该对象是函数体内部定义的自动存储期变量, 并且是non-volatile的, 与函
+数返回值具有相同类型(不考虑cv). 具体可以参考<a href="https://en.cppreference.com/w/cpp/language/copy_elision" title="cppreference" target="_blank" rel="noopener">copy elision</a></p>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>只有当存在复制构造函数(不论是显式定义的还是编译器生成的)时, 编译器才有可能实施复制优化.</li>
+<li>谨慎对待copy elision, 因为类设计者可能需要在复制/移动构造函数中进行某些特殊操作, 省略了
+之后可能带来难以调试的错误.</li>
+</ol>
+<h2 id="成员初始化列表-Member-Initialization-List"><a href="#成员初始化列表-Member-Initialization-List" class="headerlink" title="成员初始化列表(Member Initialization List)"></a>成员初始化列表(Member Initialization List)</h2><p>应该用成员初始化列表来初始化变量的情况:</p>
+<ol>
+<li>初始化一个引用时.</li>
+<li>初始化一个常量成员时.</li>
+<li>调用基类的构造函数, 并且这个构造函数有一组参数时.</li>
+<li>调用类成员的构造函数, 并且这个构造函数有一组参数时.</li>
+</ol>
+<p>类成员的初始化顺序与初始化列表的顺序无关, 而是与成员在类声明中的顺序一致. 所以, 尽量使初始化列
+表的顺序与声明顺序一致, 最好不要用一个成员来初始化另一个成员. 在编译阶段, 会将初始化列表转化为
+成员的初始化代码, 并置于构造函数体内的代码之前.</p>
+<p>注意一点, 用成员函数的返回值来作为初始化列表的参数语法上是没有问题的, 但是需要保证这个成员函数
+不依赖于成员的数据对象, 因为很可能这个在调用此函数时还没有初始化其依赖的数据成员, 这就会引起难
+以发现的错误. 另外, 最好不要将其用于初始化基类成员, 详情见后面的讨论.</p>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="https://avatars2.githubusercontent.com/u/12467961?s=400&u=ddd6df12f5ad2c663ba98c178343f1dd9d2ead20&v=4" alt="avatar"/>
+                
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  Author:
+                  
+                    
+                    <a href="/about.html">oven yang</a>
+                </li>
+                
+                <li>Published Date: <span>2018-09-30  00:00:00</span></li>
+                
+                <li>Updated Date: <span>2018-09-30  14:04:16</span></li>
+                
+                <li class="post-category">
+                    Categories:
+                    
+                    <a href="/categories/深度探索C-对象模型笔记/">深度探索C++对象模型笔记</a>
+                    
+                </li>
+                <li class="post-tags">
+                    Tags:
+                    
+                    <a href="/tags/C/">C++</a>
+                    
+                </li>
+                
+                <li> License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        
+        <a href="/论文研读/paper-spinnaker/" class="next-post fa">论文研读之Spinnaker</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitment.render(document.getElementById("comments"));
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div>
+        
+        <a href="/" class="copyright-links">oven yang</a>&copy;2017 - 2018.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第 <span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span> 位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Default-Constructor的构造操作"><span class="toc-number">1.</span> <span class="toc-text">Default Constructor的构造操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#带有default-constructor的member-class-object"><span class="toc-number">1.1.</span> <span class="toc-text">带有default constructor的member class object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“带有default-constructor”的Base-Class"><span class="toc-number">1.2.</span> <span class="toc-text">“带有default constructor”的Base Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“带有一个Virtual-Function”的Class"><span class="toc-number">1.3.</span> <span class="toc-text">“带有一个Virtual Function”的Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“带有一个Virtual-Base-Class”的Class"><span class="toc-number">1.4.</span> <span class="toc-text">“带有一个Virtual Base Class”的Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">1.5.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Copy-Constructor的构造操作"><span class="toc-number">2.</span> <span class="toc-text">Copy Constructor的构造操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序转化语意学-Program-Transformation-Semantics"><span class="toc-number">3.</span> <span class="toc-text">程序转化语意学(Program Transformation Semantics)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注意-1"><span class="toc-number">3.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#成员初始化列表-Member-Initialization-List"><span class="toc-number">4.</span> <span class="toc-text">成员初始化列表(Member Initialization List)</span></a></li></ol>
+
+
+
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+<script src="/js/app.js"></script>
+
+
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+        if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+        }
+    </script>
+
+
+</body>
+</html>

@@ -95,7 +95,7 @@
     
 <li class="widget widget-normal category">
     <h3 class="fa fa-th widget-title">Categories</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
 </li>
 
 
@@ -103,7 +103,7 @@
     
 <li class="widget widget-normal archive">
   <h3 class="fa fa-archive widget-title">Archives</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
 </li>
 
 
@@ -155,8 +155,75 @@
     
     
     
+    <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/">
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/">
+                <h2 class="article-title">第2章 构造函数语意学</h2>
+            </a>
+            
+            <p class="article-content">
+                只有一个参数的构造函数可以被编译器作为转换函数构造函数, 这会带来意料之外的结果. C++增加了关键字
+explicit来阻止对函数的隐式调用.
+
+“只有一个参数的构造函数可以被编译器作为类型转换函数”从C++11起被废止, 新标准规定具有多个参数
+的构造函数也可以作为转换构造函数, 新的标准是”没有被声明为explicit的构造函数就可以作为转换
+构造函数(converting constructor)”.
+
+Default Constructor的构造操作默认构造函数(default constructor)的定义:
+
+一个可以以空参数列表调用的构造函数称为默认构造函数, 这有两种情形, 一种是构造函数参数列表为空,
+另一种是每个参数都在声明中给出了默认值.
+
+默认构造函数可以是自己定义的, 也可以由编译器自动生成. 当用户没有定义任何构造函数时, 编译器就会
+为用户生成一个参数...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>深度探索C++对象模型笔记</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            C++
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/30</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="第2章 构造函数语意学"
+              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-spinnaker/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -236,7 +303,7 @@ Architecture
     
     
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-gfs/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -525,7 +592,7 @@ Design
     
     
     <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -544,13 +611,10 @@ Design
 
 
 C++对象模型每个有虚函数的类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保存指向
-vtable的指针vptr.
-在调用类的虚函数时, 会沿着虚函数表搜索, 第一个满足条件的就是要调用的函数.
-单继承且无继承时, 每个对象只有一个vptr, 而当存在虚继承时, 虚继承的直接子类还会产生一个附加的
-vptr, 指向自身的virtual table. 当存在多继承时, 会为每个父类产生一个vptr. 下面针对这些情况
-详细举例说明.
-
-单继承, 无虚继承时的对象...
+vtable的指针vptr. 在调用类的虚函数时, 会沿着虚函数表搜索, 第一个满足条件的就是要调用的函数.
+在调用类的构造函数, 复制构造函数等时这些函数会自动处理类的vptr. 比如下面的代码中, 假设类Base
+是Derived的父类, 二者都定义了函数f(), 那么自然就有vptr. 在第二行中, 调用了Base的复制构造函
+数, 对象d会被截断, 并且b的vptr会...
             </p>
             <div class="article-meta">
     
@@ -594,7 +658,7 @@ vptr, 指向自身的virtual table. 当存在多继承时, 会为每个父类产
     
     
     <li  class="article-excerpt-wrap " _href = "/C/object-initilize-methods/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -727,6 +791,14 @@ vptr, 指向自身的virtual table. 当存在多继承时, 会为每个父类产
     search.func =  _ajax.init();
 </script>
 <script src="/js/app.js"></script>
+
+
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+        if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+        }
+    </script>
 
 
 </body>
