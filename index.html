@@ -89,7 +89,7 @@
     <i class="fa fa-bell-o"></i>
     <div>
         
-<p>你好, 欢迎对我的博客做出评价.</p>
+<p>你好, 欢迎来信交流.</p>
 <p>你可通过<a href="mailto:mg6150@outlook.com">我的邮箱</a>联系我</p>
     </div>
 </li>
@@ -98,7 +98,7 @@
     
 <li class="widget widget-normal category">
     <h3 class="fa fa-th widget-title">Categories</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
 </li>
 
 
@@ -106,7 +106,7 @@
     
 <li class="widget widget-normal archive">
   <h3 class="fa fa-archive widget-title">Archives</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
 </li>
 
 
@@ -126,7 +126,7 @@
   <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
   <div class="tagcloud-content">
     
-      <a href="/tags/C/" style="font-size: 0.14rem; color: #69c">C++</a> <a href="/tags/分布式/" style="font-size: 0.5rem; color: #0a407c">分布式</a>
+      <a href="/tags/C/" style="font-size: 0.14rem; color: #69c">C++</a> <a href="/tags/分布式/" style="font-size: 0.14rem; color: #69c">分布式</a>
   </div>
 </li>
 
@@ -156,6 +156,72 @@
     
     
     
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/">
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/">
+                <h2 class="article-title">第4章 Function语意学</h2>
+            </a>
+            
+            <p class="article-content">
+                这里只讨论类成员函数.
+成员函数的调用普通非静态成员函数
+C++的设计准则之一就是: nonstatic member function至少必须和一般的nonmember funciton有相同的效率.
+
+为了保证类成员函数的效率, 编译器将对普通非静态成员函数的调用转换为对普通函数的调用. 步骤如下:
+
+修改函数签名, 添加一个额外的参数(作为第一个参数), 称为this指针. 由此将函数和对象关联起来.
+将函数中对非静态成员的访问改为经过this指针访问.
+将成员函数重写为一个外部函数, 生成一个独一无二的名字(name mangling).
+
+虚成员函数编译器将对虚成员函数的调用转化为通过vptr调用函数. 在虚继承体系下, 任何含有某一虚函数的类,
+该函数在虚表中的偏移都是固定的, 因此编译器可以根据函数名在编译期确定函数指针在虚表中的下标.
+所以, 虚函数带来的额外负担就是...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>深度探索C++对象模型笔记</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            C++
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/10/22</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="第4章 Function语意学"
+              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
     
     
     <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/">
@@ -219,7 +285,7 @@
     
     
     <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -286,7 +352,7 @@ Default Constructor的构造操作默认构造函数(default constructor)的定�
     
     
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-spinnaker/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -510,6 +576,75 @@ will ...
     </li>
     
     
+    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zookeeper/">
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/论文研读/paper-zookeeper/">
+                <h2 class="article-title">论文研读之ZooKeeper</h2>
+            </a>
+            
+            <p class="article-content">
+                论文为: ZooKeeper: Wait-free coordination for Internet-scale systems
+
+Description
+原子广播(atomic broadcast)
+Replicated Database
+Client-Server Interactions
+
+DescriptionZooKeeper是为分布式应用提供的协调服务的组件, 想法源于谷歌的chubby, 在其上做了很多修改.
+ZooKeeper具有一下特征:
+
+采用事件驱动机制, 因此能提供 wait-free 的接口.
+高可用性, 相比chubby, 更加注重效率.
+对于同一客户端的请求, 能保证FIFO地执行.
+对于所有改变ZooKeeper状态的请求, 能保证全局有序.
+
+ZooKeeper采用专门设计的 原子广播协议(atomic broadcast protocol) — ...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>论文研读</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            分布式
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/18</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之ZooKeeper"
+              data-leadcloud-url="/论文研读/paper-zookeeper/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/论文研读/paper-zookeeper/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-chubby/">
         <div class="article-img img-ajax" data-src= /images/chubby-architecture.png hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
@@ -585,75 +720,6 @@ Design
     </li>
     
     
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zookeeper/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/论文研读/paper-zookeeper/">
-                <h2 class="article-title">论文研读之ZooKeeper</h2>
-            </a>
-            
-            <p class="article-content">
-                论文为: ZooKeeper: Wait-free coordination for Internet-scale systems
-
-Description
-原子广播(atomic broadcast)
-Replicated Database
-Client-Server Interactions
-
-DescriptionZooKeeper是为分布式应用提供的协调服务的组件, 想法源于谷歌的chubby, 在其上做了很多修改.
-ZooKeeper具有一下特征:
-
-采用事件驱动机制, 因此能提供 wait-free 的接口.
-高可用性, 相比chubby, 更加注重效率.
-对于同一客户端的请求, 能保证FIFO地执行.
-对于所有改变ZooKeeper状态的请求, 能保证全局有序.
-
-ZooKeeper采用专门设计的 原子广播协议(atomic broadcast protocol) — ...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/09/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之ZooKeeper"
-              data-leadcloud-url="/论文研读/paper-zookeeper/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/论文研读/paper-zookeeper/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
     <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/">
         <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
@@ -721,7 +787,7 @@ vtable的指针vptr. 在调用类的虚函数时, 会沿着虚函数表搜索, �
     
     
     <li  class="article-excerpt-wrap " _href = "/C/object-initilize-methods/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">

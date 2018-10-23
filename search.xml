@@ -3,6 +3,128 @@
     
     
     <entry>
+        <title><![CDATA[第4章 Function语意学]]></title>
+        <url>https://oven-yang.github.io/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E7%AC%94%E8%AE%B0/inside-the-cpp-object-model-c4/</url>
+        <content type="html"><![CDATA[<p>这里只讨论类成员函数.</p>
+<h2 id="成员函数的调用"><a href="#成员函数的调用" class="headerlink" title="成员函数的调用"></a>成员函数的调用</h2><h3 id="普通非静态成员函数"><a href="#普通非静态成员函数" class="headerlink" title="普通非静态成员函数"></a>普通非静态成员函数</h3><blockquote>
+<p>C++的设计准则之一就是: nonstatic member function至少必须和一般的nonmember funciton有相同的效率.</p>
+</blockquote>
+<p>为了保证类成员函数的效率, 编译器将对普通非静态成员函数的调用转换为对普通函数的调用. 步骤如下:</p>
+<ol>
+<li>修改函数签名, 添加一个额外的参数(作为第一个参数), 称为this指针. 由此将函数和对象关联起来.</li>
+<li>将函数中对非静态成员的访问改为经过this指针访问.</li>
+<li>将成员函数重写为一个外部函数, 生成一个独一无二的名字(name mangling).</li>
+</ol>
+<h3 id="虚成员函数"><a href="#虚成员函数" class="headerlink" title="虚成员函数"></a>虚成员函数</h3><p>编译器将对虚成员函数的调用转化为通过vptr调用函数. 在虚继承体系下, 任何含有某一虚函数的类,
+该函数在虚表中的偏移都是固定的, 因此编译器可以根据函数名在编译期确定函数指针在虚表中的下标.
+所以, 虚函数带来的额外负担就是增加一个内存访问.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p-&gt;func(param); <span class="comment">// 设其在虚表中的下标为index.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面的语句将被转化为</span></span><br><span class="line">(*(p-&gt;vptr)[index])(p, param) <span class="comment">// 这里p等于this指针, 所以将其作为第一个参数.</span></span><br></pre></td></tr></table></figure>
+<h3 id="静态成员函数"><a href="#静态成员函数" class="headerlink" title="静态成员函数"></a>静态成员函数</h3><p>对静态成员函数的访问将被转化为对普通函数的访问, 由于静态成员不能访问非静态数据成员, 因此不需要添加this指针.
+静态函数有下面几个特点:</p>
+<ul>
+<li>不能直接访问类对象的非静态成员.</li>
+<li>不能被声明为const, volatile, virtual.</li>
+<li>可以通过类对象和类名来调用.</li>
+</ul>
+<p>注意一点, 当通过类对象来调用静态成员函数, 并且这个对象是由一个表达式得到时, 虽然不需要执行表达式就能直接调用函数,
+但是表达式仍然会被执行(evaluate), 因为此表达式可能会有副作用, 不能被忽略. 例如:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Object <span class="title">func</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">func().static_func() <span class="comment">// func()仍然会被先执行, func()中可能会有某些不可省略的操作.</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="虚成员函数的实现"><a href="#虚成员函数的实现" class="headerlink" title="虚成员函数的实现"></a>虚成员函数的实现</h2><h3 id="单继承"><a href="#单继承" class="headerlink" title="单继承"></a>单继承</h3><p>前文提到的虚成员函数实现是单继承下的模型, 下面具体说明其实现(注意下面提到的函数都指的是虚函数).
+首先, 我们知道每个类都只有一个虚表(多继承和虚继承的类对象有多个vtpr, 指向不同的虚表, 但是实际上这些虚表是一个, vptr只是指向虚表的不同偏移位置),
+也就是说相同类型的对象的vptr值是相同的. 当单继承发生时, 子类不仅继承了父类的数据成员, 还继承了函数成员, 前者体现在类对象布局上, 而后者体现在虚表上.
+虚表继承的步骤可能包含下面几步:</p>
+<ol>
+<li>将父类虚表中的虚函数指针拷贝到子类虚表的相同下标位置.</li>
+<li>如果子类重写了父类的虚函数, 就将被重写的虚函数的指针修改为对应函数的地址.</li>
+<li>如果子类加入新的虚函数, 就增加虚表容量, 在后面添加新的函数指针.</li>
+</ol>
+<p>从上面可以看到, 单继承下的虚函数效率高, 实现简单, 但是多继承和虚拟继承则要复杂很多.</p>
+<h3 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h3><p>多继承的复杂性在于下面几个问题:</p>
+<ul>
+<li>通过第2,3,…个父类的指针访问子类的虚函数.</li>
+<li>通过子类指针访问第2,3,…个父类的虚函数.</li>
+<li>重写的虚函数的返回类型可能和父类的被重写函数的返回类型不一样, 这是标准允许的.</li>
+</ul>
+<p>在讨论上面的问题之前, 先复习一下C++中虚函数相关的知识.</p>
+<p>首先, 明确虚函数重写的概念. 父类声明了一个虚函数, 如果其(直接或间接)子类定义了函数, 与父类虚函数具有相同的:</p>
+<ul>
+<li>名字</li>
+<li>参数类型列表(不包含返回值)</li>
+<li>const/volatile类型, 参考 <a href="#1">[1]</a></li>
+<li>引用类型(三种: 无引用符号, &amp;, &amp;&amp;), 参考 <a href="#1">[1]</a></li>
+</ul>
+<p>则子类函数为虚函数(无论是否声明为virtual), 并且重写了父类的虚函数.</p>
+<p>第二点, 多继承时, 我们通过子类指针可以访问所有父类的函数, 这一点很明确. 但是不能通过一个父类的指针访问其他父类的函数.
+看下面的例子:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B1</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B2</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fd</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">B1 *p1 = <span class="keyword">new</span> D;</span><br><span class="line">p1-&gt;f2(); <span class="comment">// illegal</span></span><br><span class="line"></span><br><span class="line">B2 *p2 = <span class="keyword">new</span> D;</span><br><span class="line">p2-&gt;f1(); <span class="comment">// illegal</span></span><br></pre></td></tr></table></figure>
+<p>也就是说, 通过一个类对象指针调用函数时, 这个函数必须要在这个类或其父类中声明过.</p>
+<p>下面举例说明上面问题的复杂性.(调用虚函数时一定是通过指针或引用, 由于引用本质上是指针, 下面只讨论指针.)</p>
+<p>对于第一个问题, 通过父类指针直接调用子类定义的函数时有两种情况:</p>
+<ul>
+<li>通过第一个基类指针访问时, 直接将指针值作为this指针值传给函数.</li>
+<li>通过第2,3,…个基类指针访问时, 需要调整指针值, 加上/减去一个偏移, 再作为this指针传给函数.</li>
+</ul>
+<p>显然第二种情况下需要<strong>在运行时调整this指针的值</strong>, 因为编译时无法确定指针所指对象的实际类型.</p>
+<p>除此之外, 再考虑一种特殊情况(间接调用子类虚函数):</p>
+<ul>
+<li>对一个父类指针调用delete.</li>
+</ul>
+<p>如果析构函数被声明为virtual, 那么程序将根据指针所指对象的实际类型决定调用哪个析构函数.
+这就需要<strong>在运行时需要调整指针的值</strong>, 以保证能够访问正确的vptr, 从而获得对应的析构函数.</p>
+<p>上面两个例子说明第一个问题的复杂性在于需要在运行时根据指针所指对象的实际类型来调整指针的值, 使之指向子类对象.
+其他两个问题复杂性的根源也来自于此, 不(会)做详述.</p>
+<p>问题明确了, 解决办法呢? 老实说没怎么看懂, 就不瞎说了, 等以后看明白了再补.</p>
+<h3 id="虚继承"><a href="#虚继承" class="headerlink" title="虚继承"></a>虚继承</h3><p>其复杂性同样在于指针值的运行时修改, 书中建议不要在虚基类中声明非静态的函数.</p>
+<hr>
+<h2 id="成员函数指针"><a href="#成员函数指针" class="headerlink" title="成员函数指针"></a>成员函数指针</h2><p>成员函数指针只能指向类的非静态成员函数, 使用方法如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> (C::* p)(<span class="keyword">int</span>) = &amp;C::f; <span class="comment">// pointer to member function</span></span><br><span class="line">C c, *cp = &amp;c;</span><br><span class="line">(c.*p)(<span class="number">1</span>); <span class="comment">// 通过对象调用函数f</span></span><br><span class="line">(cp-&gt;*p)(<span class="number">2</span>); <span class="comment">// 通过对象指针调用函数f</span></span><br></pre></td></tr></table></figure>
+<p>父类成员函数指针可以直接赋值给子类成员函数指针, 如下面的例子:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D</span> :</span> B</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> (B::* bf)() = &amp;B::f;</span><br><span class="line"><span class="keyword">void</span> (D::* df)() = bf;</span><br><span class="line"></span><br><span class="line">B bp = <span class="keyword">new</span> D;</span><br><span class="line">(bp.*bf)(); <span class="comment">// 调用D::f()</span></span><br><span class="line">(bp.*df)(); <span class="comment">// 调用D::f()</span></span><br></pre></td></tr></table></figure>
+<p>而子类的成员函数指针可以通过static_cast或C风格的类型转换将其转换为父类的成员函数指针.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> (D::* df)() = &amp;D::f;</span><br><span class="line"><span class="keyword">void</span> (B::* bf1)() = <span class="keyword">static_cast</span>&lt;<span class="keyword">void</span> (B::*)()&gt;(df);</span><br><span class="line"><span class="keyword">void</span> (B::* bf2)() = (<span class="keyword">void</span> (B::*)())df;</span><br></pre></td></tr></table></figure>
+<p>从上面的例子中可以看到, 成员函数指针仍然支持虚函数机制. 下面看看编译器是如何支持各种虚拟机制的.</p>
+<h3 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h3><p>成员函数指针可以指向一个普通函数, 此时她可以是函数地址. 如果指向一个虚函数, 她可以是该函数在虚表中的偏移.
+这两种值可以保存在相同类型的变量中, 但是如何区分她们呢? 早期C++限制最多有128个虚函数(应该是限制虚表长度为128吧), 所以偏移值最大为127.
+而程序空间起始地址必定大于127, 因此可以通过将指针值和127做”&amp;”(按位与)运算来判断是偏移还是函数地址.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(((<span class="keyword">int</span>)pmf) &amp; ~<span class="number">127</span>) ? (*pmf)(ptr) : (*ptr-&gt;vptr[(<span class="keyword">int</span>)pmf])(ptr);</span><br></pre></td></tr></table></figure>
+<h3 id="多继承和虚继承"><a href="#多继承和虚继承" class="headerlink" title="多继承和虚继承"></a>多继承和虚继承</h3><p>支持这些机制的方法就更加复杂了. Stroustrup提出的一种方式是将成员函数指针定义为一个结构体,
+包含this指针偏移, 虚基类指针偏移等等. 不过因为对不需要如此复杂机制的函数调用带来额外负担而受到批评.
+有的实现对成员函数指针有多种实现方式, 以减少不必要的负担. 比如微软, 对单继承, 多继承, 虚继承就采用不同的方式来实现.
+这个地方感觉还是不够具体, 坑先留着, 以后再填.</p>
+<hr>
+<h2 id="inline函数"><a href="#inline函数" class="headerlink" title="inline函数"></a>inline函数</h2><p>在下面的情况下, 一个函数是inline函数:</p>
+<ul>
+<li>声明中包含inline关键字的函数</li>
+<li>当一个函数(成员函数或非成员友元函数)的定义在类内部时</li>
+<li>被声明为constexpr的函数(since C++11)</li>
+</ul>
+<p>inline函数只是一种建议, 建议编译器将对inline函数的调用转换, 但是编译器并不一定会接受该建议,
+而且非inline函数也有可能被转换, 这依赖于具体实现. 使用inline函数时要注意下面几点:</p>
+<ul>
+<li>inline函数可能会增加生成的文件的大小.</li>
+<li>inline函数尽可能简单. 减少不必要的局部变量, 否则可能会在结果中产生大量的局部变量.(现在的编译器应该可以优化这个了吧)</li>
+</ul>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <span id="1"><a href="https://en.cppreference.com/w/cpp/language/member_functions" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/language/member_functions</a></span></p>
+]]></content>
+        
+        <categories>
+            
+            <category> 深度探索C++对象模型笔记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
         <title><![CDATA[第3章 Data语意学]]></title>
         <url>https://oven-yang.github.io/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E7%AC%94%E8%AE%B0/inside-the-cpp-object-model-c3/</url>
         <content type="html"><![CDATA[<p>这一章主要进一步讨论C++对象的内存布局, 特别是在引入继承, 虚函数, 多继承, 虚继承后对内存布局的影响,
@@ -565,6 +687,76 @@ proposal.</p>
     </entry>
     
     <entry>
+        <title><![CDATA[论文研读之ZooKeeper]]></title>
+        <url>https://oven-yang.github.io/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/paper-zookeeper/</url>
+        <content type="html"><![CDATA[<p>论文为: ZooKeeper: Wait-free coordination for Internet-scale systems</p>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#原子广播atomic-broadcast">原子广播(atomic broadcast)</a></li>
+<li><a href="#replicated-database">Replicated Database</a></li>
+<li><a href="#client-server-interactions">Client-Server Interactions</a></li>
+</ul>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>ZooKeeper是为分布式应用提供的协调服务的组件, 想法源于谷歌的chubby, 在其上做了很多修改.</p>
+<p>ZooKeeper具有一下特征:</p>
+<ul>
+<li>采用事件驱动机制, 因此能提供 <strong>wait-free</strong> 的接口.</li>
+<li>高可用性, 相比chubby, 更加注重效率.</li>
+<li>对于同一客户端的请求, 能保证FIFO地执行.</li>
+<li>对于所有改变ZooKeeper状态的请求, 能保证全局有序.</li>
+</ul>
+<p>ZooKeeper采用专门设计的 <strong>原子广播协议(<em>atomic broadcast protocol</em>)</strong> — <strong>Zab</strong>来保
+证一致性.</p>
+<p>改变ZooKeeper状态的请求都通过master顺序处理, 读请求则可以通过follower处理, 这是保证ZooKeeper
+高效率的关键.</p>
+<h1 id="原子广播-atomic-broadcast"><a href="#原子广播-atomic-broadcast" class="headerlink" title="原子广播(atomic broadcast)"></a>原子广播(atomic broadcast)</h1><p>由原子广播保证server间的一致性, 提供fail-over.
+在文章<a href="/论文研读/paper-zab/" title="论文研读之Zab协议">论文研读之Zab协议</a>里有总结.</p>
+<p>详情可以参考:</p>
+<ul>
+<li>A simple totally ordered broadcast protocol —简单介绍了Zab.</li>
+<li>Zab: High-performance broadcast for primary-backup systems —相比上一篇更加详细.</li>
+</ul>
+<h1 id="Replicated-Database"><a href="#Replicated-Database" class="headerlink" title="Replicated Database"></a>Replicated Database</h1><p>ZooKeeper周期性地创建快照(snapshots), 复制自身的状态, 但是创建快照时并不对整个文件系统加锁,
+而是深度遍历所有节点, 原子地复制所有节点. 这就导致最后的快照可能不对应任何一个有效状态,  即节
+点间状态不一致. 但是由于所有的写操作都是idempotent的, 所以只需要重放在开始创建快照时刻之后的
+写操作, 即可使快照有效.</p>
+<h1 id="Client-Server-Interactions"><a href="#Client-Server-Interactions" class="headerlink" title="Client-Server Interactions"></a>Client-Server Interactions</h1><p>client可以连接到ZooKeeper中的任何一个server, 与server建立session后, 即可向其发送请求.
+对于读请求, 可以由server在本地处理, 并在回复中附带zxid, 以表明当前server的状态.
+对于写请求, 如果server不是master, 就需要将请求转发到master, 由master处理, 再返回给client.</p>
+<p>读请求的处理方式会导致client读到的数据可能是无效的, 如果client需要保证一定读取最新的数据,
+ZooKeeper提供sync接口, client通过调用sync通知连接的server与master同步状态, 同步完成后再
+读取数据即可获得最新数据.</p>
+<p>ZooKeeper规定, 当client连接到一个新的server时, 必须保证此server的zxid &gt;= client最后请求
+的zxid. 即server的状态不能落后的client观察到的最新的状态. 这对于保证durability非常重要.</p>
+<p>ZooKeeper使用超时机制检测session failure, 设超时时间为session timeout, 建立session的
+client为session client.</p>
+<ul>
+<li><p>当master发现在session timeout内ZooKeeper没有收到session client的请求时, 即认为发生了
+failure. 因此, 客户端必须在一定时间内发送消息给server, 如果没有请求时, 则需要发送heartbeat
+消息.</p>
+</li>
+<li><p>设session timeout为s, 那么当session在 s/3 时间内没有消息时, client向server发送heartbeat
+消息, 在 2s/3 时间内没有收到回复时, 与其他server尝试建立session. 这样做是为了防止当server
+发生failure, 导致master认为client长时间没有发送消息, 而将session关闭.</p>
+</li>
+</ul>
+]]></content>
+        
+        <categories>
+            
+            <category> 论文研读 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
         <title><![CDATA[论文研读之Chubby]]></title>
         <url>https://oven-yang.github.io/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/paper-chubby/</url>
         <content type="html"><![CDATA[<p>Chubby是谷歌提出的在分布式环境下方便节点间的协调的服务.
@@ -711,76 +903,6 @@ period超时, 则向客户端应用发送一个<em>expired event</em>.</p>
 <li>通过记录的磁盘的数据</li>
 <li>通过从客户端获取的数据</li>
 <li>通过客户端的消息中包含的数据(如打开的handle名)</li>
-</ul>
-]]></content>
-        
-        <categories>
-            
-            <category> 论文研读 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 分布式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-        <title><![CDATA[论文研读之ZooKeeper]]></title>
-        <url>https://oven-yang.github.io/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/paper-zookeeper/</url>
-        <content type="html"><![CDATA[<p>论文为: ZooKeeper: Wait-free coordination for Internet-scale systems</p>
-<ul>
-<li><a href="#description">Description</a></li>
-<li><a href="#原子广播atomic-broadcast">原子广播(atomic broadcast)</a></li>
-<li><a href="#replicated-database">Replicated Database</a></li>
-<li><a href="#client-server-interactions">Client-Server Interactions</a></li>
-</ul>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>ZooKeeper是为分布式应用提供的协调服务的组件, 想法源于谷歌的chubby, 在其上做了很多修改.</p>
-<p>ZooKeeper具有一下特征:</p>
-<ul>
-<li>采用事件驱动机制, 因此能提供 <strong>wait-free</strong> 的接口.</li>
-<li>高可用性, 相比chubby, 更加注重效率.</li>
-<li>对于同一客户端的请求, 能保证FIFO地执行.</li>
-<li>对于所有改变ZooKeeper状态的请求, 能保证全局有序.</li>
-</ul>
-<p>ZooKeeper采用专门设计的 <strong>原子广播协议(<em>atomic broadcast protocol</em>)</strong> — <strong>Zab</strong>来保
-证一致性.</p>
-<p>改变ZooKeeper状态的请求都通过master顺序处理, 读请求则可以通过follower处理, 这是保证ZooKeeper
-高效率的关键.</p>
-<h1 id="原子广播-atomic-broadcast"><a href="#原子广播-atomic-broadcast" class="headerlink" title="原子广播(atomic broadcast)"></a>原子广播(atomic broadcast)</h1><p>由原子广播保证server间的一致性, 提供fail-over.
-在文章<a href="/论文研读/paper-zab/" title="论文研读之Zab协议">论文研读之Zab协议</a>里有总结.</p>
-<p>详情可以参考:</p>
-<ul>
-<li>A simple totally ordered broadcast protocol —简单介绍了Zab.</li>
-<li>Zab: High-performance broadcast for primary-backup systems —相比上一篇更加详细.</li>
-</ul>
-<h1 id="Replicated-Database"><a href="#Replicated-Database" class="headerlink" title="Replicated Database"></a>Replicated Database</h1><p>ZooKeeper周期性地创建快照(snapshots), 复制自身的状态, 但是创建快照时并不对整个文件系统加锁,
-而是深度遍历所有节点, 原子地复制所有节点. 这就导致最后的快照可能不对应任何一个有效状态,  即节
-点间状态不一致. 但是由于所有的写操作都是idempotent的, 所以只需要重放在开始创建快照时刻之后的
-写操作, 即可使快照有效.</p>
-<h1 id="Client-Server-Interactions"><a href="#Client-Server-Interactions" class="headerlink" title="Client-Server Interactions"></a>Client-Server Interactions</h1><p>client可以连接到ZooKeeper中的任何一个server, 与server建立session后, 即可向其发送请求.
-对于读请求, 可以由server在本地处理, 并在回复中附带zxid, 以表明当前server的状态.
-对于写请求, 如果server不是master, 就需要将请求转发到master, 由master处理, 再返回给client.</p>
-<p>读请求的处理方式会导致client读到的数据可能是无效的, 如果client需要保证一定读取最新的数据,
-ZooKeeper提供sync接口, client通过调用sync通知连接的server与master同步状态, 同步完成后再
-读取数据即可获得最新数据.</p>
-<p>ZooKeeper规定, 当client连接到一个新的server时, 必须保证此server的zxid &gt;= client最后请求
-的zxid. 即server的状态不能落后的client观察到的最新的状态. 这对于保证durability非常重要.</p>
-<p>ZooKeeper使用超时机制检测session failure, 设超时时间为session timeout, 建立session的
-client为session client.</p>
-<ul>
-<li><p>当master发现在session timeout内ZooKeeper没有收到session client的请求时, 即认为发生了
-failure. 因此, 客户端必须在一定时间内发送消息给server, 如果没有请求时, 则需要发送heartbeat
-消息.</p>
-</li>
-<li><p>设session timeout为s, 那么当session在 s/3 时间内没有消息时, client向server发送heartbeat
-消息, 在 2s/3 时间内没有收到回复时, 与其他server尝试建立session. 这样做是为了防止当server
-发生failure, 导致master认为client长时间没有发送消息, 而将session关闭.</p>
-</li>
 </ul>
 ]]></content>
         
