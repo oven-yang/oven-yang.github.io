@@ -42,21 +42,6 @@
   display: block;
   border-bottom: 1px solid rgba(206, 206, 206, 0.18);
 }
-#about h1:after,
-#about h2:after,
-#about h3:after,
-#about h4:after,
-#about h5:after,
-#about h6:after,
-#error-page #error h1:after,
-#error-page #error h2:after,
-#error-page #error h3:after,
-#error-page #error h4:after,
-#error-page #error h5:after,
-#error-page #error h6:after {
-  content: "#";
-  float: right;
-}
 #about h1:hover,
 #about h2:hover,
 #about h3:hover,

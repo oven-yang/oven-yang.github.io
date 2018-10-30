@@ -91,15 +91,6 @@
   display: block;
   border-bottom: 1px solid rgba(206, 206, 206, 0.18);
 }
-#post #post-body h1:after,
-#post #post-body h2:after,
-#post #post-body h3:after,
-#post #post-body h4:after,
-#post #post-body h5:after,
-#post #post-body h6:after {
-  content: "#";
-  float: right;
-}
 #post #post-body h1:hover,
 #post #post-body h2:hover,
 #post #post-body h3:hover,

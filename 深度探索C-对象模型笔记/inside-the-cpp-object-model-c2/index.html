@@ -99,7 +99,7 @@
     
 <li class="widget widget-normal category">
     <h3 class="fa fa-th widget-title">Categories</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
 </li>
 
 
@@ -107,7 +107,7 @@
     
 <li class="widget widget-normal archive">
   <h3 class="fa fa-archive widget-title">Archives</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
 </li>
 
 
@@ -127,7 +127,7 @@
   <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
   <div class="tagcloud-content">
     
-      <a href="/tags/C/" style="font-size: 0.14rem; color: #69c">C++</a> <a href="/tags/分布式/" style="font-size: 0.14rem; color: #69c">分布式</a>
+      <a href="/tags/C/" style="font-size: 0.5rem; color: #0a407c">C++</a> <a href="/tags/分布式/" style="font-size: 0.14rem; color: #69c">分布式</a>
   </div>
 </li>
 
@@ -197,12 +197,10 @@
         </div>
         
         <div id="post-body">
-            <p>只有一个参数的构造函数可以被编译器作为转换函数构造函数, 这会带来意料之外的结果. C++增加了关键字
-<em>explicit</em>来阻止对函数的隐式调用.</p>
+            <p>只有一个参数的构造函数可以被编译器作为转换函数构造函数, 这会带来意料之外的结果. C++增加了关键字<em>explicit</em>来阻止对函数的隐式调用.</p>
 <blockquote>
-<p>“只有一个参数的构造函数可以被编译器作为类型转换函数”从C++11起被废止, 新标准规定具有多个参数
-的构造函数也可以作为转换构造函数, 新的标准是”没有被声明为<em>explicit</em>的构造函数就可以作为转换
-构造函数(<em>converting constructor</em>)”.</p>
+<p>“只有一个参数的构造函数可以被编译器作为类型转换函数”从C++11起被废止, 新标准规定具有多个参数的构造函数也可以作为转换构造函数,
+新的标准是”没有被声明为<em>explicit</em>的构造函数就可以作为转换构造函数(<em>converting constructor</em>)”.</p>
 </blockquote>
 <h2 id="Default-Constructor的构造操作"><a href="#Default-Constructor的构造操作" class="headerlink" title="Default Constructor的构造操作"></a>Default Constructor的构造操作</h2><p><strong>默认构造函数(default constructor)的定义</strong>:</p>
 <blockquote>
@@ -222,21 +220,17 @@
 <li>直接基类有trivial default constructor</li>
 <li>非静态类成员有trivial default constructor</li>
 </ul>
-<p>显然, trivial default constructor不进行任何操作. 所有与C语言兼容的数据类型(POD类型)都
-具有trivial default constructor.</p>
+<p>显然, trivial default constructor不进行任何操作. 所有与C语言兼容的数据类型(POD类型)都具有trivial default constructor.</p>
 </blockquote>
-<h3 id="带有default-constructor的member-class-object"><a href="#带有default-constructor的member-class-object" class="headerlink" title="带有default constructor的member class object"></a>带有default constructor的member class object</h3><p>编译器会为没有定义构造函数的类合成默认构造函数, 但是这个合成操作只有在构造函数真正需要被调用时才
-会发生.</p>
+<h3 id="带有default-constructor的member-class-object"><a href="#带有default-constructor的member-class-object" class="headerlink" title="带有default constructor的member class object"></a>带有default constructor的member class object</h3><p>编译器会为没有定义构造函数的类合成默认构造函数, 但是这个合成操作只有在构造函数真正需要被调用时才会发生.</p>
 <p>那么在C++不同编译模块中, 编译器怎么避免生成多个默认构造函数呢? 解决方法是把合成的默认构造函数,
 复制构造函数, 析构函数, 赋值运算符都作为inline, 而inline函数是静态链接(static linkage)的,
-不会被编译模块(即文件)以外的看到. 如果函数太复杂, 作为inline不合适, 就会合成一个显式non-inline
-静态(explicit non-inline static)实例.</p>
-<p>我们知道, 类对象是必须要初始化的, 当一个类的成员有其他类对象时, 就必须在构造函数中对类成员进行
-初始化. 如果是编译器合成的默认构造函数, 就在合成的默认构造函数中按类成员声明顺序调用它们的默认
-构造函数(当然, 如果没有就会引起错误). 注意一点, 对于显式定义的构造函数函数, 如果没有对部分类成
-员对象的初始化, 编译器会自动插入一些代码, 使得用户代码被执行之前, 先调用必要的默认构造函数, 仍
-然按照它们的声明顺序调用. 但是如果有的对象显式调用了构造函数, 有的没有, 顺序是如何确定的呢? 仍
-然按照它们的声明顺序调用, 具体情况参考后面的讨论(????????where).</p>
+不会被编译模块(即文件)以外的看到. 如果函数太复杂, 作为inline不合适, 就会合成一个显式non-inline静态(explicit non-inline static)实例.</p>
+<p>我们知道, 类对象是必须要初始化的, 当一个类的成员有其他类对象时, 就必须在构造函数中对类成员进行初始化.
+如果是编译器合成的默认构造函数, 就在合成的默认构造函数中按类成员声明顺序调用它们的默认构造函数(当然, 如果没有就会引起错误).
+注意一点, 对于显式定义的构造函数函数, 如果没有对部分类成员对象的初始化, 编译器会自动插入一些代码,
+使得用户代码被执行之前, 先调用必要的默认构造函数, 调用顺序与它们的声明相同. 但是如果有的对象显式调用了构造函数,
+有的没有, 顺序是如何确定的呢? 仍然按照它们的声明顺序调用.</p>
 <h3 id="“带有default-constructor”的Base-Class"><a href="#“带有default-constructor”的Base-Class" class="headerlink" title="“带有default constructor”的Base Class"></a>“带有default constructor”的Base Class</h3><p>如果一个子类的基类带有默认构造函数, 那么在合成子类的构造函数时, 会在其中插入对基类的默认构造函
 数会的调用代码, 这个代码在成员的默认构造函数调用代码之前. 即先初始化基类, 再按声明顺序初始化子
 类成员.</p>
@@ -258,8 +252,8 @@
 <p>而这个<strong>虚基类指针的初始化</strong>就是由构造函数完成的.</p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
 <li>类的默认构造函数只有真正需要时才会被合成, 而不是没有定义构造函数时就会合成.</li>
-<li>对于一个类的所有类成员对象, 如果没有显式初始化, 编译器会对其进行默认初始化. 但是对于内置类
-型, 例如int, 指针类型等, 不会进行初始化, 这是程序员的工作.</li>
+<li>对于一个类的所有类成员对象, 如果没有显式初始化, 编译器会对其进行默认初始化. 但是对于内置类型,
+例如int, 指针类型等, 不会进行初始化, 这是程序员的工作.</li>
 </ol>
 <h2 id="Copy-Constructor的构造操作"><a href="#Copy-Constructor的构造操作" class="headerlink" title="Copy Constructor的构造操作"></a>Copy Constructor的构造操作</h2><p>3种情况下会调用复制构造函数:</p>
 <ol>
@@ -268,38 +262,33 @@
 <li>对象作为返回值时, 会用函数内部的对象在返回值所在作用域构造一个新的对象.</li>
 </ol>
 <p>注意, 2, 3不一定会发生, 因为可能会存在右值参数, 返回值优化等, 具体情况不做详述.</p>
-<p>如果不显式定义复制构造函数, 编译器有两种复制对象的方法: bitwise copy和default memberwise copy,
-区别如下:</p>
+<p>如果不显式定义复制构造函数, 编译器有两种复制对象的方法: bitwise copy和default memberwise copy, 区别如下:</p>
 <ul>
-<li><p>bitwise copy并不调用复制构造函数, 可能的实现方式如利用memcpy等, 因此效率更高, 复制出的对象
-和原对象完全相同.</p>
+<li><p>bitwise copy并不调用复制构造函数, 可能的实现方式如利用memcpy等, 因此效率更高, 复制出的对象和原对象完全相同.</p>
 </li>
 <li><p>default memberwise copy就如同对每个成员分别赋值一样, 对于内置类型, 直接初始化, 对于类类型,
-递归调用其默认复制构造函数来初始化. 默认构造函数是由编译器合成的, 或者被声明为default. 其产生
-的新对象的用户定义的数据成员与原对象是一样的, 但是隐式的成员(如vptr), 内存布局(子类初始化父类)
-等不一定相同.</p>
+递归调用其默认复制构造函数来初始化. 默认构造函数是由编译器合成的, 或者被声明为default.
+其产生的新对象的用户定义的数据成员与原对象是一样的, 但是隐式的成员(如vptr), 内存布局(子类初始化父类)等不一定相同.</p>
 </li>
 </ul>
 <blockquote>
 <p><strong>注意:</strong><br>
-bitwise copy和浅复制(shallow copy)是不同的, 浅复制更侧重于当在类内部保存指针成员, 用指
-针指向实际数据的时候, 复制时仅仅复制指针的值. 这种情况包含在bitwise copy中.</p>
+bitwise copy和浅复制(shallow copy)是不同的, 浅复制更侧重于当在类内部保存指针成员, 用指针指向实际数据的时候,
+复制时仅仅复制指针的值. 这种情况包含在bitwise copy中.</p>
 </blockquote>
-<p>那么在没有定义复制构造函数的时候, 编译器在什么情况下采用bitwise copy, 在什么情况下合成默认复
-制构造函数(即采用default memberwise copy)? 下面四种情况, 会采用后者, 其他情况采用前者.</p>
+<p>那么在没有定义复制构造函数的时候, 编译器在什么情况下采用bitwise copy, 在什么情况下合成默认复制构造函数(即采用default memberwise copy)?
+下面四种情况, 会采用后者, 其他情况采用前者.</p>
 <ol>
 <li>当类含有类对象成员, 且这个成员含有复制构造函数时(不论是编译器合成的还是显式定义的).</li>
 <li>当类继承自一个基类, 并且基类含有复制构造函数时(不论是编译器合成的还是显式定义的).</li>
 <li>当类含有虚函数时.</li>
 <li>当类有虚基类时.</li>
 </ol>
-<p>上面的情况很容易理解. 对于1和2, 由于复制对象时, 要复制数据成员和基类, 既然它们提供了复制构造函
-数, 就可以认为需要在它们的复制构造函数中进行某些bitwise copy无法实现的操作, 因此不能采用bitwise copy.
-对于3, 由于含有虚函数, 所以需要初始化对象的vtpr, 而vptr的值显然不一定等于参数对象的值, 例如
-用子类对象初始化父类对象时. 所以bitwise不能满足需求. 对于4, 由于含有虚基类, 父子基类的内存布
-局可能存在区别, 更不能采用bitwise copy.</p>
-<p>当合成/用户定义的复制构造函数的语意和bitwise copy相同时, 是否应该用bitwise copy替换复制构
-造函数?</p>
+<p>上面的情况很容易理解. 对于1和2, 由于复制对象时, 要复制数据成员和基类, 既然它们提供了复制构造函数,
+就可以认为需要在它们的复制构造函数中进行某些bitwise copy无法实现的操作, 因此不能采用bitwise copy.
+对于3, 由于含有虚函数, 所以需要初始化对象的vtpr, 而vptr的值显然不一定等于参数对象的值, 例如用子类对象初始化父类对象时.
+所以bitwise不能满足需求. 对于4, 由于含有虚基类, 父子基类的内存布局可能存在区别, 更不能采用bitwise copy.</p>
+<p>当合成/用户定义的复制构造函数的语意和bitwise copy相同时, 是否应该用bitwise copy替换复制构造函数?</p>
 <h2 id="程序转化语意学-Program-Transformation-Semantics"><a href="#程序转化语意学-Program-Transformation-Semantics" class="headerlink" title="程序转化语意学(Program Transformation Semantics)"></a>程序转化语意学(Program Transformation Semantics)</h2><p>尽管在程序中可以使用不同的形式来初始化一个类对象, 但在编译阶段都会被转化成相同的形式. 例如:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span>;</span></span><br><span class="line"><span class="function">X <span class="title">x0</span><span class="params">(paras)</span></span>;</span><br><span class="line">X x1 = X(paras);</span><br><span class="line"><span class="function">X <span class="title">x2</span><span class="params">(x0)</span></span>;</span><br><span class="line">X x3 = x0;</span><br><span class="line">X x4 = X(x0);</span><br></pre></td></tr></table></figure>
 <p>会被转化为:</p>
@@ -311,18 +300,17 @@ bitwise copy和浅复制(shallow copy)是不同的, 浅复制更侧重于当在�
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T t = T(T(T())); <span class="comment">// 只会调用一次复制/移动构造函数, 要求类型相同(不考虑cv).</span></span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li>在返回类对象时, 如果直接在return语句中创建对象, 并且该对象与函数返回值类型一致(不考虑cv)
-时, 一般称这个优化为RVO(return value optimization)(注意, RVO在C++17之前都不是强制的,
+<li>在返回类对象时, 如果直接在return语句中创建对象, 并且该对象与函数返回值类型一致(不考虑cv)时,
+一般称这个优化为RVO(return value optimization)(注意, RVO在C++17之前都不是强制的,
 从C++17开始才规定为mandatory的.), 如下例子:</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">T <span class="title">f</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ......</span><br><span class="line">    <span class="keyword">return</span> T();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">T t = f(); <span class="comment">// 只会调用一次复制/移动构造函数.</span></span><br></pre></td></tr></table></figure>
 <p>同样也规定了可以实施copy elision, 但不强制的情况, 比如NRVO(named return value optimization),
-是指函数返回一个具名对象, 该对象是函数体内部定义的自动存储期变量, 并且是non-volatile的, 与函
-数返回值具有相同类型(不考虑cv). 具体可以参考<a href="https://en.cppreference.com/w/cpp/language/copy_elision" title="cppreference" target="_blank" rel="noopener">copy elision</a></p>
+是指函数返回一个具名对象, 该对象是函数体内部定义的自动存储期变量, 并且是non-volatile的,
+与函数返回值具有相同类型(不考虑cv). 具体可以参考<a href="https://en.cppreference.com/w/cpp/language/copy_elision" title="cppreference" target="_blank" rel="noopener">copy elision</a></p>
 <h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><ol>
 <li>只有当存在复制构造函数(不论是显式定义的还是编译器生成的)时, 编译器才有可能实施复制优化.</li>
-<li>谨慎对待copy elision, 因为类设计者可能需要在复制/移动构造函数中进行某些特殊操作, 省略了
-之后可能带来难以调试的错误.</li>
+<li>谨慎对待copy elision, 因为类设计者可能需要在复制/移动构造函数中进行某些特殊操作, 省略了之后可能带来难以调试的错误.</li>
 </ol>
 <h2 id="成员初始化列表-Member-Initialization-List"><a href="#成员初始化列表-Member-Initialization-List" class="headerlink" title="成员初始化列表(Member Initialization List)"></a>成员初始化列表(Member Initialization List)</h2><p>应该用成员初始化列表来初始化变量的情况:</p>
 <ol>
@@ -331,12 +319,11 @@ bitwise copy和浅复制(shallow copy)是不同的, 浅复制更侧重于当在�
 <li>调用基类的构造函数, 并且这个构造函数有一组参数时.</li>
 <li>调用类成员的构造函数, 并且这个构造函数有一组参数时.</li>
 </ol>
-<p>类成员的初始化顺序与初始化列表的顺序无关, 而是与成员在类声明中的顺序一致. 所以, 尽量使初始化列
-表的顺序与声明顺序一致, 最好不要用一个成员来初始化另一个成员. 在编译阶段, 会将初始化列表转化为
-成员的初始化代码, 并置于构造函数体内的代码之前.</p>
-<p>注意一点, 用成员函数的返回值来作为初始化列表的参数语法上是没有问题的, 但是需要保证这个成员函数
-不依赖于成员的数据对象, 因为很可能这个在调用此函数时还没有初始化其依赖的数据成员, 这就会引起难
-以发现的错误. 另外, 最好不要将其用于初始化基类成员, 详情见后面的讨论.</p>
+<p>类成员的初始化顺序与初始化列表的顺序无关, 而是与成员在类声明中的顺序一致. 所以, 尽量使初始化列表的顺序与声明顺序一致,
+最好不要用一个成员来初始化另一个成员. 在编译阶段, 会将初始化列表转化为成员的初始化代码, 并置于构造函数体内的代码之前.</p>
+<p>注意一点, 用成员函数的返回值来作为初始化列表的参数语法上是没有问题的, 但是需要保证这个成员函数不依赖于成员的数据对象,
+因为很可能这个在调用此函数时还没有初始化其依赖的数据成员, 这就会引起难以发现的错误. 另外,
+最好不要将其用于初始化基类成员, 详情见后面的讨论.</p>
 
         </div>
         <div id="post-footer">
@@ -356,7 +343,7 @@ bitwise copy和浅复制(shallow copy)是不同的, 浅复制更侧重于当在�
                 
                 <li>Published Date: <span>2018-09-30  00:00:00</span></li>
                 
-                <li>Updated Date: <span>2018-09-30  14:04:16</span></li>
+                <li>Updated Date: <span>2018-10-29  16:37:28</span></li>
                 
                 <li class="post-category">
                     Categories:
