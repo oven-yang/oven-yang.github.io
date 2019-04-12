@@ -221,6 +221,15 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass c1 = c0 ;   <span class="comment">// call MyClass(const MyClass&amp;)</span></span><br><span class="line">c1 = c0 ;           <span class="comment">// call operator =(const MyClass&amp;)</span></span><br></pre></td></tr></table></figure>
 <p>等于号经常和大括号{}一起用于初始化,</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyClass c = &#123;<span class="number">1</span> , <span class="string">"123"</span>&#125; ;</span><br></pre></td></tr></table></figure>
+<p>当等号右边值的类型(源类型)与目标类型不同时, 会先寻找可用的类型转换方法将源类型转换为目标类型,
+然后通过 <em>direct-initilize</em> (复制构造函数)来初始化目标变量. 最后进行优化, 直接在目标变量的内存上构造转换后对象,
+从而减少了一次复制构造函数的调用. 注意, 在C++17之前, 即使这里没有使用到复制构造函数, 也要求其存在/可调用.
+下面的代码可以验证.
+g++编译后会提示不能将 non-const lreference 绑定到 rvalue, 这个错误发生在将转换后对象传递给复制构造函数时.
+转换后对象是一个右值, 这里故意将其参数定义为 non-const reference, 从而引发这个错误.
+如果编译参数加上 –std=c++17 则不会出现此错误.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    Test(<span class="keyword">int</span> i) &#123;&#125;</span><br><span class="line">    Test(Test &amp;t) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Test t = <span class="number">1</span>; <span class="comment">// illegal before C++17.</span></span><br></pre></td></tr></table></figure>
+<p>详情参考 <a href="https://en.cppreference.com/w/cpp/language/copy_initialization" target="_blank" rel="noopener"><em>copy initilization</em></a>.</p>
 <h2 id="用大括号：type-var-initializer-list-C-11推荐"><a href="#用大括号：type-var-initializer-list-C-11推荐" class="headerlink" title="用大括号：type var{initializer-list} //C++11推荐"></a>用大括号：<strong>type var{initializer-list}</strong> //C++11推荐</h2><p>C++11为了解决C++98混乱的初始化方式而提出的一种初始化方式: <strong><em>uniform initialization</em></strong> 保证它可以用于所有的初始化.
 实现方式就是采用大括号. 下面介绍一些{}与而其他初始化语法的不同之处:</p>
 <ul>
@@ -269,7 +278,7 @@
                 
                 <li>Published Date: <span>2017-11-08  00:00:00</span></li>
                 
-                <li>Updated Date: <span>2018-10-29  11:06:09</span></li>
+                <li>Updated Date: <span>2019-04-12  15:26:24</span></li>
                 
                 <li class="post-category">
                     Categories:
@@ -327,7 +336,7 @@
     
     <div>
         
-        <a href="/" class="copyright-links">oven yang</a>&copy;2017 - 2018.All Rights
+        <a href="/" class="copyright-links">oven yang</a>&copy;2017 - 2019.All Rights
         Reserved.
     </div>
     <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
