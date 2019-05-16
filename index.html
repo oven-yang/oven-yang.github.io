@@ -32,7 +32,7 @@
     
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/pages/article-exp.css">
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/font-awesome.min.css">
 <link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
 
     <!--script-->
@@ -98,7 +98,7 @@
     
 <li class="widget widget-normal category">
     <h3 class="fa fa-th widget-title">Categories</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">5</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">6</span></li></ul>
 </li>
 
 
@@ -106,7 +106,7 @@
     
 <li class="widget widget-normal archive">
   <h3 class="fa fa-archive widget-title">Archives</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/"><i class="fa" aria-hidden="true">May 2019</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
 </li>
 
 
@@ -126,7 +126,7 @@
   <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
   <div class="tagcloud-content">
     
-      <a href="/tags/C/" style="font-size: 0.5rem; color: #0a407c">C++</a> <a href="/tags/分布式/" style="font-size: 0.14rem; color: #69c">分布式</a>
+      <a href="/tags/C/" style="font-size: 0.5rem; color: #0a407c">C++</a> <a href="/tags/分布式/" style="font-size: 0.5rem; color: #0a407c">分布式</a> <a href="/tags/consensus/" style="font-size: 0.14rem; color: #69c">consensus</a>
   </div>
 </li>
 
@@ -156,6 +156,79 @@
     
     
     
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-raft/">
+        <div class="article-img img-ajax" data-src= /images/raft-joint-consensus.svg hidden>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/论文研读/paper-raft/">
+                <h2 class="article-title">论文研读之Raft协议</h2>
+            </a>
+            
+            <p class="article-content">
+                
+Raft 协议是一个分布式共识(consensus)算法, 可以参考
+ATC-Raft
+和
+Thesis-Raft
+这两篇文章. 两篇文章是同一个作者, 第一篇是小论文, 第二篇是大论文, 阐释地更加全面、详细.
+Raft 协议将 consensus problem 划分为下面的几个子问题, 分别提出对应的解决方案：
+
+Leader Election
+Log Eeplication
+Safety
+
+上面讨论的是集群配置不变(即节点数量、地址等不变)的情况, 而实际中经常需要增减节点、修改地址.
+为此, Raft 算法中还包含了两种 Membership Change 方法.
+前者一次只增减一台节点, 清晰易懂. 后者允许增减任意数量的节点, 但是更加复杂.
+
+Single-Server Approach
+Arbitary Configuration Change
+
+另外, 当日志逐...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>论文研读</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            分布式
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/05/16</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之Raft协议"
+              data-leadcloud-url="/论文研读/paper-raft/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/论文研读/paper-raft/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
     
     
     <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/">
@@ -215,7 +288,7 @@
     
     
     <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -486,7 +559,7 @@ Architecture
     
     
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-gfs/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -563,7 +636,7 @@ Assumption and Motivation
     
     
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zab/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -631,7 +704,7 @@ will ...
     
     
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zookeeper/">
-        <div class="article-img img-ajax" data-src= http://XXXX.example.jpg hidden>
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -766,72 +839,6 @@ Design
     
     
     <a href="/论文研读/paper-chubby/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/">
-                <h2 class="article-title">第1章 关于对象</h2>
-            </a>
-            
-            <p class="article-content">
-                对象模型
-简单对象模型(A Simple Object Model)
-对象直接保存成员的值. C++中采用的就是这种方法.
-
-表格驱动对象模型(A Table-driven Object Model)
-对象中的每个成员对应一个指针, 指针指向成员实际的值. C++虚表采用这种方法实现.
-
-
-C++对象模型每个有虚函数的类产生一个virtual table, 保存所有虚函数的指针, 对象在所在内存开始位置保存指向
-vtable的指针vptr. 在调用类的虚函数时, 会沿着虚函数表搜索, 第一个满足条件的就是要调用的函数.
-在调用类的构造函数, 复制构造函数等时这些函数会自动处理类的vptr. 比如下面的代码中, 假设类Base
-是Derived的父类, 二者都定义了函数f(), 那么自然就有vptr. 在第二行中, 调用了Base的复制构造函
-数, 对象d会被截断, 并且b的vptr会...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>深度探索C++对象模型笔记</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            C++
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/08/29</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="第1章 关于对象"
-              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c1/" class="read-article">Read</a>
     
 </div>
 
