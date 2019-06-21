@@ -88,7 +88,7 @@
     <div>
         
 <p>你好, 欢迎来信交流.</p>
-<p>你可通过<a href="mailto:mg6150@outlook.com">我的邮箱</a>联系我</p>
+<p>你可通过<a href="mailto:slyangwen@163.com">我的邮箱</a>联系我</p>
     </div>
 </li>
 
@@ -157,7 +157,7 @@
     
     
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-raft/">
-        <div class="article-img img-ajax" data-src= /images/raft-node-change.svg hidden>
+        <div class="article-img img-ajax" data-src= /images/oldTermCommit.svg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -296,9 +296,9 @@ Arbitary Configuration Change
             </a>
             
             <p class="article-content">
-                这里只讨论类成员函数.
+                本文从编译器的角度讨论如何解析类成员函数调用.
 成员函数的调用普通非静态成员函数
-C++的设计准则之一就是: nonstatic member function至少必须和一般的nonmember funciton有相同的效率.
+C++的设计准则之一就是: nonstatic member function 至少必须和一般的 nonmember funciton 有相同的效率.
 
 为了保证类成员函数的效率, 编译器将对普通非静态成员函数的调用转换为对普通函数的调用. 步骤如下:
 
@@ -308,7 +308,7 @@ C++的设计准则之一就是: nonstatic member function至少必须和一般�
 
 虚成员函数编译器将对虚成员函数的调用转化为通过vptr调用函数. 在虚继承体系下, 任何含有某一虚函数的类,
 该函数在虚表中的偏移都是固定的, 因此编译器可以根据函数名在编译期确定函数指针在虚表中的下标.
-所以, 虚函数带来的额外负担就是...
+所...
             </p>
             <div class="article-meta">
     
@@ -364,11 +364,11 @@ C++的设计准则之一就是: nonstatic member function至少必须和一般�
             <p class="article-content">
                 这一章主要进一步讨论C++对象的内存布局, 特别是在引入继承, 虚函数, 多继承, 虚继承后对内存布局的影响,
 还包含编译器对相关特性的实现方式和优化.
-注意, 下面的代码运行于Archlinux 4.18 x86_64, 编译器是gcc 8, 使用gdb 8调试.
+下面的代码运行于 Archlinux 4.18 x86_64, 编译器是gcc 8, 使用gdb 8调试.
 不含数据成员的类对象对于不存在继承和虚函数的类, 没有数据成员时, 其大小至少是1 byte, 以保证变量有唯一的地址.
 当加上虚函数后, 由于有虚函数指针, 对象大小等于一个指针的大小, 32位系统中是4 bytes, 64位系统中是8 bytes.
 看下面的代码:
-12345678910111213struct Empty &#123;&#125;;struct VirtualEmpty&#123;    virtual void f() &#123;&#125;&#125;;Empty a;Empty b;cout...
+12345678910111213struct Empty &#123;&#125;;struct VirtualEmpty&#123;    virtual void f() &#123;&#125;&#125;;Empty a;Empty b;cout&lt...
             </p>
             <div class="article-meta">
     
@@ -422,18 +422,18 @@ C++的设计准则之一就是: nonstatic member function至少必须和一般�
             </a>
             
             <p class="article-content">
-                只有一个参数的构造函数可以被编译器作为转换函数构造函数, 这会带来意料之外的结果. C++增加了关键字explicit来阻止对函数的隐式调用.
+                这篇文章主要从编译器的角度来分析构造函数和复制构造函数.
+包括默认构造函数和复制构造函数的生成; 引入继承, 虚函数时又该如何实现; 编译器如何处理构造函数调用;
+还讨论了复制消除.
+只有一个参数的构造函数可以被编译器作为转换函数构造函数, 这有时候会带来程序员意料之外的结果.
+C++增加了关键字explicit来阻止对函数的隐式调用.
 
 “只有一个参数的构造函数可以被编译器作为类型转换函数”从C++11起被废止, 新标准规定具有多个参数的构造函数也可以作为转换构造函数,
 新的标准是”没有被声明为explicit的构造函数就可以作为转换构造函数(converting constructor)”.
 
-Default Constructor的构造操作默认构造函数(default constructor)的定义:
+Default Constructor(默认构造函数)的构造操作默认构造函数的定义:
 
-一个可以以空参数列表调用的构造函数称为默认构造函数, 这有两种情形, 一种是构造函数参数列表为空,
-另一种是每个参数都在声明中给出了默认值.
-
-默认构造函数可以是自己定义的, 也可以由编译器自动生成. 当用户没有定义任何构造函数时, 编译器就会
-为用户生成一个参数列表为...
+一个可以以空参数列表调用的构造函数称为默认构造函数, 这有两种情形, 一种是构造函数参数列表为空, ...
             </p>
             <div class="article-meta">
     
@@ -633,74 +633,6 @@ Assumption and Motivation
     </li>
     
     
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zab/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/论文研读/paper-zab/">
-                <h2 class="article-title">论文研读之Zab协议</h2>
-            </a>
-            
-            <p class="article-content">
-                Zab是ZooKeeper中使用的用来保证可用性和一致性的协议.
-论文为: A simple totally ordered broadcast protocol
-
-ZooKeeper对广播协议的要求:
-Two types of Causal Relationships
-Recovery
-Broadcast
-
-写请求都通过一个leader服务器来执行, 这样就可以将非幂等(non-idempotent)的请求转化为幂等(idempotent)
-的请求.
-读请求可以在客户端直接连接的服务器执行, 但是返回的数据可能陈旧的或无效的, 当然, 可以通过参数指
-明采用同步读以从leader读取最新数据.
-ZooKeeper对广播协议的要求:
-Reliabl delivery: If a message, m, is delivered by one server, then it
-will ...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/09/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之Zab协议"
-              data-leadcloud-url="/论文研读/paper-zab/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/论文研读/paper-zab/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zookeeper/">
         <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
@@ -762,6 +694,74 @@ ZooKeeper采用专门设计的 原子广播协议(atomic broadcast protocol) —
     
     
     <a href="/论文研读/paper-zookeeper/" class="read-article">Read</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
+    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zab/">
+        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/论文研读/paper-zab/">
+                <h2 class="article-title">论文研读之Zab协议</h2>
+            </a>
+            
+            <p class="article-content">
+                Zab是ZooKeeper中使用的用来保证可用性和一致性的协议.
+论文为: A simple totally ordered broadcast protocol
+
+ZooKeeper对广播协议的要求:
+Two types of Causal Relationships
+Recovery
+Broadcast
+
+写请求都通过一个leader服务器来执行, 这样就可以将非幂等(non-idempotent)的请求转化为幂等(idempotent)
+的请求.
+读请求可以在客户端直接连接的服务器执行, 但是返回的数据可能陈旧的或无效的, 当然, 可以通过参数指
+明采用同步读以从leader读取最新数据.
+ZooKeeper对广播协议的要求:
+Reliabl delivery: If a message, m, is delivered by one server, then it
+will ...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>论文研读</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            分布式
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2018/09/18</span>
+    </span>
+    
+    
+    <span class="fa-wrap" hidden>
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之Zab协议"
+              data-leadcloud-url="/论文研读/paper-zab/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/论文研读/paper-zab/" class="read-article">Read</a>
     
 </div>
 

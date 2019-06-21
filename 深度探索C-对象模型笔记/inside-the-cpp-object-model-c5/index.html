@@ -89,7 +89,7 @@
     <div>
         
 <p>你好, 欢迎来信交流.</p>
-<p>你可通过<a href="mailto:mg6150@outlook.com">我的邮箱</a>联系我</p>
+<p>你可通过<a href="mailto:slyangwen@163.com">我的邮箱</a>联系我</p>
     </div>
 </li>
 
@@ -197,8 +197,8 @@
         <div id="post-body">
             <h2 id="纯虚函数和抽象类"><a href="#纯虚函数和抽象类" class="headerlink" title="纯虚函数和抽象类"></a>纯虚函数和抽象类</h2><p>抽象类(abstract class): 含有(类内声明的或继承来的)纯虚函数的类即为抽象类. 纯虚函数的声明方法如下:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">point</span> &#123;</span> <span class="comment">/**/</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> // <span class="title">abstract</span> <span class="title">class</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    point center;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">point <span class="title">where</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> center; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(point p)</span> </span>&#123; center=p; draw(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>)</span> </span>= <span class="number">0</span>; <span class="comment">// pure virtual</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>= <span class="number">0</span>; <span class="comment">// pure virtual</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>当纯虚函数需要被调用时, 可以提供其定义, 但是定义必须放在类外. 可以通过类名加域限定符调用纯虚函数.</p>
-<p>抽象类有下面的性质:</p>
+<p>当纯虚函数需要被调用时, 可以提供其定义, 但是定义必须放在类外. 可以通过类名加域限定符调用纯虚函数.
+抽象类有下面的性质:</p>
 <ul>
 <li>抽象类用来表示一般的概念, 不能被实例化, 即不能创建抽象类的对象, 但是可以作为基类被实例化.</li>
 <li>不能作为参数类型, 函数返回值类型, 显式转化的目的类型, 但是可以声明抽象类的指针和引用.</li>
@@ -208,15 +208,19 @@
 <li>如果析构函数被声明为纯虚函数, 必须提供其定义.(构造函数不能是虚函数, 所以不必讨论)</li>
 </ul>
 <h2 id="对象构造"><a href="#对象构造" class="headerlink" title="对象构造"></a>对象构造</h2><blockquote>
-<p>从C++20开始, <em>POD</em>这一概念就被废止, 取而代之的是更为精确的定义, 如<em>TrivialType</em>.</p>
+<p>从C++20开始, <em>POD</em>这一概念就被废止, 取而代之的是一系列更为精确的定义, 如<em>TrivialType</em>.</p>
 </blockquote>
 <p>对于POD(plain old data)类型, 定义一个对象时编译器不会调用其构造函数, 复制时也不会调用复制构造函数,
-而是像C语言那样的按位复制.</p>
-<p>在初始初始化列表中初始化成员比在构造函数函数体内对成员赋值效率更高. 如果函数体内部是简单地对每个成员指定一个常量,
-那么编译器可能会进行优化, 将常量抽取出来对成员初始化, 结果就好像成员初始化列表一样.</p>
+而是像C语言那样的按位复制.
+而使用构造函数时, 尽可能在初始化列表中初始化成员, 这比在构造函数函数体内对成员赋值效率更高.
+构造函数设置数据成员的值可以分为两种方式, 一个是初始化, 一个是赋值.
+初始化是必不可少的, 即使没有在初始化列表中声明, 编译器也会生成默认的初始化语句来初始化成员,
+在这之后才会执行构造函数函数体内的赋值语句. 所以说”赋值”效率更低.
+如果函数体内部是简单地对每个成员指定一个常量, 那么编译器可能会进行优化, 将常量抽取出来对成员初始化,
+结果就好像成员初始化列表一样. 但是不要依赖于此.</p>
 <p>构造函数按顺序执行下面这些操作:</p>
 <ol>
-<li>如果当前对象是继承体系的最底层, 就初始化虚基类</li>
+<li>如果当前对象是继承体系的最底层(因为类初始化是从下往上递归调用构造函数的, 即继承层次不断变化), 就初始化虚基类</li>
 <li>初始化直接基类</li>
 <li>初始化vptr</li>
 <li>进行初始化列表对数据成员的初始化操作</li>
@@ -230,19 +234,19 @@
 <p>而在此构造函数中调用父类对象的构造函数时就将该参数值设为false, 就能保证构造函数只在最底层类被调用.
 不过, 按照此方法, 虚基类的每个子类都需要判断一次, 降低了程序效率. 而实际上在编译时我们就知道子对象的构造函数不需要执行此操作.
 所以一种优化是提供两种构造函数, 一种不带此参数, 不初始化虚基类, 另一种带参数, 负责初始化虚基类.
-这样就可以省略if语句, 但是可能会使生成的可执行文件更大. 函数的初始化列表在编译后会分化为上面的多个步骤,
-对虚基类的初始化对应操作1, 对直接基类的初始化对应操作2, 对数据成员的初始化对应操作4. 另外注意一点,
-对虚基类的初始化不能放在函数体中, 必须放在初始化列表中. 否则编译器还需要检查函数体中是否有对虚基类的构造函数的调用,
-并将其转化为上面的两种形式.</p>
+这样就可以省略if语句, 但是可能会使生成的可执行文件更大.</p>
+<p>函数的初始化列表在编译后会分化为上面的多个步骤, 对虚基类的初始化对应操作1, 对直接基类的初始化对应操作2,
+对数据成员的初始化对应操作4. 另外注意一点, 对虚基类的初始化不能放在函数体中, 必须放在初始化列表中.
+否则编译器还需要检查函数体中是否有对虚基类的构造函数的调用, 并将其转化为上面的两种形式.</p>
 <h3 id="在构造函数中调用成员函数"><a href="#在构造函数中调用成员函数" class="headerlink" title="在构造函数中调用成员函数"></a>在构造函数中调用成员函数</h3><p>可以在构造函数初始化列表中调用成员函数, 但是如果调用函数时存在直接基类没有被初始化, 行为就是未定义的.</p>
 <p>如果调用的是虚函数, 并且调用时基类已初始化, 那么调用时的实际类型就是函数调用点所在构造函数的类类型.
 这是很容易理解的, 对象类型绝不会沿着继承体系向下, 因为最底层的对象还没有完成构造. 如果是纯虚函数, 如上文所说, 是UB.
 在析构函数中调用虚函数同理.</p>
-<p>如果从编译器的角度来解释上面的两条规则, 就需要考虑vptr的初始化. 我们知道, 编译器在构造函数中插入代码来初始化对象的vptr.
-但是具体这段代码放在什么位置呢? 如上文所述, 是放在调用基类构造函数之后, 成员初始化语句之前.
-所以, 在构造函数的数据成员初始化语句和函数体内调用成员函数时, 对象vptr刚刚被设置为构造函数所属类对应的vptr.
-那么, 在调用虚函数时结果就如上文所说.</p>
-<h2 id="对象复制"><a href="#对象复制" class="headerlink" title="对象复制"></a>对象复制</h2><p>这一节讨论的是复制赋值运算符<em>operator =</em>. 当将一个对象赋值给另一个对象时, 有下面三种选择:</p>
+<p>如果从编译器的角度来解释上面的两条规则, 就需要考虑vptr的初始化, 因为我们在运行时通过vtpr判断对象类型, 决定虚函数的调用.
+在调用基类构造函数之后, 成员初始化语句之前, 编译器在构造函数中插入代码来初始化对象的vptr.
+所以, 在构造函数的数据成员初始化语句和函数体内调用成员函数时, 对象vptr已经被设置为构造函数所属类对应的vptr,
+也就能调用虚函数了.</p>
+<h2 id="对象复制"><a href="#对象复制" class="headerlink" title="对象复制"></a>对象复制</h2><p>这一节讨论的是复制赋值运算符 <em>operator =</em>. 当将一个对象赋值给另一个对象时, 有下面三种选择:</p>
 <ul>
 <li>采用默认行为, 即不提供复制赋值运算符或使用默认复制赋值运算符.</li>
 <li>显式定义复制赋值运算符,</li>
@@ -257,7 +261,7 @@
 <p><strong>只有在默认复制赋值运算符的行为不安全或不正确时, 才需要显式定义复制赋值运算符</strong>.</p>
 </blockquote>
 <p>那么问题来了, 默认复制赋值运算符的行为是什么?</p>
-<h3 id="Trivial-copy-assignment-operator"><a href="#Trivial-copy-assignment-operator" class="headerlink" title="Trivial copy assignment operator"></a>Trivial copy assignment operator</h3><p>当复制赋值运算符满足下面的条件是, 她就是tirivial的:</p>
+<h3 id="Trivial-copy-assignment-operator"><a href="#Trivial-copy-assignment-operator" class="headerlink" title="Trivial copy assignment operator"></a>Trivial copy assignment operator</h3><p>当复制赋值运算符满足下面的条件是, 就是tirivial的:</p>
 <ul>
 <li>不是用户提供的(隐式定义的或声明为default).</li>
 <li>类没有虚函数.</li>
@@ -267,7 +271,7 @@
 </ul>
 <p>满足这个条件的对象的赋值行为是bitwise的, 就如同调用std::memmove一样. 所有与C语言兼容的数据类型都满足此条件.
 不满足上面的的条件时, 就采用member-wise复制赋值行为. 以上的bitwise和member-wise就是默认复制赋值运算符的行为.</p>
-<p>另一个问题是存在虚基类时复制赋值运算符可能会多次对基类子对象调用<em>operator =</em>, gcc-8就是如此.
+<p>另一个问题是存在虚基类时复制赋值运算符可能会多次对基类子对象调用 <em>operator =</em>, gcc-8就是如此.
 一般含有虚基类的子类的复制赋值运算符定义如下:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span> &#123;</span> <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B</span> :</span> <span class="keyword">virtual</span> A &#123; <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span> :</span> <span class="keyword">virtual</span> A &#123; <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D</span> :</span> B, C &#123; <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"></span><br><span class="line">A&amp; A::<span class="keyword">operator</span> =(<span class="keyword">const</span> A&amp; a)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    ... // member copy assignment</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">B&amp; B::<span class="keyword">operator</span> =(<span class="keyword">const</span> B&amp; b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;A::<span class="keyword">operator</span>=(b); <span class="comment">// 直接调用 A::operator =</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    ... // member copy assignment</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">C&amp; C::<span class="keyword">operator</span> =(<span class="keyword">const</span> C&amp; c)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;A::<span class="keyword">operator</span>=(c); <span class="comment">// 直接调用 A::operator =</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    ... // member copy assignment</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">D&amp; D::<span class="keyword">operator</span> =(<span class="keyword">const</span> D&amp; d)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;A::<span class="keyword">operator</span>=(d); <span class="comment">// 直接调用 A::operator =</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;B::<span class="keyword">operator</span>=(d); <span class="comment">// 间接调用 A::operator =</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;C::<span class="keyword">operator</span>=(d); <span class="comment">// 间接调用 A::operator =</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    ... // member copy assignment</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>C++并没有提供类似复制构造函数的语法来保证虚基类只会被复制一次. 所以, 书中建议将虚基类的复制赋值运算符声明为delete,
@@ -276,7 +280,7 @@
 我们才应该显式定义之. 那么什么时候需要呢? 首先要搞清楚析构函数的作用, 她是对象的生命周期的终结,
 而函数体内执行的主要是是对对象持有的资源的释放, 例如在构造函数中动态申请的空间. 析构函数的操作与构造函数类似,
 但是顺序相反.</p>
-<h3 id="Trivial-destructor"><a href="#Trivial-destructor" class="headerlink" title="Trivial destructor"></a>Trivial destructor</h3><p>类T的析构函数如果满足下面的条件, 就是trivial的:</p>
+<h3 id="Trivial-destructor"><a href="#Trivial-destructor" class="headerlink" title="Trivial destructor"></a>Trivial destructor</h3><p>类的析构函数如果满足下面的条件, 就是trivial的:</p>
 <ul>
 <li>析构函数不是用户定义的.(隐式声明或声明为default)</li>
 <li>析构函数非虚.(这就要求父类的虚函数也非虚)</li>
@@ -303,7 +307,7 @@
                 
                 <li>Published Date: <span>2018-10-29  00:00:00</span></li>
                 
-                <li>Updated Date: <span>2018-10-30  15:28:05</span></li>
+                <li>Updated Date: <span>2019-06-21  13:38:26</span></li>
                 
                 <li class="post-category">
                     Categories:
