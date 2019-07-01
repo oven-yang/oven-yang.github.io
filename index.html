@@ -157,7 +157,7 @@
     
     
     <li  class="article-excerpt-wrap " _href = "/论文研读/paper-raft/">
-        <div class="article-img img-ajax" data-src= /images/oldTermCommit.svg hidden>
+        <div class="article-img img-ajax" data-src= /images/raft-joint-consensus.svg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
@@ -556,41 +556,32 @@ Architecture
     </li>
     
     
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-gfs/">
+    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zab/">
         <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
             
-            <a class="article-title-link" href="/论文研读/paper-gfs/">
-                <h2 class="article-title">论文研读之GFS</h2>
+            <a class="article-title-link" href="/论文研读/paper-zab/">
+                <h2 class="article-title">论文研读之Zab协议</h2>
             </a>
             
             <p class="article-content">
-                GFS是谷歌内部使用的一种分布式文件系统.
-论文为: The Google File System
+                Zab是ZooKeeper中使用的用来保证可用性和一致性的协议.
+论文为: A simple totally ordered broadcast protocol
 
-Assumption and Motivation
-架构
-master的功能
-chunkserver的任务
-操作日志(Operation Log)和checkpoint
-chunk lease
-文件读取
-Append
-容错
-快照(Snapshot)
+ZooKeeper对广播协议的要求:
+Two types of Causal Relationships
+Recovery
+Broadcast
 
-Assumption and Motivation
-部件错误很常见.
-文件非常大, GB大小的文件很常见.
-绝大多数的文件修改操作是append, 也支持随机写.
-读操作主要是顺序读取大量数据, 随机读取少量数据.
-为多个客户端同时对同一文件append提供高效的同步支持, 保证append的原子性.
-稳定的网络比低延迟更加重要.
-
-架构
-一个master和很多chunkserver, 多个客户端可以并发访问, 见Figure 1. 显...
+写请求都通过一个leader服务器来执行, 这样就可以将非幂等(non-idempotent)的请求转化为幂等(idempotent)
+的请求.
+读请求可以在客户端直接连接的服务器执行, 但是返回的数据可能陈旧的或无效的, 当然, 可以通过参数指
+明采用同步读以从leader读取最新数据.
+ZooKeeper对广播协议的要求:
+Reliabl delivery: If a message, m, is delivered by one server, then it
+will ...
             </p>
             <div class="article-meta">
     
@@ -619,12 +610,12 @@ Assumption and Motivation
     
     <span class="fa-wrap" hidden>
             <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之GFS"
-              data-leadcloud-url="/论文研读/paper-gfs/"><i class="fa fa-spinner fa-spin"></i></span>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之Zab协议"
+              data-leadcloud-url="/论文研读/paper-zab/"><i class="fa fa-spinner fa-spin"></i></span>
     </span>
     
     
-    <a href="/论文研读/paper-gfs/" class="read-article">Read</a>
+    <a href="/论文研读/paper-zab/" class="read-article">Read</a>
     
 </div>
 
@@ -702,32 +693,41 @@ ZooKeeper采用专门设计的 原子广播协议(atomic broadcast protocol) —
     </li>
     
     
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zab/">
+    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-gfs/">
         <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
         </div>
         <div class="article-excerpt">
             
-            <a class="article-title-link" href="/论文研读/paper-zab/">
-                <h2 class="article-title">论文研读之Zab协议</h2>
+            <a class="article-title-link" href="/论文研读/paper-gfs/">
+                <h2 class="article-title">论文研读之GFS</h2>
             </a>
             
             <p class="article-content">
-                Zab是ZooKeeper中使用的用来保证可用性和一致性的协议.
-论文为: A simple totally ordered broadcast protocol
+                GFS是谷歌内部使用的一种分布式文件系统.
+论文为: The Google File System
 
-ZooKeeper对广播协议的要求:
-Two types of Causal Relationships
-Recovery
-Broadcast
+Assumption and Motivation
+架构
+master的功能
+chunkserver的任务
+操作日志(Operation Log)和checkpoint
+chunk lease
+文件读取
+Append
+容错
+快照(Snapshot)
 
-写请求都通过一个leader服务器来执行, 这样就可以将非幂等(non-idempotent)的请求转化为幂等(idempotent)
-的请求.
-读请求可以在客户端直接连接的服务器执行, 但是返回的数据可能陈旧的或无效的, 当然, 可以通过参数指
-明采用同步读以从leader读取最新数据.
-ZooKeeper对广播协议的要求:
-Reliabl delivery: If a message, m, is delivered by one server, then it
-will ...
+Assumption and Motivation
+部件错误很常见.
+文件非常大, GB大小的文件很常见.
+绝大多数的文件修改操作是append, 也支持随机写.
+读操作主要是顺序读取大量数据, 随机读取少量数据.
+为多个客户端同时对同一文件append提供高效的同步支持, 保证append的原子性.
+稳定的网络比低延迟更加重要.
+
+架构
+一个master和很多chunkserver, 多个客户端可以并发访问, 见Figure 1. 显...
             </p>
             <div class="article-meta">
     
@@ -756,12 +756,12 @@ will ...
     
     <span class="fa-wrap" hidden>
             <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之Zab协议"
-              data-leadcloud-url="/论文研读/paper-zab/"><i class="fa fa-spinner fa-spin"></i></span>
+        <span class="hits hits-meta " data-leadcloud-title="论文研读之GFS"
+              data-leadcloud-url="/论文研读/paper-gfs/"><i class="fa fa-spinner fa-spin"></i></span>
     </span>
     
     
-    <a href="/论文研读/paper-zab/" class="read-article">Read</a>
+    <a href="/论文研读/paper-gfs/" class="read-article">Read</a>
     
 </div>
 
