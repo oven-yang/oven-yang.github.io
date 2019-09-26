@@ -4,109 +4,57 @@
 
 
 
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.7.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="alternate" href="/atom.xml" title="杨文的博客" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
-    version: '6.4.1',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
-
-
-  
-
-
-
 
   <meta name="description" content="一蓑烟雨任平生">
 <meta property="og:type" content="website">
@@ -118,21 +66,17 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杨文的博客">
 <meta name="twitter:description" content="一蓑烟雨任平生">
+  <link rel="canonical" href="https://oven-yang.github.io/">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="杨文的博客" type="application/atom+xml" />
-
-
-
-
-  <link rel="canonical" href="https://oven-yang.github.io/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
@@ -146,60 +90,47 @@
 
 
 
-
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">杨文的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
   </div>
 
   <div class="site-nav-toggle">
@@ -212,76 +143,57 @@
 </div>
 
 
-
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
+      
+      
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home menu-item-active">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
+  </ul>
 
-      
-      
-    </ul>
-  
+    
 
-  
-
-  
 </nav>
-
-
-
-  
-
-
-
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
-            
-
-          
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
+  <div id="posts" class="posts-expand">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-raft/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -293,62 +205,36 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/论文研读/paper-raft/" itemprop="url">
-                  论文研读之Raft协议
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/论文研读/paper-raft/" class="post-title-link" itemprop="url">论文研读之Raft协议</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2019-05-16 00:00:00 / Modified: 21:52:43" itemprop="dateCreated datePublished" datetime="2019-05-16T00:00:00+08:00">2019-05-16</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
 
@@ -359,21 +245,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -381,12 +255,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script> -->
+          <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script> -->
 <p>Raft 协议是一个分布式共识(consensus)算法, 可以参考 <a href="http://pages.cs.wisc.edu/~remzi/Classes/739/Spring2004/Papers/raft.pdf" target="_blank" rel="noopener">ATC-Raft</a> 和 <a href="https://stacks.stanford.edu/file/druid:qr033xr6097/cameraready-try2-augmented.pdf" target="_blank" rel="noopener">Thesis-Raft</a> 这两篇文章. 两篇文章是同一个作者, 第一篇是小论文, 第二篇是大论文, 阐释地更加全面、详细.</p>
 <p>Raft 协议将 consensus problem 划分为下面的几个子问题, 分别提出对应的解决方案：</p>
 <ul>
@@ -556,58 +425,29 @@
 <h2 id="conclusion">Conclusion</h2>
 <p>至此, Raft 就算基本介绍完了, 中间可能还有疏漏的信息, 就留在以后补了. 虽然 Raft 以简单作为她的一个优点, 但是还是有点复杂, 细节很多.</p>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -619,74 +459,44 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/" itemprop="url">
-                  第5章 构造, 析构, 拷贝语意学
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/" class="post-title-link" itemprop="url">第5章 构造, 析构, 拷贝语意学</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2018-10-29 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-29T00:00:00+08:00">2018-10-29</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-06-21 13:38:26" itemprop="dateModified" datetime="2019-06-21T13:38:26+08:00">2019-06-21</time>
-              
+              </span>
             
-          </span>
-
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度探索C-对象模型笔记/" itemprop="url" rel="index"><span itemprop="name">深度探索C++对象模型笔记</span></a></span>
 
@@ -697,21 +507,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -719,12 +517,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h2 id="纯虚函数和抽象类">纯虚函数和抽象类</h2>
+          <h2 id="纯虚函数和抽象类">纯虚函数和抽象类</h2>
 <p>抽象类(abstract class): 含有(类内声明的或继承来的)纯虚函数的类即为抽象类. 纯虚函数的声明方法如下:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">point</span> &#123;</span> <span class="comment">/**/</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> // <span class="title">abstract</span> <span class="title">class</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    point center;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">point <span class="title">where</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> center; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(point p)</span> </span>&#123; center=p; draw(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>)</span> </span>= <span class="number">0</span>; <span class="comment">// pure virtual</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>= <span class="number">0</span>; <span class="comment">// pure virtual</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>当纯虚函数需要被调用时, 可以提供其定义, 但是定义必须放在类外. 可以通过类名加域限定符调用纯虚函数. 抽象类有下面的性质:</p>
@@ -799,58 +592,29 @@
 </ul>
 <p>trivial析构函数不进行任何操作, 析构时只需要释放对象的空间即可. 所有与C语言兼容的数据类型都是<em>trivial destructible</em>的.</p>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -862,74 +626,44 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/" itemprop="url">
-                  第4章 Function语意学
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/" class="post-title-link" itemprop="url">第4章 Function语意学</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2018-10-22 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-22T00:00:00+08:00">2018-10-22</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-07-01 10:06:26" itemprop="dateModified" datetime="2019-07-01T10:06:26+08:00">2019-07-01</time>
-              
+              </span>
             
-          </span>
-
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度探索C-对象模型笔记/" itemprop="url" rel="index"><span itemprop="name">深度探索C++对象模型笔记</span></a></span>
 
@@ -940,21 +674,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -962,12 +684,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>本文从编译器的角度讨论如何解析类成员函数调用.</p>
+          <p>本文从编译器的角度讨论如何解析类成员函数调用.</p>
 <h2 id="成员函数的调用">成员函数的调用</h2>
 <h3 id="普通非静态成员函数">普通非静态成员函数</h3>
 <blockquote>
@@ -1062,58 +779,29 @@
 <h2 id="参考">参考</h2>
 <p>[1] <span id="1">https://en.cppreference.com/w/cpp/language/member_functions</span></p>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1125,74 +813,44 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/" itemprop="url">
-                  第3章 Data语意学
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/" class="post-title-link" itemprop="url">第3章 Data语意学</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2018-10-19 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-19T00:00:00+08:00">2018-10-19</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-06-20 10:58:28" itemprop="dateModified" datetime="2019-06-20T10:58:28+08:00">2019-06-20</time>
-              
+              </span>
             
-          </span>
-
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度探索C-对象模型笔记/" itemprop="url" rel="index"><span itemprop="name">深度探索C++对象模型笔记</span></a></span>
 
@@ -1203,21 +861,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -1225,12 +871,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>这一章主要进一步讨论C++对象的内存布局, 特别是在引入继承, 虚函数, 多继承, 虚继承后对内存布局的影响, 还包含编译器对相关特性的实现方式和优化.</p>
+          <p>这一章主要进一步讨论C++对象的内存布局, 特别是在引入继承, 虚函数, 多继承, 虚继承后对内存布局的影响, 还包含编译器对相关特性的实现方式和优化.</p>
 <p>下面的代码运行于 Archlinux 4.18 x86_64, 编译器是gcc 8, 使用gdb 8调试.</p>
 <h2 id="不含数据成员的类对象">不含数据成员的类对象</h2>
 <p>对于不存在继承和虚函数的类, 没有数据成员时, 其大小至少是1 byte, 以保证变量有唯一的地址. 当加上虚函数后, 由于有虚函数指针, 对象大小等于一个指针的大小, 32位系统中是4 bytes, 64位系统中是8 bytes. 看下面的代码:</p>
@@ -1290,58 +931,29 @@
 <p>g++ 版本大于等于 8.0 的还可以用下面的方法直接导出类的虚表和内存布局, 这些会被保存在文件 out_file 中, 其中包含所有涉及的类信息, 例如 exception 类等, 不仅仅是程序员自己定义的类.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -fdump-lang-class=out_file src.cpp</span><br></pre></td></tr></table></figure>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1353,74 +965,44 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/" itemprop="url">
-                  第2章 构造函数语意学
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/" class="post-title-link" itemprop="url">第2章 构造函数语意学</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2018-09-30 00:00:00" itemprop="dateCreated datePublished" datetime="2018-09-30T00:00:00+08:00">2018-09-30</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-06-20 22:03:22" itemprop="dateModified" datetime="2019-06-20T22:03:22+08:00">2019-06-20</time>
-              
+              </span>
             
-          </span>
-
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度探索C-对象模型笔记/" itemprop="url" rel="index"><span itemprop="name">深度探索C++对象模型笔记</span></a></span>
 
@@ -1431,21 +1013,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -1453,12 +1023,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>这篇文章主要从编译器的角度来分析构造函数和复制构造函数. 包括默认构造函数和复制构造函数的生成; 引入继承, 虚函数时又该如何实现; 编译器如何处理构造函数调用; 还讨论了复制消除.</p>
+          <p>这篇文章主要从编译器的角度来分析构造函数和复制构造函数. 包括默认构造函数和复制构造函数的生成; 引入继承, 虚函数时又该如何实现; 编译器如何处理构造函数调用; 还讨论了复制消除.</p>
 <p>只有一个参数的构造函数可以被编译器作为转换函数构造函数, 这有时候会带来程序员意料之外的结果. C++增加了关键字<em>explicit</em>来阻止对函数的隐式调用.</p>
 <blockquote>
 <p>"只有一个参数的构造函数可以被编译器作为类型转换函数"从C++11起被废止, 新标准规定具有多个参数的构造函数也可以作为转换构造函数, 新的标准是"没有被声明为<em>explicit</em>的构造函数就可以作为转换构造函数(<em>converting constructor</em>)".</p>
@@ -1544,58 +1109,29 @@
 <p>类成员的初始化顺序与初始化列表的顺序无关, 而是与成员在类声明中的顺序一致. 所以, 尽量使初始化列表的顺序与声明顺序一致, 最好不要用一个成员来初始化另一个成员. 在编译阶段, 会将初始化列表转化为成员的初始化代码, 并置于构造函数体内的代码之前.</p>
 <p>注意一点, 用成员函数的返回值来作为初始化列表的参数语法上是没有问题的, 但是需要保证这个成员函数不依赖于成员的数据对象, 因为很可能这个在调用此函数时还没有初始化其依赖的数据成员, 这就会引起难以发现的错误. 另外, 最好不要将其用于初始化基类成员, 详情见后面的讨论.</p>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-spinnaker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1607,74 +1143,44 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/论文研读/paper-spinnaker/" itemprop="url">
-                  论文研读之Spinnaker
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/论文研读/paper-spinnaker/" class="post-title-link" itemprop="url">论文研读之Spinnaker</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2018-09-19 00:00:00" itemprop="dateCreated datePublished" datetime="2018-09-19T00:00:00+08:00">2018-09-19</time>
+            </span>
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-09-26 17:05:31" itemprop="dateModified" datetime="2019-09-26T17:05:31+08:00">2019-09-26</time>
-              
+              </span>
             
-          </span>
-
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
 
@@ -1685,21 +1191,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -1707,12 +1201,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h2 id="motivation">Motivation</h2>
+          <h2 id="motivation">Motivation</h2>
 <ul>
 <li>可扩展性要求: 随着数据量增加, 要求增加新的设备存放数据. 一种做法就是将数据库按Key拆分, 分布在不同机器上, 每个机器负责一定Key范围内的数据. 而手动实现拆分繁琐, 容易出现问题. 所以需要一种架构支持拆分.</li>
 <li>容错性: 数据库保存在成百上千的普通机器上, 因此非常容易出现问题. 为了保证高可用性, 必须实现容错.</li>
@@ -1748,58 +1237,29 @@
 <p>当 Leader 节点发生错误时, 需要选举出新的 Leader. 新的 Leader 必须包含所有之前的 Leader 已经 commit 的 log. 选举策略如上所述.</p>
 <p>但是可能存在这样的情况, 上一个 leader fail 后, 可能已经 commit 了部分 write 操作, 但是消息没有被其他 Follower 接收到. 因此产生新的leader后, 它就要查看 follower 的最后 commit 的写操作是否落后于自己. 如果是, 就再次发送该写消息, 并通知 folower commit. 当存在 follower 已经与 leader 同步, 就可以开始响应客户端的写操作.</p>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-chubby/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1811,62 +1271,36 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/论文研读/paper-chubby/" itemprop="url">
-                  论文研读之Chubby
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/论文研读/paper-chubby/" class="post-title-link" itemprop="url">论文研读之Chubby</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2018-09-18 00:00:00 / Modified: 16:09:10" itemprop="dateCreated datePublished" datetime="2018-09-18T00:00:00+08:00">2018-09-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
 
@@ -1877,21 +1311,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -1899,12 +1321,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>Chubby是谷歌提出的在分布式环境下方便节点间的协调的服务. 论文为: The Chubby lock service for loosely-coupled distributed systems</p>
+          <p>Chubby是谷歌提出的在分布式环境下方便节点间的协调的服务. 论文为: The Chubby lock service for loosely-coupled distributed systems</p>
 <ul>
 <li><a href="#motivation">Motivation</a></li>
 <li><a href="#design">Design</a></li>
@@ -2000,58 +1417,29 @@
 <li>通过客户端的消息中包含的数据(如打开的handle名)</li>
 </ul>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-gfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2063,62 +1451,36 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/论文研读/paper-gfs/" itemprop="url">
-                  论文研读之GFS
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/论文研读/paper-gfs/" class="post-title-link" itemprop="url">论文研读之GFS</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2018-09-18 00:00:00 / Modified: 16:20:47" itemprop="dateCreated datePublished" datetime="2018-09-18T00:00:00+08:00">2018-09-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
 
@@ -2129,21 +1491,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -2151,12 +1501,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>GFS是谷歌内部使用的一种分布式文件系统. 论文为: The Google File System</p>
+          <p>GFS是谷歌内部使用的一种分布式文件系统. 论文为: The Google File System</p>
 <ul>
 <li><a href="#assumption-and-motivation">Assumption and Motivation</a></li>
 <li><a href="#架构">架构</a></li>
@@ -2256,58 +1601,29 @@
 <h1 id="快照snapshot">快照(Snapshot)</h1>
 <p>复制一个文件/目录, 采用copy-on-write策略. 因此每个文件有一个引用计数, 当修改引用计数超过1的 文件时, 需要将其复制一份才能修改.</p>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-zab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2319,62 +1635,36 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/论文研读/paper-zab/" itemprop="url">
-                  论文研读之Zab协议
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/论文研读/paper-zab/" class="post-title-link" itemprop="url">论文研读之Zab协议</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2018-09-18 00:00:00 / Modified: 19:40:50" itemprop="dateCreated datePublished" datetime="2018-09-18T00:00:00+08:00">2018-09-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
 
@@ -2385,21 +1675,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -2407,12 +1685,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>Zab是ZooKeeper中使用的用来保证可用性和一致性的协议. 论文为: A simple totally ordered broadcast protocol</p>
+          <p>Zab是ZooKeeper中使用的用来保证可用性和一致性的协议. 论文为: A simple totally ordered broadcast protocol</p>
 <ul>
 <li><a href="#zookeeper对广播协议的要求">ZooKeeper对广播协议的要求:</a></li>
 <li><a href="#two-types-of-causal-relationships">Two types of Causal Relationships</a></li>
@@ -2446,58 +1719,29 @@
 <p>broadcast使用的是FIFO信道(FIFO channel), 基于TCP即可实现, 这样就能保证消息的有序性.</p>
 <p>leader会为每个proposal消息附带一个zxid, 详情见上文<a href="#recovery">recovery</a>.</p>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-zookeeper/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2509,62 +1753,36 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="杨文的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/论文研读/paper-zookeeper/" itemprop="url">
-                  论文研读之ZooKeeper
-                </a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/论文研读/paper-zookeeper/" class="post-title-link" itemprop="url">论文研读之ZooKeeper</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               
                 
               
 
               <time title="Created: 2018-09-18 00:00:00 / Modified: 16:14:03" itemprop="dateCreated datePublished" datetime="2018-09-18T00:00:00+08:00">2018-09-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
+            </span>
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
 
@@ -2575,21 +1793,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -2597,12 +1803,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>论文为: ZooKeeper: Wait-free coordination for Internet-scale systems</p>
+          <p>论文为: ZooKeeper: Wait-free coordination for Internet-scale systems</p>
 <ul>
 <li><a href="#description">Description</a></li>
 <li><a href="#原子广播atomic-broadcast">原子广播(atomic broadcast)</a></li>
@@ -2639,44 +1840,25 @@
 <li><p>设session timeout为s, 那么当session在 s/3 时间内没有消息时, client向server发送heartbeat 消息, 在 2s/3 时间内没有收到回复时, 与其他server尝试建立session. 这样做是为了防止当server 发生failure, 导致master认为client长时间没有发送消息, 而将session关闭.</p></li>
 </ul>
 
-          
         
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-  </section>
+  </div>
 
   
   <nav class="pagination">
@@ -2684,12 +1866,10 @@
   </nav>
 
 
-
           </div>
           
 
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -2700,111 +1880,80 @@
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">oven yang</p>
+  <div class="site-description" itemprop="description">一蓑烟雨任平生</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
       
-
       
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">oven yang</p>
-              <p class="site-description motion-element" itemprop="description">一蓑烟雨任平生</p>
-          </div>
-
+      <div class="site-state-item site-state-categories">
+        
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">12</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
+            <a href="/categories/">
           
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
       
-
       
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
@@ -2815,29 +1964,16 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">oven yang</span>
-
-  
-
-  
 </div>
-
-
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
-
-
-
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
-
-
-
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
 
         
+
+
+
+
 
 
 
@@ -2849,178 +1985,99 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
   </div>
 
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
     
   
 
   
 
-
-  
   
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-  
 </body>
 </html>
