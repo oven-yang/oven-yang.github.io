@@ -1,932 +1,3026 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable"  content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no">
-    <meta name="google-site-verification" content="MRzl-5EI6CWkMCxLu0gLw3OkM2AMKtugzBFbtcASBL4" />
-    <meta name="baidu-site-verification" content="axvUetvw04" />
-    
-    
-    <!--Simple SEO-->
-
-<meta name="description" content=一蓑烟雨任平生/>
-
-
-<meta name="robots" content=all />
-<meta name="google" content=all />
-<meta name="googlebot" content=all />
-<meta name="verify" content=all />
-    <!--Title-->
-
-<title>杨文的博客</title>
-
-
-<link rel="icon" href="/archlinux.ico">
-
-    
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/pages/article-exp.css">
-<link rel="stylesheet" href="/css/thirdParty/font-awesome.min.css">
-<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
-
-    <!--script-->
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
 
 
 
-<!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
 
 
-    
-    
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="一蓑烟雨任平生">
+<meta property="og:type" content="website">
+<meta property="og:title" content="杨文的博客">
+<meta property="og:url" content="https://oven-yang.github.io/index.html">
+<meta property="og:site_name" content="杨文的博客">
+<meta property="og:description" content="一蓑烟雨任平生">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="杨文的博客">
+<meta name="twitter:description" content="一蓑烟雨任平生">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="杨文的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://oven-yang.github.io/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>杨文的博客</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body id="normal">
-<!--[if lte IE 8]>
-<style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<style>
-    header{ top: 71px; position: absolute!important;}
-    #container{padding-top: 151px!important;}
-</style>
-<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-<div id="wrap">
-    <header >
-    <div id="site-meta">
-        <a href="/" id="logo">
-            <h1 class="title">杨文的博客</h1>
-        </a>
-        
-    </div>
-    <ul id="nav">
-        
-            <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        
-            <li><a href="https://www.github.com/oven-yang"><i class="fa fa-github"></i>github</a></li>
-        
-        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>Search</a></li>
-    </ul>
-</header>
-
-    <div id="container">
-        
-<ul id="sidebar">
-    
-    
-<li class="widget notification">
-    <i class="fa fa-bell-o"></i>
-    <div>
-        
-<p>你好, 欢迎来信交流.</p>
-<p>你可通过<a href="mailto:slyangwen@163.com">我的邮箱</a>联系我</p>
-    </div>
-</li>
-
-    
-    
-<li class="widget widget-normal category">
-    <h3 class="fa fa-th widget-title">Categories</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/"><i class="fa" aria-hidden="true">C++</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度探索C-对象模型笔记/"><i class="fa" aria-hidden="true">深度探索C++对象模型笔记</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文研读/"><i class="fa" aria-hidden="true">论文研读</i></a><span class="category-list-count">6</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal archive">
-  <h3 class="fa fa-archive widget-title">Archives</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/"><i class="fa" aria-hidden="true">May 2019</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal popular-posts" id="popular-posts" hidden>
-    <h3 class="fa fa-thermometer-3 widget-title">Popular Posts</h3>
-    <ul id="popular-content">
-        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-    </ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal tags">
-  <h3 class="fa fa-tags widget-title">Tag Cloud</h3>
-  <div class="tagcloud-content">
-    
-      <a href="/tags/C/" style="font-size: 0.5rem; color: #0a407c">C++</a> <a href="/tags/分布式/" style="font-size: 0.5rem; color: #0a407c">分布式</a> <a href="/tags/consensus/" style="font-size: 0.14rem; color: #69c">consensus</a>
-  </div>
-</li>
-
-
-    
-    
-<li class="widget widget-normal friends-link" hidden>
-    <h3 class="fa fa-globe widget-title">Friends</h3><br/>
-
-    
-        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
-
-    
-
-</li>
-
-
-    
-</ul>
-
-
-        <ul id="main">
-    
-
-    
-    
-    
-    
-    
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-raft/">
-        <div class="article-img img-ajax" data-src= /images/raft-joint-consensus.svg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/论文研读/paper-raft/">
-                <h2 class="article-title">论文研读之Raft协议</h2>
-            </a>
-            
-            <p class="article-content">
-                
-Raft 协议是一个分布式共识(consensus)算法, 可以参考
-ATC-Raft
-和
-Thesis-Raft
-这两篇文章. 两篇文章是同一个作者, 第一篇是小论文, 第二篇是大论文, 阐释地更加全面、详细.
-Raft 协议将 consensus problem 划分为下面的几个子问题, 分别提出对应的解决方案：
-
-Leader Election
-Log Eeplication
-Safety
-
-上面讨论的是集群配置不变(即节点数量、地址等不变)的情况, 而实际中经常需要增减节点、修改地址.
-为此, Raft 算法中还包含了两种 Membership Change 方法.
-前者一次只增减一台节点, 清晰易懂. 后者允许增减任意数量的节点, 但是更加复杂.
-
-Single-Server Approach
-Arbitary Configuration Change
-
-另外, 当日志逐...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2019/05/16</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之Raft协议"
-              data-leadcloud-url="/论文研读/paper-raft/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/论文研读/paper-raft/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/">
-                <h2 class="article-title">第5章 构造, 析构, 拷贝语意学</h2>
-            </a>
-            
-            <p class="article-content">
-                纯虚函数和抽象类抽象类(abstract class): 含有(类内声明的或继承来的)纯虚函数的类即为抽象类. 纯虚函数的声明方法如下:
-12345678910class point &#123; /**/ &#125;;class Shape // abstract class&#123;    point center;public:    point where() &#123; return center; &#125;    void move(point p) &#123; center=p; draw(); &#125;    virtual void rotate(int) = 0; // pure virtual    virtual void draw() = 0; // pure virtual&#125;;
-当纯虚函数需要被调用时, 可以提供其定义, 但是定义...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>深度探索C++对象模型笔记</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            C++
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/10/29</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="第5章 构造, 析构, 拷贝语意学"
-              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/">
-                <h2 class="article-title">第4章 Function语意学</h2>
-            </a>
-            
-            <p class="article-content">
-                本文从编译器的角度讨论如何解析类成员函数调用.
-成员函数的调用普通非静态成员函数
-C++的设计准则之一就是: nonstatic member function 至少必须和一般的 nonmember funciton 有相同的效率.
-
-为了保证类成员函数的效率, 编译器将对普通非静态成员函数的调用转换为对普通函数的调用. 步骤如下:
-
-修改函数签名, 添加一个额外的参数(作为第一个参数), 称为this指针. 由此将函数和对象关联起来.
-将函数中对非静态成员的访问改为经过this指针访问.
-将成员函数重写为一个外部函数, 生成一个独一无二的名字(name mangling).
-
-虚成员函数编译器将对虚成员函数的调用转化为通过vptr调用函数. 在虚继承体系下, 任何含有某一虚函数的类,
-该函数在虚表中的偏移都是固定的, 因此编译器可以根据函数名在编译期确定函数指针在虚表中的下标.
-所...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>深度探索C++对象模型笔记</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            C++
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/10/22</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="第4章 Function语意学"
-              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/">
-                <h2 class="article-title">第3章 Data语意学</h2>
-            </a>
-            
-            <p class="article-content">
-                这一章主要进一步讨论C++对象的内存布局, 特别是在引入继承, 虚函数, 多继承, 虚继承后对内存布局的影响,
-还包含编译器对相关特性的实现方式和优化.
-下面的代码运行于 Archlinux 4.18 x86_64, 编译器是gcc 8, 使用gdb 8调试.
-不含数据成员的类对象对于不存在继承和虚函数的类, 没有数据成员时, 其大小至少是1 byte, 以保证变量有唯一的地址.
-当加上虚函数后, 由于有虚函数指针, 对象大小等于一个指针的大小, 32位系统中是4 bytes, 64位系统中是8 bytes.
-看下面的代码:
-12345678910111213struct Empty &#123;&#125;;struct VirtualEmpty&#123;    virtual void f() &#123;&#125;&#125;;Empty a;Empty b;cout&lt...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>深度探索C++对象模型笔记</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            C++
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/10/19</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="第3章 Data语意学"
-              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/">
-                <h2 class="article-title">第2章 构造函数语意学</h2>
-            </a>
-            
-            <p class="article-content">
-                这篇文章主要从编译器的角度来分析构造函数和复制构造函数.
-包括默认构造函数和复制构造函数的生成; 引入继承, 虚函数时又该如何实现; 编译器如何处理构造函数调用;
-还讨论了复制消除.
-只有一个参数的构造函数可以被编译器作为转换函数构造函数, 这有时候会带来程序员意料之外的结果.
-C++增加了关键字explicit来阻止对函数的隐式调用.
-
-“只有一个参数的构造函数可以被编译器作为类型转换函数”从C++11起被废止, 新标准规定具有多个参数的构造函数也可以作为转换构造函数,
-新的标准是”没有被声明为explicit的构造函数就可以作为转换构造函数(converting constructor)”.
-
-Default Constructor(默认构造函数)的构造操作默认构造函数的定义:
-
-一个可以以空参数列表调用的构造函数称为默认构造函数, 这有两种情形, 一种是构造函数参数列表为空, ...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>深度探索C++对象模型笔记</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            C++
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/09/30</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="第2章 构造函数语意学"
-              data-leadcloud-url="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-spinnaker/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/论文研读/paper-spinnaker/">
-                <h2 class="article-title">论文研读之Spinnaker</h2>
-            </a>
-            
-            <p class="article-content">
-                
-Motivation
-Architecture
-Replication Protocol
-写请求的处理
-读请求的处理
-Leader选举
-
-
-Recovery
-Follower Recovery
-Leader Takeover
-
-
-
-Motivation可扩展性要求: 随着数据量增加, 要求增加新的设备存放数据. 一种做法就是将数据库
-按Key拆分, 分布在不同机器上, 每个机器负责一定Key范围内的数据. 而手动实现拆分
-繁琐, 容易出现问题. 所以需要一种架构支持拆分.
-容错性: 数据库保存在成百上千的普通机器上, 因此非常容易出现问题. 为了保证高可
-用性, 必须实现容错.
-Architecture
-基于Zookeeper, Paxos.
-
-将数据库按Key拆分. 如Key为0-500, 可拆分为0-199, 200-399, 400-500三个范围, 分别包
-含对应的行.
-
-...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/09/19</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之Spinnaker"
-              data-leadcloud-url="/论文研读/paper-spinnaker/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/论文研读/paper-spinnaker/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zab/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/论文研读/paper-zab/">
-                <h2 class="article-title">论文研读之Zab协议</h2>
-            </a>
-            
-            <p class="article-content">
-                Zab是ZooKeeper中使用的用来保证可用性和一致性的协议.
-论文为: A simple totally ordered broadcast protocol
-
-ZooKeeper对广播协议的要求:
-Two types of Causal Relationships
-Recovery
-Broadcast
-
-写请求都通过一个leader服务器来执行, 这样就可以将非幂等(non-idempotent)的请求转化为幂等(idempotent)
-的请求.
-读请求可以在客户端直接连接的服务器执行, 但是返回的数据可能陈旧的或无效的, 当然, 可以通过参数指
-明采用同步读以从leader读取最新数据.
-ZooKeeper对广播协议的要求:
-Reliabl delivery: If a message, m, is delivered by one server, then it
-will ...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/09/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之Zab协议"
-              data-leadcloud-url="/论文研读/paper-zab/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/论文研读/paper-zab/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-zookeeper/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/论文研读/paper-zookeeper/">
-                <h2 class="article-title">论文研读之ZooKeeper</h2>
-            </a>
-            
-            <p class="article-content">
-                论文为: ZooKeeper: Wait-free coordination for Internet-scale systems
-
-Description
-原子广播(atomic broadcast)
-Replicated Database
-Client-Server Interactions
-
-DescriptionZooKeeper是为分布式应用提供的协调服务的组件, 想法源于谷歌的chubby, 在其上做了很多修改.
-ZooKeeper具有一下特征:
-
-采用事件驱动机制, 因此能提供 wait-free 的接口.
-高可用性, 相比chubby, 更加注重效率.
-对于同一客户端的请求, 能保证FIFO地执行.
-对于所有改变ZooKeeper状态的请求, 能保证全局有序.
-
-ZooKeeper采用专门设计的 原子广播协议(atomic broadcast protocol) — ...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/09/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之ZooKeeper"
-              data-leadcloud-url="/论文研读/paper-zookeeper/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/论文研读/paper-zookeeper/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-gfs/">
-        <div class="article-img img-ajax" data-src= /img/default-1.jpg hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/论文研读/paper-gfs/">
-                <h2 class="article-title">论文研读之GFS</h2>
-            </a>
-            
-            <p class="article-content">
-                GFS是谷歌内部使用的一种分布式文件系统.
-论文为: The Google File System
-
-Assumption and Motivation
-架构
-master的功能
-chunkserver的任务
-操作日志(Operation Log)和checkpoint
-chunk lease
-文件读取
-Append
-容错
-快照(Snapshot)
-
-Assumption and Motivation
-部件错误很常见.
-文件非常大, GB大小的文件很常见.
-绝大多数的文件修改操作是append, 也支持随机写.
-读操作主要是顺序读取大量数据, 随机读取少量数据.
-为多个客户端同时对同一文件append提供高效的同步支持, 保证append的原子性.
-稳定的网络比低延迟更加重要.
-
-架构
-一个master和很多chunkserver, 多个客户端可以并发访问, 见Figure 1. 显...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/09/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之GFS"
-              data-leadcloud-url="/论文研读/paper-gfs/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/论文研读/paper-gfs/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-    <li  class="article-excerpt-wrap " _href = "/论文研读/paper-chubby/">
-        <div class="article-img img-ajax" data-src= /images/chubby-architecture.png hidden>
-           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
-        </div>
-        <div class="article-excerpt">
-            
-            <a class="article-title-link" href="/论文研读/paper-chubby/">
-                <h2 class="article-title">论文研读之Chubby</h2>
-            </a>
-            
-            <p class="article-content">
-                Chubby是谷歌提出的在分布式环境下方便节点间的协调的服务.
-论文为: The Chubby lock service for loosely-coupled distributed systems
-
-Motivation
-Design
-Architecture
-Files, directories, and handles
-Locks and sequencers
-Events
-Caching
-Sessions and KeepAlives
-Fail-overs
-
-Motivation
-为primary election问题提供通用的解决方案, 不需要特别实现和人工干预.
-为客户端提供 粗粒度 的同步, 协调服务, 解决客户端的共识问题.
-可靠性和可用性, 支持大量客户端.
-语义简单, 易于使用.
-不要求提供高吞吐率.
-
-Design
-对外提供锁服务来说实现客户端间的协调, 比如...
-            </p>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>论文研读</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            分布式
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2018/09/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap" hidden>
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="论文研读之Chubby"
-              data-leadcloud-url="/论文研读/paper-chubby/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-    <a href="/论文研读/paper-chubby/" class="read-article">Read</a>
-    
-</div>
-
-        </div>
-        
-    </li>
-    
-    
-
-</ul>
-
-<div id="page-pagination">
-    <div id="page-nav">
-        <span class="extend disable prev" rel="prev">&laquo; Prev</span><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </div>
-</div>
-
-    </div>
-    <footer id="footer">
-    
-    <div>
-        
-        <a href="/" class="copyright-links">oven yang</a>&copy;2017 - 2019.All Rights
-        Reserved.
-    </div>
-    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
-                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
-    </p>
-    
-</footer>
-
-</div>
-    <ul id="tools">
-    <li class="totop-btn fa fa-angle-up"></li>
-    <li class="exchange-btn fa fa-exchange"></li>
+  
   
     
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨文的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
 
     
-</ul>
-<p id="process"></p>
-<div id="search-overlay">
-    <div class="search-area-wrap">
-        <div id="search-area">
-            <div class="input-wrap focus">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <input id="search-input" autofocus autocomplete="off" type="text"
-                       placeholder="search this website..."/>
-            </div>
-            <ul id="search-result">
-                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-            </ul>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-raft/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/论文研读/paper-raft/" itemprop="url">
+                  论文研读之Raft协议
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-16 00:00:00 / Modified: 21:52:43" itemprop="dateCreated datePublished" datetime="2019-05-16T00:00:00+08:00">2019-05-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script> -->
+<p>Raft 协议是一个分布式共识(consensus)算法, 可以参考 <a href="http://pages.cs.wisc.edu/~remzi/Classes/739/Spring2004/Papers/raft.pdf" target="_blank" rel="noopener">ATC-Raft</a> 和 <a href="https://stacks.stanford.edu/file/druid:qr033xr6097/cameraready-try2-augmented.pdf" target="_blank" rel="noopener">Thesis-Raft</a> 这两篇文章. 两篇文章是同一个作者, 第一篇是小论文, 第二篇是大论文, 阐释地更加全面、详细.</p>
+<p>Raft 协议将 consensus problem 划分为下面的几个子问题, 分别提出对应的解决方案：</p>
+<ul>
+<li>Leader Election</li>
+<li>Log Eeplication</li>
+<li>Safety</li>
+</ul>
+<p>上面讨论的是集群配置不变(即节点数量、地址等不变)的情况, 而实际中经常需要增减节点、修改地址. 为此, Raft 算法中还包含了两种 <strong>Membership Change</strong> 方法. 前者一次只增减一台节点, 清晰易懂. 后者允许增减任意数量的节点, 但是更加复杂.</p>
+<ul>
+<li>Single-Server Approach</li>
+<li>Arbitary Configuration Change</li>
+</ul>
+<p>另外, 当日志逐渐增长, 会占用大量的磁盘空间, 并且重启时恢复到最新状态的速度会大幅降低. 为此, Raft 算法中包含了 <strong>Log Compaction</strong> 机制. 大论文中提到了四种, 对第一种做了详细的介绍. 小论文中只介绍了第一种.</p>
+<ul>
+<li>Memory-Based Snapshots</li>
+<li>Disj-0Based Snapshots</li>
+<li>Log CLeaning</li>
+<li>Log-Structured Merge Trees</li>
+</ul>
+<p>另外, 这里还对客户端与 Raft 模块间的<strong>交互</strong>进行说明, 包括:</p>
+<ul>
+<li>How clients find the cluster</li>
+<li>How clients find the leader</li>
+<li>How Raft provides linearizable consistency</li>
+<li>How Raft can process read-only querirs more efficiently</li>
+</ul>
+<p>下面对各个部分进行详细说明. 实际上有的部分没写 :)</p>
+<h2 id="background">Background</h2>
+<p>为了在分布式系统中实现容错, 一个常用的办法是采用<em>复制状态机(replicated state machine)</em>. 首先, 给定多个初始状态相同的节点, 在后续的操作中, 将每个操作以相同顺序应用到每一台节点上. 那么, 在操作正常执行的情况下, 每台节点在任何时刻就具有相同的状态. 这样, 我们就能保证即使有部分节点出现故障, 只要有节点存活, 整个系统就能满足<strong>可用性</strong>.</p>
+<p>这是理想情况的结果, 实际中要满足可用性还存在许多问题. 例如:</p>
+<ul>
+<li>如何确定操作正常执行, 当执行结果不同时如何处理?</li>
+<li>如何保证系统的可扩展性?</li>
+</ul>
+<p>为了解决这些问题, 首先需要对节点的错误类型做出限定, 这里假定所有的节点都是 <em>fail by stopping</em>的, 也就是说发生错误后可以重启, 通过读取已经持久化的状态信息来恢复到某个正确的状态, 并重新加入集群.</p>
+<p>当不同节点的状态不一致时, 如何确定正确状态? Paxos 提出: 少数服从多数(quorum). 即根据大多数节点的状态确定整体的状态, 例如在一个有5个节点的集群中, 用户请求变量 <em>x</em> 的值, 在至少3个节点中 <em>x</em> 的值为1111, 那么我们就认为 <em>x</em> 的值是1111. 在这样的系统中, 只要有大多数节点是可用的, 就能保证可用性. 那么, 要保证系统能容忍 <em>n</em> 个节点的错误, 就需要至少 <em>2n+1</em> 个节点.</p>
+<p>一个操作抽象为一个 <em>log entry</em>. 初始时, 节点<em>日志(log)</em>为空, 当接收到操作命令时, 将其转化为一条日志(log entry), 附加到(append)每个节点的日志的末尾, 并将日志持久化, 再执行(apply)该操作. 这样, 节点重启时就可以通过再次执行(重放, replay)此日志, 来达到一个正确的状态. 但是, 此状态很可能是过时的(tale), 我们需要其他机制来使重启的节点更新到最新状态, 例如其他的具有最新的日志的节点向其发送缺少的日志.</p>
+<p>从上面的分析可以看出, 问题的核心在于 <strong>日志的管理</strong>, 即保证大多数节点日志的状态一致. 那么如何确定哪些节点具有最新的日志, 如何决定由谁来更新新加入节点的日志...? Raft 算法就是为了解决这些问题, 最终实现 <strong>sonsensus</strong>.</p>
+<h2 id="overview">Overview</h2>
+<p>Raft 算法首先从集群所有节点中选举出一个 Leader, 其余节点称为 Follower, 由 Leader 来负责管理日志. Leader 负责处理用户的请求, 并将之转化为日志, 并复制到其他的节点上. 当 Leader 将日志复制到大多数节点时, 就能将之应用(apply)到状态机, 并将之 <em>commit</em>, 最后将结果返回给用户.</p>
+<p>为了保证日志条目(log entry)的有序性, 算法将时间划分为不同的 <em>term</em>, term 是一个连续的单调递增的整数. 当节点中发生 Leader 选举时, term 加一, 当节点观察到比自身更大的 term 时, 切换到该 term. 同时, 每条日志具有一个 <em>index</em> 来唯一标记, index 同样单调递增, 新的日志的 index 大于旧的日志的 index. 算法中用 term 和 index 来标记日志.</p>
+<blockquote>
+<p>这里有点不太理解: 看论文中 index 是唯一的, 但是这里只保证在每个 term 中 index 唯一应该也没有问题.</p>
+</blockquote>
+<p>为了严格证明算法的正确性, Raft 保证下面几条性质:</p>
+<ul>
+<li><p>Election Safety:</p>
+<p>最多只有一个节点成为 Leader.</p></li>
+<li><p>Leader Append-Only:</p>
+<p>Leader 不会删除或覆盖自身的日志, 只会不断将新的日志附加到日志末尾.</p></li>
+<li><p>Log Matching:</p>
+<p>如果两条日志(log entry)的term和index相同, 那么从这两条日志开始, 她们和她们前面的所有日志都对应相同.</p></li>
+<li><p>Leader Completeness:</p>
+<p>如果一条日志在一个 term 中被 commit 了, 那么在该 term 之后的所有 term 中, 这些 term 的 Leader 的日志中都包含这条日志.</p></li>
+<li><p>State Machine Safety:</p>
+<p>如果一个节点应用了一条日志到状态机, 那么其他机器不会应用一个 index 与此日志相同, 内容却不同的日志到状态机. 也就是说, 对于不同节点应用到状态机的日志, 只要 index 相同, 日志就是相同的.</p></li>
+</ul>
+<p>Raft 通过远程过程调用(RPC)来实现节点间的通信, 定义了下面几种 RPC:</p>
+<ul>
+<li>RequestVote RPC: 由 candidate 调用, 用于进行 leader 选举.</li>
+<li>AppendEntries RPC: 由 leader 调用, 用于复制日志或作为心跳信息(维持leader).</li>
+</ul>
+<h2 id="leader-election">Leader Election</h2>
+<p>节点有三种状态: follower, candidate, leader. 节点通过下面的变量来维护其状态:</p>
+<ul>
+<li>需要持久化的
+<ul>
+<li>currentTerm: 节点见到的最新的 term(初始为0, 单调递增)</li>
+<li>votedFor: 为某个节点的id, 表示节点在当前同意该节点成为 leader. 可以为null.</li>
+<li>log[]: 日志. 每条日志包含对应的命令.</li>
+</ul></li>
+<li>不需要持久化, 在内存维护的
+<ul>
+<li>commitIndex</li>
+<li>lastApplied</li>
+</ul></li>
+<li>leader 专有的(不需要持久化, 在内存维护)
+<ul>
+<li>nextIndex[]</li>
+<li>matchIndex[]</li>
+</ul></li>
+</ul>
+<p>初始时节点都是 follower, 此时节点并不知道集群中是否存在 leader, 因此会等待一段时间, 这段时间称为 <em>election timeout</em>. 如果这段时间内节点收到 leader 的消息, 并且 leader 的 term 大于等于自身的 term, 就设置 voteFor 为 leader id, 继续保持 follower 状态. 当这段时间过后, follower 没有收到来自 leader 的消息时, 就可以认为集群中没有 leader, 并转移到 candidate 状态, 进行 leader 选举. 下面介绍选举过程.</p>
+<p>节点首先增加其 term, 并转移到 candidate 状态, 重新设置 election timeout. 然后将 voteFor 设置为自己的id(我选我 O(∩_∩)O), 并并发地对集群中的其他节点调用 RequestVote RPC. 节点等待 RPC 的返回结果, 直到出现下面的事件:</p>
+<ol type="1">
+<li>赢得选举</li>
+<li>其他节点成为 leader</li>
+<li>election timeout 超时</li>
+</ol>
+<p>第一个事件很容易理解, 当大多数 RPC 调用成功返回时, 表明大多数节点同意该节点成为 leader, 选举成功. 此时, 节点转移到 leader状态, 并立即并发地向其他节点发送心跳通知自己成为 leader, 防止其他节点开始新的选举. 这里有几个问题需要解释一下:</p>
+<ul>
+<li>节点的投票机制: 采取先到先得的机制, 对于 term 相同的 RequestVote RPC, 节点将会投给第一个到的调用者. (term 不同时在<a href="#Safety">Safety</a>部分说明)</li>
+<li>"<strong>大多数节点同意</strong>"的限制保证了一个 term 只会存在至多一个 leader, 也就保证了 Election Safety.</li>
+</ul>
+<p>第二个事件: 当节点收到某个节点的心跳信息(表明该节点成为 leader)时, 并且该信息表明此节点的 term 大于等于自身的 term 时, 节点转移到 follower, 承认该节点是 leader(设置 voteFor 为该节点的id). 当节点自身 term 较大时, 拒绝承认该节点为 leader, 并返回自己的 term, candidate 状态不变.</p>
+<p>第三个事件: 当上述两个事件在一段时间内都没有发生时, 就发生此事件. 其原因可能是由于多个节点同时开始选举, 因而都不能满足"<strong>大多数节点同意</strong>"的限制. 这个情况会带来一个问题:</p>
+<ul>
+<li>这时如果不加处理, 这些节点会同时发生 election timeout 超时, 同时开始新一轮选举, 再次超时... 如此循环下去, 导致系统无法选举出 leader, 因而不可用.</li>
+</ul>
+<p>为了避免这个问题, Raft 每次设置 election timeout 时, 不是设为固定值, 而是设为一个区间内的随机值. 这样就能降低节点同时发起选举的概率, 如果同时发起选举后, 同时超时的概率同样会被降低.</p>
+<p>下面再说明节点接收到 RequestVote RPC 时的处理过程.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Argument: term, candidateId, lastLogIndex, lastLogTerm</span></span><br><span class="line"><span class="comment">// Return: term, voteGranted</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(term &lt; currentTerm)</span><br><span class="line">&#123;</span><br><span class="line">    term = currentTerm;</span><br><span class="line">    voteGranted = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> term, voteGranted;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(term &gt; currentTerm)</span><br><span class="line">&#123;</span><br><span class="line">    handle_higher_term(); <span class="comment">// set currentTerm to term, convert to follower.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>((voteFor == null || voteFor == candidateId) &amp;&amp;</span><br><span class="line">   (lastLogIndex &gt;= <span class="keyword">this</span>-&gt;<span class="built_in">log</span>.back().index &amp;&amp; lastLogTerm &gt;= <span class="keyword">this</span>-&gt;<span class="built_in">log</span>.back().term))</span><br><span class="line">&#123;</span><br><span class="line">    term = currentTerm;</span><br><span class="line">    voteGranted = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> term, voteGranted;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>candidate 需要将自身当前的最后一条日志的 index 和 term 作为参数发送给其他节点, 即上面的 lastLogIndex 和 lastLogTerm 参数.</p>
+<p>值得注意的地方是节点判断是否同意 candidate 为 leader 时, 需要检查 candidate 的日志是否不落后于自身的日志. 此限制保证了前面的 Leader Completeness 性质. 我们在 <a href="#Safety">Safety</a> 部分做更详细的说明.</p>
+<h2 id="log-replication">Log Replication</h2>
+<p>节点成为 leader 后, 就可以响应用户的请求, 并将日志复制到其他节点. leader 将用户的请求转化为一条日志, 首先append到自身的日志记录, 然后调用 AppendEntries RPC, 并行地向其他节点发送此日志, 当大多数节点的 RPC 成功返回时, 表明日志已经成功复制到大多数节点上. 此时节点可以将此日志应用到状态机, 并返回执行结果给用户(称日志 <em>committed</em>). 期间如果 RPC 失败或是没有相应, leader 会不断重复地对这些节点调用该 RPC, 直至成功. 当节点 commit 一条日志后, 就修改自身的 commitIndex 到对应值. 在 AppendEntries RPC 中, leader 会将其 commitIndex 作为参数发送给 follower, follower就可以据此来判断应该 commit 自身的哪些日志, 从而更新其状态机.</p>
+<p>committed 是一种状态, 表明日志可以被应用(apply)到了状态机, 或者说已经复制到了大多数节点. 考虑到用户请求应该被顺序执行, 一条日志被 commit 就导致其前面的所有日志被 commit. 即将一条日志应用到状态机时会先将前面的没有 commit 的日志先应用到状态机. 在<a href="#Safety">Safety</a>部分还会说明, Raft 能保证一旦一条日志被 commit, 其后所有的 term 的 leader 中都会有这一条日志.</p>
+<p>当一个节点收到 AppendEntries RPC 调用后, 其处理过程为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Argument: term, leaderId, prevLogIndex, prevLogTerm, entries[], leaderCommit</span></span><br><span class="line"><span class="comment">// Return: term, success</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(term &lt; currentTerm)</span><br><span class="line">&#123;</span><br><span class="line">    term = currentTerm;</span><br><span class="line">    success = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> term, success;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(term &gt; currentTerm)</span><br><span class="line">&#123;</span><br><span class="line">    handle_higher_term(); <span class="comment">// set currentTerm to term, convert to follower.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// doesn't contain prevLog or prevLog doesn't match</span></span><br><span class="line"><span class="keyword">if</span>(prevLogIndex &gt;= <span class="keyword">this</span>-&gt;<span class="built_in">log</span>.size() ||</span><br><span class="line">   <span class="keyword">this</span>-&gt;<span class="built_in">log</span>[prevLogIndex].term != prevLogTerm)</span><br><span class="line">&#123;</span><br><span class="line">    term = currentTerm;</span><br><span class="line">    success = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> term, success;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">this</span>-&gt;<span class="built_in">log</span>.size() &gt; prevLogIndex + <span class="number">1</span>) <span class="comment">// contains log in entries</span></span><br><span class="line">&#123;</span><br><span class="line">    check whether the entry conflicts with entry in entries from leader;</span><br><span class="line">    <span class="keyword">if</span>(entry i conflicts with entries)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span> i <span class="keyword">and</span> the entry after i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(entry in entries <span class="keyword">and</span> <span class="keyword">not</span> in local)</span><br><span class="line">&#123;</span><br><span class="line">    append the entry to local logs;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">term = currentTerm;</span><br><span class="line">success = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">return</span> term, success;</span><br></pre></td></tr></table></figure>
+<p>上面有几点需要注意:</p>
+<ul>
+<li><p>节点接收到 AppendEntries RPC 后, 会检查本地是否有与 prevLogIndex 和 prevLogTerm 匹配的日志. 这里有两种情况. 一种是节点日志落后太多, 没有 index 为 prevLogIndex 的日志. 此时节点返回错误, 通知 leader 此消息. 另一种是存在 index 等于 prevLogIndex 的日志, 但是这条日志的 term 不等于 prevLogTerm. 这是怎么导致的? 是 leader 还是当前节点错误? 后文再做详细讨论. 这里只说明此时节点同样返回错误, 由 leader 进行处理. 另外强调一点, leader 是集群的管理者, 是不会错的, 如果发生错误, 说明那是个假 leader. :)</p></li>
+<li><p>如果本地有与 prevLogIndex 和 prevLogTerm 匹配的日志, 就可以将 leader 传来的日志复制到本地. 这时是有可能出现这样的情况: 节点已经存在 entries 中的部分/全部日志. 例如, RPC 调用执行成功, 但是返回时出现错误, leader 重新调用, 这时传来的日志在本地已经存在. 节点检查本地的日志是否与 leader 传来的日志冲突(按对应顺序检查 index 和 term 是够相等), 如果发生重复, 将该条日志及其后面的所有日志全部删除, 再将 leader 传来的日志 append 到本地日志. 如此, 就完成了日志复制, 最后向 leader 返回相应信息即可.</p></li>
+</ul>
+<p>上面提到的第一个限制保证了日志的一致性. 初始时日志显然是一致的. 添加日志时, 检查各个节点要添加的日志的前面一条日志是否相同, 相同才会添加. 这样就保证了各个节点日志的一致性. 当然, 这里会存在落后节点, 但是其状态是有效的, 并且 Leader 不断对其调用 AppendEntries RPC 可以使其日志逐渐同步到最新状态.</p>
+<h2 id="safety">Safety</h2>
+<p>本部分着重于对算法正确性的说明, 对前面的 Leader Election 和 Log Replication 增加一些限制, 以保证算法正确性.</p>
+<p>首先是对 Leader Election 的限制. 只有当 candidate 的日志是否不落后于自身的日志时, 节点才会同意 candidate 成为 leader. 这保证了 Leader Completeness 性质, 下面做详细阐述. 在某个 term 中, 当一条日志被 commit, 就说明该日志被复制到了大多数节点. 在其后的 term 中, candidate 要想成为 leader, 必须先获得大多数节点的同意. 也就要求 candidate 的日志不能落后于大多数节点, 即必须拥有大多数节点都有的日志. 而在前面的 term 中被 commit 的日志显然存在于大多数节点. 反之, 如果 candidate 不含前面的 term 中被 commit 的日志, 就不能得到大多数节点的同意, 也就不能成为 leader.</p>
+<p>其次是对 commit log 的限制. 首先考虑论文中提到的一种情况, 如 Figure 1 所示(来源于大论文 Figure 7.3, 详细介绍参考论文中的说明). 这个例子的目的是为了说明对于旧的 term 中的日志, leader 不能根据日志是否已经复制到大多数节点来判断是否可以将此日志 commit. leader 只能按照前面所说的机制, 直接 commit 当前 term 的日志, 在 commit 当前 term 的日志时, 会先 commit 此日志前的未 commit 的日志. 这样就可以保证在之前的 term 中的日志得以被 commit. 图中最重要的部分在于说明了某个 term 中的一条日志可以先在一个 term 中被复制到小部分节点, 在后面的 term 继续复制到其他节点. 这是问题的核心原因.</p>
+<center>
+<img src="/images/oldTermCommit.svg" width="40%" height="40%" alt="404"> Figure 1: old term log commit
+</center>
+<p>文章中还对 Leader Completeness 性质做了严格的证明. 这里不做赘述.</p>
+<h2 id="cluster-membership-change">Cluster Membership Change</h2>
+<p>前面提到的机制都是针对集群中节点数量不变的情况, 实际中我们会需要在集群中增加或删除节点. 如果手动操作, 容易带来错误, 因此 Raft 提供了动态增删节点的机制.</p>
+<p>我们称集群中的节点数量, 各个节点的地址为集群的配置. 每个节点都将集群的配置存储在文件中, 因此在集群中增删节点实际上就是对集群所有机器文件的修改. 这里的难点在于不能保证同时修改所有节点的配置, 这就可能会导致脑裂. 比如在一个有 3 个节点(s1, s2, s3)的集群中增加 2 个节点(s4, s5), 由于网络原因, s1, s2 节点仍然是旧的配置, s3, s4, s5 则是新的配置. 那么 s1, s2 就可以选举出一个 leader, s3, s4, s5 同样可以选举出一个 leader. 这就导致了错误. 因此, 需要更多的限制来保证安全性.</p>
+<p>大论中提到了两种机制. 第一种一次只能增删一个节点, 方法简单, 容易理解. 第二种允许一次增删多个节点, 但是较为复杂.</p>
+<p>第一种方法的核心在于: 一次只增删一个节点时, 旧的配置的和新的配置的节点不可能同时满足 quorum. 下面的 Figure 2 生动形象地说明了这一点(来源于大论文 Figure 4.3).</p>
+<center>
+<img src="/images/raft-node-change.svg" width="40%" height="40%" alt="404"> Figure 2: The addition and removal of a single server from an even- and an odd-sized cluster
+</center>
+<p>增删节点的请求同样由 leader 负责, 这样的请求同样被作为日志, 并通过 leader 复制到其他节点. Raft 定义了 AddServer RPC 和 RemoveServer RPC 来处理这两种请求, 集群管理员可用通过对 leader 调用这两个 RPC 来增删节点. 下面介绍一下 leader 如何处理这两种 RPC 调用.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Argument: newServer</span></span><br><span class="line"><span class="comment">// Result: status, leaderHint</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(isLeader == <span class="literal">false</span>)</span><br><span class="line">&#123;</span><br><span class="line">    status = NOT_LEADER;</span><br><span class="line">    leaderHint = voteFor;</span><br><span class="line">    <span class="keyword">return</span> status, leaderHint;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// catch up new server for fixed number of round.</span></span><br><span class="line"><span class="comment">// reply TIMEOUT if new server does not make progress for an election timeout or</span></span><br><span class="line"><span class="comment">// if the last round takes longer than the election timeout.</span></span><br><span class="line">update_new_server();</span><br><span class="line"></span><br><span class="line"><span class="comment">// ensure that add/remove only one node every time</span></span><br><span class="line"><span class="keyword">if</span>(previous configuration in <span class="built_in">log</span> is <span class="keyword">not</span> committed)</span><br><span class="line">&#123;</span><br><span class="line">    wait until it's committed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">append <span class="keyword">new</span> configuration entry to <span class="title">log</span><span class="params">(old configuration + <span class="keyword">new</span> server)</span></span>;</span><br><span class="line"><span class="keyword">for</span>(all other node i in cluster)</span><br><span class="line">&#123;</span><br><span class="line">    invoke AppendEntries to replicate <span class="keyword">new</span> configuration entry to node i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">new</span> configuration entry is replicated to the majority under <span class="keyword">new</span> configuration)</span><br><span class="line">&#123;</span><br><span class="line">    commit <span class="keyword">new</span> configuration entry;</span><br><span class="line">    status = OK;</span><br><span class="line">    leaderHint = voteFor;</span><br><span class="line">    <span class="keyword">return</span> status, leaderHint;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    something wrong happend;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>值得一提的是, 修改配置不会使得集群停止相应用户的的其他请求. 当 leader 成功地将新的配置对应的日志复制到(新配置下的)大多数节点时, 就表明集群的配置已经修改, 就可以开始处理下一个集群配置修改请求. 如果删除节点的请求 commit, 就可以将该节点关闭.</p>
+<p>这里还需要考虑前面的 Leader Election 和 Log Replication, 总的来说就是节点收到 RequestVote RPC 和 AppendEntries RPC 调用时, 即使调用者不再本地配置的节点中, 也会处理这些 RPC 调用.</p>
+<ul>
+<li><p>当一个节点收到来自 leader A 的 AppendEntries RPC 时, 可能发现 A 并不在自己的配置节点中. 这时节点同样会处理该 RPC, 否则节点可能永远无法更新到最新配置. 例如, 集群新增一个节点后, 存在小部分节点没有更新到最新配置. 这时新加入的节点成为 leader, 将会继续将新的配置的日志复制到那些小部分节点, 而此时 leader 并不在这些节点的配置节点中.</p></li>
+<li><p>当一个节点收到来自节点 A 的 RequestVote RPC 时, 可能发现 A 并不在自己的配置节点中. 此时节点同样会处理该 RPC.</p></li>
+</ul>
+<p>第二种增删节点的方法则较为复杂, 但是能同时处理任意数量的节点增删. 下面对其过程做一个描述. 当 leader 收到管理员的改变配置的请求时, 会生成日志将新旧配置都记录下来, 然后将这条日志 append 到本地日志, 并将其复制到(新旧配置下的)其他节点. 任一节点收到该配置日志后, 都会立即切换到对应状态, 称为 <span class="math inline">\(C_{old,new}\)</span>.</p>
+<p>此时集群中同时存在不同配置的节点, Raft 引入 <em>joint consensus</em> 来描述这种状态, 并规定:</p>
+<ul>
+<li>日志将会被复制到新旧配置中的所有节点.</li>
+<li>新旧配置中的节点都可以成为 leader.</li>
+<li>对于处于 <span class="math inline">\(C_{old,new}\)</span> 状态的节点, RequestVote RPC 和 AppendEntries RPC 调用要成功, 必须要分别得到新的配置和旧的配置中的大多数节点的同意.</li>
+</ul>
+<p>一旦 leader 能 commit 此日志, 即新配置下的大多数节点均复制了此日志, leader 就会再将新的配置对应的日志复制到(新配置下的)其他节点, 复制成功的节点就会转移到 <span class="math inline">\(C_{new}\)</span> 状态. 当此日志成功 commit 时, 集群配置就修改成功了. 集群状态变化如 Figure 3 所示(大论文Figure 4.8).</p>
+<p>第三条限制就避免了集群中同时出现两个节点的错误, 但是却不能避免处于旧的配置的节点选举出 leader, 此时管理员可以再次发起请求.</p>
+<center>
+<img src="/images/raft-joint-consensus.svg" width="40%" height="40%" alt="404"> Figure 3: Timeline for a configuration change using joint consensus
+</center>
+<h2 id="log-compaction">Log Compaction</h2>
+<p>显然, 按照上面的机制, 节点的日志会不断增长. 这会导致几个问题:</p>
+<ul>
+<li>日志过长, 占用大量存储空间.</li>
+<li>机器重启时需要重放日志, 重启花费的时间过长.</li>
+<li>新增节点时, 需要复制大量的日志, 占用带宽过多, 花费时间过长.</li>
+</ul>
+<p>因此, Raft 提出了 Log Compaction 机制来压缩日志长度, Raft 采用的方法是快照(Snapshotting). 大论文中提到了多种不同的快照方案, 这里只对基于内存的进行总结, 这也是小论文中采用的.</p>
+<p>基本思想是每个节点独立的判断是否需要进行日志压缩, 节点可以根据日志长度或剩余空间等来进行判断. Snapshot 完成后, 就可以将 Snapshot 的最后一条日志及其前面的所有日志删除, 之前的快照也可以删除. Snapshot 需要记录下面的信息:</p>
+<ul>
+<li>状态机状态</li>
+<li>最后一条日志的 index, term(last included index/term)</li>
+<li>节点最新的配置</li>
+</ul>
+<p>虽然各个节点的 Snapshot 操作是独立进行的, 但是设想这样的情况, leader 进行一次 Snapshot 后, 发现某个节点的日志落后太多, 需要传送那些已经删除的日志给该节点. 这时候由于日志已经删除, 就需要将节点的 Snapshot 发送给该节点. 为此, Raft 定义了 InstallSnapshot RPC, leader 可以通过调用此 RPC 来将自身的 Snapshot 发送给其他节点. 节点对 InstallSnapshot RPC 的处理比较简单, 最重要的一点是有可能 Snapshot 对应的最后一条日志节点中也有. 这可能是由于延迟导致的, 这时节点不对本地日志做处理.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>至此, Raft 就算基本介绍完了, 中间可能还有疏漏的信息, 就留在以后补了. 虽然 Raft 以简单作为她的一个优点, 但是还是有点复杂, 细节很多.</p>
+
+          
+        
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c5/" itemprop="url">
+                  第5章 构造, 析构, 拷贝语意学
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-10-29 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-29T00:00:00+08:00">2018-10-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-21 13:38:26" itemprop="dateModified" datetime="2019-06-21T13:38:26+08:00">2019-06-21</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度探索C-对象模型笔记/" itemprop="url" rel="index"><span itemprop="name">深度探索C++对象模型笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="纯虚函数和抽象类">纯虚函数和抽象类</h2>
+<p>抽象类(abstract class): 含有(类内声明的或继承来的)纯虚函数的类即为抽象类. 纯虚函数的声明方法如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">point</span> &#123;</span> <span class="comment">/**/</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> // <span class="title">abstract</span> <span class="title">class</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    point center;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">point <span class="title">where</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> center; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(point p)</span> </span>&#123; center=p; draw(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>)</span> </span>= <span class="number">0</span>; <span class="comment">// pure virtual</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>= <span class="number">0</span>; <span class="comment">// pure virtual</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>当纯虚函数需要被调用时, 可以提供其定义, 但是定义必须放在类外. 可以通过类名加域限定符调用纯虚函数. 抽象类有下面的性质:</p>
+<ul>
+<li>抽象类用来表示一般的概念, 不能被实例化, 即不能创建抽象类的对象, 但是可以作为基类被实例化.</li>
+<li>不能作为参数类型, 函数返回值类型, 显式转化的目的类型, 但是可以声明抽象类的指针和引用.</li>
+<li>抽象类可以继承自非抽象类, 可以用纯虚函数重写非纯的虚函数.</li>
+<li>抽象类可以定义构造函数和析构函数, 对象构造和析构时会被调用(只会被调用一次).</li>
+<li>在抽象类的构造函数和析构函数中可以调用其他成员函数, 但是在其中调用纯虚函数的行为是未定义的.</li>
+<li>如果析构函数被声明为纯虚函数, 必须提供其定义.(构造函数不能是虚函数, 所以不必讨论)</li>
+</ul>
+<h2 id="对象构造">对象构造</h2>
+<blockquote>
+<p>从C++20开始, <em>POD</em>这一概念就被废止, 取而代之的是一系列更为精确的定义, 如<em>TrivialType</em>.</p>
+</blockquote>
+<p>对于POD(plain old data)类型, 定义一个对象时编译器不会调用其构造函数, 复制时也不会调用复制构造函数, 而是像C语言那样的按位复制. 而使用构造函数时, 尽可能在初始化列表中初始化成员, 这比在构造函数函数体内对成员赋值效率更高. 构造函数设置数据成员的值可以分为两种方式, 一个是初始化, 一个是赋值. 初始化是必不可少的, 即使没有在初始化列表中声明, 编译器也会生成默认的初始化语句来初始化成员, 在这之后才会执行构造函数函数体内的赋值语句. 所以说"赋值"效率更低. 如果函数体内部是简单地对每个成员指定一个常量, 那么编译器可能会进行优化, 将常量抽取出来对成员初始化, 结果就好像成员初始化列表一样. 但是不要依赖于此.</p>
+<p>构造函数按顺序执行下面这些操作:</p>
+<ol type="1">
+<li>如果当前对象是继承体系的最底层(因为类初始化是从下往上递归调用构造函数的, 即继承层次不断变化), 就初始化虚基类</li>
+<li>初始化直接基类</li>
+<li>初始化vptr</li>
+<li>进行初始化列表对数据成员的初始化操作</li>
+<li>如果有成员没有出现在初始化列表, 但是有默认构造函数, 调用之.</li>
+<li>执行构造函数函数体.</li>
+</ol>
+<p>下面具体讨论一下每个操作. 对于第一个操作, 主要问题是如何判断构造函数是否应该初始化虚基类, 即如何判断当前构造函数所在类是否是继承体系的最底层. 书中提到的方法是给虚基类的子类的构造函数增加一个参数<em>is_most_derived</em>. 那么函数体中初始化虚基类的语句就是这样:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(is_most_derived)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;VirtualBase::VirtualBase(param_list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而在此构造函数中调用父类对象的构造函数时就将该参数值设为false, 就能保证构造函数只在最底层类被调用. 不过, 按照此方法, 虚基类的每个子类都需要判断一次, 降低了程序效率. 而实际上在编译时我们就知道子对象的构造函数不需要执行此操作. 所以一种优化是提供两种构造函数, 一种不带此参数, 不初始化虚基类, 另一种带参数, 负责初始化虚基类. 这样就可以省略if语句, 但是可能会使生成的可执行文件更大.</p>
+<p>函数的初始化列表在编译后会分化为上面的多个步骤, 对虚基类的初始化对应操作1, 对直接基类的初始化对应操作2, 对数据成员的初始化对应操作4. 另外注意一点, 对虚基类的初始化不能放在函数体中, 必须放在初始化列表中. 否则编译器还需要检查函数体中是否有对虚基类的构造函数的调用, 并将其转化为上面的两种形式.</p>
+<h3 id="在构造函数中调用成员函数">在构造函数中调用成员函数</h3>
+<p>可以在构造函数初始化列表中调用成员函数, 但是如果调用函数时存在直接基类没有被初始化, 行为就是未定义的.</p>
+<p>如果调用的是虚函数, 并且调用时基类已初始化, 那么调用时的实际类型就是函数调用点所在构造函数的类类型. 这是很容易理解的, 对象类型绝不会沿着继承体系向下, 因为最底层的对象还没有完成构造. 如果是纯虚函数, 如上文所说, 是UB. 在析构函数中调用虚函数同理.</p>
+<p>如果从编译器的角度来解释上面的两条规则, 就需要考虑vptr的初始化, 因为我们在运行时通过vtpr判断对象类型, 决定虚函数的调用. 在调用基类构造函数之后, 成员初始化语句之前, 编译器在构造函数中插入代码来初始化对象的vptr. 所以, 在构造函数的数据成员初始化语句和函数体内调用成员函数时, 对象vptr已经被设置为构造函数所属类对应的vptr, 也就能调用虚函数了.</p>
+<h2 id="对象复制">对象复制</h2>
+<p>这一节讨论的是复制赋值运算符 <em>operator =</em>. 当将一个对象赋值给另一个对象时, 有下面三种选择:</p>
+<ul>
+<li>采用默认行为, 即不提供复制赋值运算符或使用默认复制赋值运算符.</li>
+<li>显式定义复制赋值运算符,</li>
+<li>拒绝赋值行为.</li>
+</ul>
+<p>对于第三点, C++11之前需要将<em>operator =</em>声明为private, 并且不提供其定义. 而C++11之后, 可以用下面的语句实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName&amp; ClassName::<span class="keyword">operator</span> =(<span class="keyword">const</span> ClassName&amp;) = <span class="keyword">delete</span>;</span><br></pre></td></tr></table></figure>
+<p>另外C++11提供的一个语法是可以将其显式声明为default, 虽然用户显式声明之, 但是定义是由编译器隐式生成的.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName&amp; ClassName::<span class="keyword">operator</span> =(<span class="keyword">const</span> ClassName&amp;) = <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
+<p>当不需要拒绝赋值时, 就需要考虑是不是显式提供一个<em>operator =</em>. 一个原则是:</p>
+<blockquote>
+<p><strong>只有在默认复制赋值运算符的行为不安全或不正确时, 才需要显式定义复制赋值运算符</strong>.</p>
+</blockquote>
+<p>那么问题来了, 默认复制赋值运算符的行为是什么?</p>
+<h3 id="trivial-copy-assignment-operator">Trivial copy assignment operator</h3>
+<p>当复制赋值运算符满足下面的条件是, 就是tirivial的:</p>
+<ul>
+<li>不是用户提供的(隐式定义的或声明为default).</li>
+<li>类没有虚函数.</li>
+<li>类没有虚基类.</li>
+<li>直接基类的复制赋值运算符都是trivial的.</li>
+<li>非静态成员的复制赋值运算符是tirvial的.</li>
+</ul>
+<p>满足这个条件的对象的赋值行为是bitwise的, 就如同调用std::memmove一样. 所有与C语言兼容的数据类型都满足此条件. 不满足上面的的条件时, 就采用member-wise复制赋值行为. 以上的bitwise和member-wise就是默认复制赋值运算符的行为.</p>
+<p>另一个问题是存在虚基类时复制赋值运算符可能会多次对基类子对象调用 <em>operator =</em>, gcc-8就是如此. 一般含有虚基类的子类的复制赋值运算符定义如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A</span> &#123;</span> <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B</span> :</span> <span class="keyword">virtual</span> A &#123; <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span> :</span> <span class="keyword">virtual</span> A &#123; <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D</span> :</span> B, C &#123; <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"></span><br><span class="line">A&amp; A::<span class="keyword">operator</span> =(<span class="keyword">const</span> A&amp; a)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    ... // member copy assignment</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">B&amp; B::<span class="keyword">operator</span> =(<span class="keyword">const</span> B&amp; b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;A::<span class="keyword">operator</span>=(b); <span class="comment">// 直接调用 A::operator =</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    ... // member copy assignment</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">C&amp; C::<span class="keyword">operator</span> =(<span class="keyword">const</span> C&amp; c)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;A::<span class="keyword">operator</span>=(c); <span class="comment">// 直接调用 A::operator =</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    ... // member copy assignment</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">D&amp; D::<span class="keyword">operator</span> =(<span class="keyword">const</span> D&amp; d)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;A::<span class="keyword">operator</span>=(d); <span class="comment">// 直接调用 A::operator =</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;B::<span class="keyword">operator</span>=(d); <span class="comment">// 间接调用 A::operator =</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;C::<span class="keyword">operator</span>=(d); <span class="comment">// 间接调用 A::operator =</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    ... // member copy assignment</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C++并没有提供类似复制构造函数的语法来保证虚基类只会被复制一次. 所以, 书中建议将虚基类的复制赋值运算符声明为delete, 甚至不要再虚基类中声明数据成员.</p>
+<h2 id="对象析构">对象析构</h2>
+<p>书中提到一个值得注意的问题, 并不是定义了构造函数就需要定义析构函数, 这种"对称"是无意义的. 只有当需要一个析构函数时, 我们才应该显式定义之. 那么什么时候需要呢? 首先要搞清楚析构函数的作用, 她是对象的生命周期的终结, 而函数体内执行的主要是是对对象持有的资源的释放, 例如在构造函数中动态申请的空间. 析构函数的操作与构造函数类似, 但是顺序相反.</p>
+<h3 id="trivial-destructor">Trivial destructor</h3>
+<p>类的析构函数如果满足下面的条件, 就是trivial的:</p>
+<ul>
+<li>析构函数不是用户定义的.(隐式声明或声明为default)</li>
+<li>析构函数非虚.(这就要求父类的虚函数也非虚)</li>
+<li>直接父类的析构函数是trivial的.</li>
+<li>非静态数据成员(数组的数据成员)的析构函数是trivial的.</li>
+</ul>
+<p>trivial析构函数不进行任何操作, 析构时只需要释放对象的空间即可. 所有与C语言兼容的数据类型都是<em>trivial destructible</em>的.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c4/" itemprop="url">
+                  第4章 Function语意学
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-10-22 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-22T00:00:00+08:00">2018-10-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-01 10:06:26" itemprop="dateModified" datetime="2019-07-01T10:06:26+08:00">2019-07-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度探索C-对象模型笔记/" itemprop="url" rel="index"><span itemprop="name">深度探索C++对象模型笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文从编译器的角度讨论如何解析类成员函数调用.</p>
+<h2 id="成员函数的调用">成员函数的调用</h2>
+<h3 id="普通非静态成员函数">普通非静态成员函数</h3>
+<blockquote>
+<p>C++的设计准则之一就是: nonstatic member function 至少必须和一般的 nonmember funciton 有相同的效率.</p>
+</blockquote>
+<p>为了保证类成员函数的效率, 编译器将对普通非静态成员函数的调用转换为对普通函数的调用. 步骤如下:</p>
+<ol type="1">
+<li>修改函数签名, 添加一个额外的参数(作为第一个参数), 称为this指针. 由此将函数和对象关联起来.</li>
+<li>将函数中对非静态成员的访问改为经过this指针访问.</li>
+<li>将成员函数重写为一个外部函数, 生成一个独一无二的名字(name mangling).</li>
+</ol>
+<h3 id="虚成员函数">虚成员函数</h3>
+<p>编译器将对虚成员函数的调用转化为通过vptr调用函数. 在虚继承体系下, 任何含有某一虚函数的类, 该函数在虚表中的偏移都是固定的, 因此编译器可以根据函数名在编译期确定函数指针在虚表中的下标. 所以, 虚函数带来的额外负担就是增加一个内存访问.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p-&gt;func(param); <span class="comment">// 设其在虚表中的下标为index.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面的语句将被转化为</span></span><br><span class="line">(*(p-&gt;vptr)[index])(p, param) <span class="comment">// 这里p等于this指针, 所以将其作为第一个参数.</span></span><br></pre></td></tr></table></figure>
+<h3 id="静态成员函数">静态成员函数</h3>
+<p>对静态成员函数的访问将被转化为对普通函数的访问, 由于静态成员不能访问非静态数据成员, 因此不需要添加this指针. 静态函数有下面几个特点:</p>
+<ul>
+<li>不能直接访问类对象的非静态成员.</li>
+<li>不能被声明为const, volatile, virtual(因此不需要动态绑定).</li>
+<li>可以通过类对象和类名来调用.</li>
+</ul>
+<p>注意一点, 当通过类对象来调用静态成员函数, 并且这个对象是由一个表达式得到时, 虽然不需要执行表达式就能直接调用函数, 但是表达式仍然会被执行(evaluate), 因为此表达式可能会有副作用, 不能被忽略. 例如:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Object <span class="title">func</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">func().static_func() <span class="comment">// func()仍然会被先执行, func()中可能会有某些不可省略的操作.</span></span><br></pre></td></tr></table></figure>
+<h2 id="虚成员函数的实现">虚成员函数的实现</h2>
+<h3 id="单继承">单继承</h3>
+<p>前文提到的虚成员函数实现是单继承下的模型, 下面具体说明其实现(注意下面提到的函数都指的是虚函数). 首先, 我们知道每个类都只有一个虚表(多继承和虚继承的类对象有多个vtpr, 指向不同的虚表, 但是实际上这些虚表是一个, vptr只是指向虚表的不同偏移位置), 也就是说相同类型的对象的vptr值是相同的. 当单继承发生时, 子类不仅继承了父类的数据成员, 还继承了函数成员, 前者体现在类对象布局上, 而后者体现在虚表上. 虚表继承的步骤可能包含下面几步:</p>
+<ol type="1">
+<li>将父类虚表中的虚函数指针拷贝到子类虚表的相同下标位置.</li>
+<li>如果子类重写了父类的虚函数, 就将被重写的虚函数的指针修改为对应函数的地址.</li>
+<li>如果子类加入新的虚函数, 就增加虚表容量, 在后面添加新的函数指针.</li>
+</ol>
+<p>从上面可以看到, 单继承下的虚函数效率高, 实现简单, 但是多继承和虚拟继承则要复杂很多.</p>
+<h3 id="多继承">多继承</h3>
+<p>多继承的复杂性在于下面几个问题:</p>
+<ul>
+<li>通过第2,3,...个父类的指针访问子类的虚函数.</li>
+<li>通过子类指针访问第2,3,...个父类的虚函数.</li>
+<li>重写的虚函数的返回类型可能和父类的被重写函数的返回类型不一样, 这是标准允许的.</li>
+</ul>
+<p>在讨论上面的问题之前, 先复习一下C++中虚函数相关的知识.</p>
+<p>首先, 明确虚函数重写的概念. 父类声明了一个虚函数, 如果其(直接或间接)子类定义了函数, 与父类虚函数具有相同的:</p>
+<ul>
+<li>名字</li>
+<li>参数类型列表(不包含返回值)</li>
+<li>const/volatile类型, 参考 <a href="#1">[1]</a></li>
+<li>引用类型(三种: 无引用符号, &amp;, &amp;&amp;), 参考 <a href="#1">[1]</a></li>
+</ul>
+<p>则子类函数为虚函数(无论是否声明为virtual), 并且重写了父类的虚函数.</p>
+<p>第二点, 多继承时, 我们通过子类指针可以访问所有父类的函数, 这一点很明确. 但是不能通过一个父类的指针访问其他父类的函数. 看下面的例子:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B1</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B2</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D</span>:</span> B1, B2</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fd</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">B1 *p1 = <span class="keyword">new</span> D;</span><br><span class="line">p1-&gt;f2(); <span class="comment">// illegal</span></span><br><span class="line"></span><br><span class="line">B2 *p2 = <span class="keyword">new</span> D;</span><br><span class="line">p2-&gt;f1(); <span class="comment">// illegal</span></span><br></pre></td></tr></table></figure>
+<p>也就是说, 通过一个类对象指针调用函数时, 这个函数必须要在这个类或其父类中声明过. 下面举例说明上面问题的复杂性.(调用虚函数时一定是通过指针或引用, 由于引用本质上是指针, 下面只讨论指针.)</p>
+<p>对于第一个问题, 通过父类指针直接调用子类定义的函数时有两种情况:</p>
+<ul>
+<li>通过第一个基类指针访问时, 直接将指针值作为this指针值传给函数.</li>
+<li>通过第2,3,...个基类指针访问时, 需要调整指针值, 加上/减去一个偏移, 再作为this指针传给函数.</li>
+</ul>
+<p>显然第二种情况下需要<strong>在运行时调整this指针的值</strong>, 因为编译时无法确定指针所指对象的实际类型.</p>
+<p>除此之外, 再考虑一种特殊情况(间接调用子类虚函数):</p>
+<ul>
+<li>对一个父类指针调用delete.</li>
+</ul>
+<p>如果析构函数被声明为virtual, 那么程序将根据指针所指对象的实际类型决定调用哪个析构函数. 这就需要<strong>在运行时需要调整指针的值</strong>, 以保证能够访问正确的vptr, 从而获得对应的析构函数.</p>
+<p>上面两个例子说明第一个问题的复杂性在于需要在运行时根据指针所指对象的实际类型来调整指针的值, 使之指向子类对象. 其他两个问题复杂性的根源也来自于此, 不(会 %&gt;_&lt;%)做详述.</p>
+<p>问题明确了, 解决办法呢? 老实说没怎么看懂, 就不瞎说了, 等以后看明白了再补.</p>
+<h3 id="虚继承">虚继承</h3>
+<p>其复杂性同样在于指针值的运行时修改, 书中建议不要在虚基类中声明非静态的函数.</p>
+<h2 id="成员函数指针">成员函数指针</h2>
+<p>成员函数指针只能指向类的非静态成员函数, 使用方法如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> (C::* p)(<span class="keyword">int</span>) = &amp;C::f; <span class="comment">// pointer to member function</span></span><br><span class="line">C c, *cp = &amp;c;</span><br><span class="line">(c.*p)(<span class="number">1</span>); <span class="comment">// 通过对象调用函数f</span></span><br><span class="line">(cp-&gt;*p)(<span class="number">2</span>); <span class="comment">// 通过对象指针调用函数f</span></span><br></pre></td></tr></table></figure>
+<p>父类成员函数指针可以直接赋值给子类成员函数指针, 如下面的例子:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D</span> :</span> B</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> (B::* bf)() = &amp;B::f;</span><br><span class="line"><span class="keyword">void</span> (D::* df)() = bf;</span><br><span class="line"></span><br><span class="line">B *bp = <span class="keyword">new</span> D;</span><br><span class="line">(bp-&gt;*bf)(); <span class="comment">// 调用D::f()</span></span><br><span class="line">(bp-&gt;*df)(); <span class="comment">// 不合法</span></span><br></pre></td></tr></table></figure>
+<p>而子类的成员函数指针可以通过static_cast或C风格的类型转换将其转换为父类的成员函数指针.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> (D::* df)() = &amp;D::f;</span><br><span class="line"><span class="keyword">void</span> (B::* bf1)() = <span class="keyword">static_cast</span>&lt;<span class="keyword">void</span> (B::*)()&gt;(df);</span><br><span class="line"><span class="keyword">void</span> (B::* bf2)() = (<span class="keyword">void</span> (B::*)())df;</span><br></pre></td></tr></table></figure>
+<p>从上面的例子中可以看到, 成员函数指针仍然支持虚函数机制. 下面看看编译器是如何支持各种虚拟机制的.</p>
+<h3 id="虚函数">虚函数</h3>
+<p>成员函数指针可以指向一个普通函数, 此时她可以是函数地址. 如果指向一个虚函数, 她可以是该函数在虚表中的偏移. 这两种值可以保存在相同类型的变量中, 但是如何区分她们呢? 早期C++限制最多有128个虚函数(应该是限制虚表长度吧), 所以偏移值最大为127. 而程序空间起始地址必定大于127, 因此可以通过将指针值和127做"&amp;"(按位与)运算来判断是偏移还是函数地址.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(((<span class="keyword">int</span>)pmf) &amp; ~<span class="number">127</span>) ? (*pmf)(ptr) : (*ptr-&gt;vptr[(<span class="keyword">int</span>)pmf])(ptr);</span><br></pre></td></tr></table></figure>
+<h3 id="多继承和虚继承">多继承和虚继承</h3>
+<p>支持这些机制的方法就更加复杂了. Stroustrup提出的一种方式是将成员函数指针定义为一个结构体, 包含this指针偏移, 虚基类指针偏移等等. 不过因为对不需要如此复杂机制的函数调用带来额外负担而受到批评. 有的实现对成员函数指针有多种实现方式, 以减少不必要的负担. 比如微软, 对单继承, 多继承, 虚继承就采用不同的方式来实现. 这个地方感觉还是不够具体, 坑先留着, 以后再填(第二个坑了...).</p>
+<h2 id="inline函数">inline函数</h2>
+<p>在下面的情况下, 一个函数是inline函数:</p>
+<ul>
+<li>声明中包含inline关键字的函数</li>
+<li>当一个函数(成员函数或非成员友元函数)的定义在类内部时</li>
+<li>被声明为constexpr的函数(since C++11)</li>
+</ul>
+<p>inline函数只是一种建议, 建议编译器将对inline函数的调用转换, 但是编译器并不一定会接受该建议, 而且非inline函数也有可能被转换, 这依赖于具体实现. 使用inline函数时要注意下面几点:</p>
+<ul>
+<li>inline函数可能会增加生成的文件的大小.</li>
+<li>inline函数尽可能简单. 减少不必要的局部变量, 否则可能会在结果中产生大量的局部变量.(现在的编译器应该可以优化这个了吧)</li>
+</ul>
+<h2 id="参考">参考</h2>
+<p>[1] <span id="1">https://en.cppreference.com/w/cpp/language/member_functions</span></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c3/" itemprop="url">
+                  第3章 Data语意学
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-10-19 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-19T00:00:00+08:00">2018-10-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-20 10:58:28" itemprop="dateModified" datetime="2019-06-20T10:58:28+08:00">2019-06-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度探索C-对象模型笔记/" itemprop="url" rel="index"><span itemprop="name">深度探索C++对象模型笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这一章主要进一步讨论C++对象的内存布局, 特别是在引入继承, 虚函数, 多继承, 虚继承后对内存布局的影响, 还包含编译器对相关特性的实现方式和优化.</p>
+<p>下面的代码运行于 Archlinux 4.18 x86_64, 编译器是gcc 8, 使用gdb 8调试.</p>
+<h2 id="不含数据成员的类对象">不含数据成员的类对象</h2>
+<p>对于不存在继承和虚函数的类, 没有数据成员时, 其大小至少是1 byte, 以保证变量有唯一的地址. 当加上虚函数后, 由于有虚函数指针, 对象大小等于一个指针的大小, 32位系统中是4 bytes, 64位系统中是8 bytes. 看下面的代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Empty</span> &#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">VirtualEmpty</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Empty a;</span><br><span class="line">Empty b;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Empty)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为1</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(VirtualEmpty)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为8</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;&amp;a&lt;&lt;<span class="string">' '</span>&lt;&lt;&amp;b&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 在输出中可以看到b的地址比a的地址大一.</span></span><br></pre></td></tr></table></figure>
+<p>但是, 当其作为基类时, 在某些情况下则不必遵循上面的要求, 可以在子类中将其优化掉, 节省所占空间. 例如下面的情况:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Base</span> &#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived</span> :</span> Base</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> i;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Base)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为1</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Derived)&lt;&lt;<span class="built_in">endl</span> <span class="comment">// 输出为8</span></span><br></pre></td></tr></table></figure>
+<p>显然这里没有必要保留额外空间来表示基类对象. 上面说过, 为空对象保留空间的原因是保证其有唯一地址, 避免出现不同对象的地址相同的情形. 但是在这里, 子类地址就可以作为父类地址, 不会出现不同对象地址相同的情形. 但是即使是继承, 也有不能进行优化的情况:</p>
+<ul>
+<li>子类的第一个非静态数据成员的类型和空基类相同.</li>
+<li>子类的第一个非静态数据成员的基类类型和空基类相同.</li>
+</ul>
+<p>不难看出, 这两种情况下, 会有两个空基类对象(父类对象和子类数据成员对象)连续出现, 如果优化掉, 将不能区别二者. 示例如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Base</span> &#123;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived1</span> :</span> Base <span class="comment">// 情况一</span></span><br><span class="line">&#123;</span><br><span class="line">    Base b;</span><br><span class="line">    <span class="keyword">int64_t</span> i;</span><br><span class="line">&#125;d1;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived2</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    Base b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived3</span> :</span> Base</span><br><span class="line">&#123;</span><br><span class="line">    Derived2 d2;</span><br><span class="line">    <span class="keyword">int64_t</span> i;</span><br><span class="line">&#125;d3;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Derived1)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为16, 基类对象和成员b各占1 byte, 由于内存对齐补齐8 bytes</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Derived2)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为1</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Derived3)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为16, 基类对象和成员d2各占1 byte, 由于内存对齐补齐8 bytes</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;&amp;d1&lt;&lt;<span class="string">' '</span>&lt;&lt;&amp;d1.b&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 前者(基类对象地址)比后者小1</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;&amp;d3&lt;&lt;<span class="string">' '</span>&lt;&lt;&amp;d3.d2.b&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 前者(基类对象地址)比后者小1</span></span><br></pre></td></tr></table></figure>
+<p>对于空类作为虚基类的情况, 同样可以进行优化. 例如下面的代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Base</span> &#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived1</span> :</span> <span class="keyword">virtual</span> Base &#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived2</span> :</span> <span class="keyword">virtual</span> Base &#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived3</span> :</span> Derived1, Derived2 &#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived4</span> :</span> Derived1, Derived2</span><br><span class="line">&#123;</span><br><span class="line">    Base b;</span><br><span class="line">&#125;d4;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Derived1)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为8, vptr 占 8 bytes</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Derived2)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为8, vptr 占 8 bytes</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Derived3)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为16, 两个 vptr 占 16 bytes</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(Derived4)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为24, 两个 vptr 占 16 bytes, 一个数据成员 b 占 1 bytes, 由于内存对齐使用了 8 bytes.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;&amp;d4&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为 0x55c6986ffe70</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="keyword">dynamic_cast</span>&lt;Base*&gt;(&amp;d4)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为 0x55c6986ffe70</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;&amp;(d4.b)&lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 输出为 0x55c6986ffe80</span></span><br></pre></td></tr></table></figure>
+<p>为了实现虚继承, 类Derived1和Derived2包含一个指针. 而虚基类Base被优化掉了, 因此Derived3大小为16 bytes. 而Derived4中由于包含类型是Base的非静态成员, 需要占据8 bytes, 即Derived4大小为24 bytes. 注意这里基类被优化了, 子类数据成员没有被优化. 测试显示, 即使这个成员不是第一个或最后一个, 编译器仍然不会优化.</p>
+<h2 id="数据成员与内存布局">数据成员与内存布局</h2>
+<p>虽然标准没有规定非静态数据成员在内存中的排列顺序, 但是一般实现都是按照声明顺序排列. 而由于内存对齐的要求, 仅仅改变成员的声明顺序可能产生不同大小的对象, 例如下面的声明:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test1</span> // 大小为16 <span class="title">bytes</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int64_t</span> i1;</span><br><span class="line">    <span class="keyword">char</span> c1; <span class="comment">// c1 和 c2 被放置在一个字(16 bytes)中</span></span><br><span class="line">    <span class="keyword">char</span> c2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test2</span> // 大小为24 <span class="title">bytes</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> c1;</span><br><span class="line">    <span class="keyword">int64_t</span> i1;</span><br><span class="line">    <span class="keyword">char</span> c2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test3</span> // 大小为16 <span class="title">bytes</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int64_t</span> i1;</span><br><span class="line">    <span class="keyword">int32_t</span> i2; <span class="comment">// i2,c1,c2 被放置在一个字(16 bytes)中</span></span><br><span class="line">    <span class="keyword">char</span> c1;</span><br><span class="line">    <span class="keyword">char</span> c2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>由于计算机是以字(32位机为4 bytes, 64位机为8 bytes)为单位来读写, 因此内存对齐可以加快存取操作. 否则当一个变量跨字时, 读取这个变量就需要两次内存读. 但是这可能会增加需要的内存空间, 这就需要程序员仔细安排变量顺序, 以保证获得最佳的空间利用率.</p>
+<p>静态成员与对象内存布局无关, 这里还是讨论一下.</p>
+<ul>
+<li><p>对于普通类的静态数据成员, 则具有独立于对象的静态生存期, 保存在全局数据段中.</p></li>
+<li><p>模板类的静态数据成员如果没有被显式特化或实例化, 则在使用时会被隐式特化, 只有当特化/实例化后才是有效定义的. 有下面几种情况, 而这几种都可以归到C++14引入的 <em>variable template</em>(变量模板), 参考<a href="https://en.cppreference.com/w/cpp/language/variable_template" target="_blank" rel="noopener">cppreference</a>.</p>
+<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test1</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">static</span> T val; <span class="comment">// 非模板类的模板静态成员.</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T Test1::val = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test2</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">static</span> T val; <span class="comment">// 模板类的非模板静态成员.</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T Test2&lt;T&gt;::val = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test3</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T2&gt; <span class="keyword">static</span> <span class="built_in">std</span>::pair&lt;T1, T2&gt; val; <span class="comment">// 模板类的模板静态成员.</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="built_in">std</span>::pair&lt;T1, T2&gt; Test2&lt;T1&gt;::val = <span class="built_in">std</span>::make_pair(T1(<span class="number">1</span>), T2(<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> var = Test3&lt;<span class="keyword">int</span>&gt;::val&lt;<span class="keyword">float</span>&gt;; <span class="comment">// 即pair&lt;int, float&gt;(1, 2)</span></span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="数据成员的存取">数据成员的存取</h2>
+<h3 id="静态数据成员">静态数据成员</h3>
+<p>对静态成员, 通过对象或对象指针访问和通过类名访问没有区别, 编译器一般会将二者统一为相同形式. <strong>类成员指针</strong>不能指向静态成员, 因为对静态成员取地址得到的是一个该成员的指针. 如:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> x;</span><br><span class="line">&#125;;</span><br><span class="line">&amp;A::x; <span class="comment">// 其类型是 int*</span></span><br></pre></td></tr></table></figure>
+<p>因为类静态成员都是保存在全局数据段中, 如果不同类具有相同名字的静态成员, 就需要保证不会发生名称冲突. 编译器的解决方法是对每个静态数据成员编码(这种操作称为name-mangling), 以得到一个独一无二的名称.</p>
+<h3 id="非静态数据成员">非静态数据成员</h3>
+<p>不存在虚基类时, 通过对象名或对象指针访问非静态数据成员没有区别. 存在虚基类时, 通过对象指针访问非静态数据成员需要在运行时才能确定, 因为无法确定指针所指对象的实际类型, 也就不能判断对象的内存布局, 也就不知道对象中该数据成员的偏移, 而普通继承的类对象的内存布局在编译时就可以决定.</p>
+<h2 id="继承对对象布局的影响">继承对对象布局的影响</h2>
+<h3 id="单继承">单继承</h3>
+<p>最简单的一种情况, 单继承不会修改父类的内存布局, 例如父类由于内存对齐产生的额外空间在子类中不会被消除, 而是保持原样. 所以下面的代码中, 子类大小是24 bytes, 而不是16 bytes.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Base</span> // 16 <span class="title">bytes</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int64_t</span> i1;</span><br><span class="line">    <span class="keyword">char</span> c1;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Derived</span> :</span> Base <span class="comment">// 24 bytes</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">char</span> c2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其原因是如果消除了这些额外空间, 将子类对象赋值给父类对象时就可能会在父类对象的额外空间位置赋值, 这改变了程序的语义, 显然是不合适的.</p>
+<h3 id="加上多态">加上多态</h3>
+<p>为了支持动态绑定, 编译器需要在对象中添加虚表指针(vptr), 指向虚表. 虚表中包含类的类型信息和虚函数指针, 值得注意的是, vptr并不是指向虚表的起始地址, 很多时候该地址之前会保存着对象的类型信息,程序通过此类型信息实现RTTI. 而vptr初值的设置和其所占空间的回收, 则分别由构造函数和析构函数负责, 编译器自动在其中插入相应代码. 这是多态带来的空间负担和时间负担.</p>
+<p>那么vptr放在什么位置呢? 这是由编译器决定的, gcc将其放在对象头部, 这导致对象不能兼容C语言中的struct, 但是在多重继承中, 通过类成员指针访问虚函数会更容易实现. 如果放在对象末尾则可以保证兼容性, 但是就需要在执行期间获得各个vptr在对象中的偏移, 在多重继承中尤其会增加额外负担.</p>
+<h3 id="多重继承">多重继承</h3>
+<p>标准并没有规定不同基类在布局中的顺序, 但是大多数实现按照继承声明顺序安排. 多重继承给程序带来了这些负担:</p>
+<ul>
+<li><p>将子类地址赋值给基类指针变量时, 如果是声明中的第一个基类, 二者地址相等, 可以直接赋值. 否则, 需要加上一个偏移量, 已获得对应对象的地址.</p></li>
+<li><p>上面的直接加偏移并不能保证正确性, 设想子类指针值为0, 直接加上偏移后指向的是一个内容未知的地址. 正确做法应该是将0值赋给基类指针变量. 因此, 需要先判断基类指针是否为0, 再做处理. 而对于引用, 虽然其底层是指针, 但是不需要检查是否为0, 因为引用必须要绑定到一个有效地址, 不可能为0.</p></li>
+</ul>
+<h3 id="虚拟继承">虚拟继承</h3>
+<p>主要问题是如何实现只有一个虚拟基类. 主流方案是将虚拟基类作为共享部分, 其他类通过指针等方式指向虚拟基类, 访问时需要通过指针或其他方式获得虚拟基类的地址. gcc的做法是将虚基类放在对象末尾, 在虚表中添加一项, 记录基类对象在对象中的偏移, 从而获得其地址. 我们可以通过gdb调试来看看具体情况.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">B</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int64_t</span> i1 = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"B::f() called\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D1</span> :</span> <span class="keyword">virtual</span> B</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> i2 = <span class="number">2</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D2</span> :</span> <span class="keyword">virtual</span> B</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> i3 = <span class="number">3</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">D3</span> :</span> D1, D2</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int64_t</span> i4 = <span class="number">4</span>;</span><br><span class="line">&#125;d3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="keyword">sizeof</span>(d3)/<span class="number">8</span>; ++i)</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"d3["</span>&lt;&lt;i&lt;&lt;<span class="string">"] = 0x"</span>&lt;&lt;<span class="built_in">std</span>::hex&lt;&lt;*((<span class="keyword">int64_t</span>*)&amp;d3 + i)&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<p>首先用g++编译, 载入gdb中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> g++ main.cc -g</span><br><span class="line"><span class="meta">#</span> gdb a.out</span><br></pre></td></tr></table></figure>
+<p>之后, 设置断点, 运行程序, 再通过下面的命令查看对象d3的虚表.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(gdb) p d3</span><br><span class="line">$2 = &#123;&lt;D1&gt; = &#123;&lt;B&gt; = &#123;_vptr.B = 0x555555557c58 &lt;vtable for D3+72&gt;, i1 = 1&#125;, _vptr.D1 = 0x555555557c28 &lt;vtable for D3+24&gt;, i2 = 2&#125;, &lt;D2&gt; = &#123; _vptr.D2 = 0x555555557c40 &lt;vtable for D3+48&gt;, i3 = 3&#125;, i4 = 4&#125;</span><br><span class="line">(gdb) p /a *((void**)0x555555557c28-3)@10</span><br><span class="line">$4 = &#123;0x28,</span><br><span class="line">      0x0,</span><br><span class="line">      0x555555557d20 &lt;_ZTI2D3&gt;,</span><br><span class="line">      0x18,</span><br><span class="line">      0xfffffffffffffff0,</span><br><span class="line">      0x555555557d20 &lt;_ZTI2D3&gt;,</span><br><span class="line">      0x0,</span><br><span class="line">      0xffffffffffffffd8,</span><br><span class="line">      0x555555557d20 &lt;_ZTI2D3&gt;,</span><br><span class="line">      0x555555555446 &lt;B::f()&gt;&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现, _vptr.D1等于*(int64_t *)&amp;d3, _vptr.D2等于*((int64_t *)&amp;d3 + 2), _vptr.B等于*((int64_t *)&amp;d3 + 5). 显然分别是各个对象的vptr的值. gdb的第二个命令是打印部分虚表内容, -3指定起始位置, 10指定长度. 可见_vptr.D1指向输出的第四个, _vptr.D2指向输出的第七个, 二者指向位置的地址减3即为对应对象和基类对象的偏移. 同样可以看到前一个是当前对象的类型信息. 如果在C++中直接访问虚表, 可以用下面的代码, 这和上面用gdb打印虚表等效:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int64_t</span> *vptr = (<span class="keyword">int64_t</span> *)*(<span class="keyword">int64_t</span> *)&amp;d3; <span class="comment">// D1的虚表地址.</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">-3</span>; i &lt; <span class="number">7</span>; ++i)</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"_vptr.D1["</span>&lt;&lt;i&lt;&lt;<span class="string">"] = 0x"</span>&lt;&lt;<span class="built_in">std</span>::hex&lt;&lt;*(vptr+i)&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<p>g++ 版本大于等于 8.0 的还可以用下面的方法直接导出类的虚表和内存布局, 这些会被保存在文件 out_file 中, 其中包含所有涉及的类信息, 例如 exception 类等, 不仅仅是程序员自己定义的类.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -fdump-lang-class=out_file src.cpp</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/深度探索C-对象模型笔记/inside-the-cpp-object-model-c2/" itemprop="url">
+                  第2章 构造函数语意学
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-30 00:00:00" itemprop="dateCreated datePublished" datetime="2018-09-30T00:00:00+08:00">2018-09-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-20 22:03:22" itemprop="dateModified" datetime="2019-06-20T22:03:22+08:00">2019-06-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度探索C-对象模型笔记/" itemprop="url" rel="index"><span itemprop="name">深度探索C++对象模型笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这篇文章主要从编译器的角度来分析构造函数和复制构造函数. 包括默认构造函数和复制构造函数的生成; 引入继承, 虚函数时又该如何实现; 编译器如何处理构造函数调用; 还讨论了复制消除.</p>
+<p>只有一个参数的构造函数可以被编译器作为转换函数构造函数, 这有时候会带来程序员意料之外的结果. C++增加了关键字<em>explicit</em>来阻止对函数的隐式调用.</p>
+<blockquote>
+<p>"只有一个参数的构造函数可以被编译器作为类型转换函数"从C++11起被废止, 新标准规定具有多个参数的构造函数也可以作为转换构造函数, 新的标准是"没有被声明为<em>explicit</em>的构造函数就可以作为转换构造函数(<em>converting constructor</em>)".</p>
+</blockquote>
+<h2 id="default-constructor默认构造函数的构造操作">Default Constructor(默认构造函数)的构造操作</h2>
+<p><strong>默认构造函数的定义</strong>: &gt; 一个可以以空参数列表调用的构造函数称为默认构造函数, 这有两种情形, 一种是构造函数参数列表为空, 另一种是每个参数都在声明中给出了默认值.</p>
+<p>默认构造函数可以是自己定义的, 也可以由编译器自动生成. 当用户没有定义任何构造函数时, 编译器就会为用户生成一个参数列表为空的默认构造函数.</p>
+<p><strong>trivial default constructor(无用默认构造函数)</strong>: &gt; 满足下面所有的条件时, 一个默认构造函数是trivial的: &gt; &gt; - 不是由用户提供的, 即是由编译器生成的或者声明为default. &gt; - 类没有虚成员函数 &gt; - 类没有虚基类 &gt; - 类没有默认初始化的非静态成员 &gt; - 直接基类有trivial default constructor &gt; - 非静态类成员有trivial default constructor &gt; &gt; 显然, trivial default constructor不进行任何操作. 所有与C语言兼容的数据类型(POD类型)都具有trivial default constructor.</p>
+<h3 id="带有默认构造函数的member-class-object">带有默认构造函数的member class object</h3>
+<p>编译器会为没有定义构造函数的类合成默认构造函数, 但是这个合成操作只有在构造函数真正需要被调用时才会发生.</p>
+<p>那么在C++不同编译模块中, 编译器怎么避免生成多个默认构造函数呢? 解决方法是把合成的默认构造函数, 复制构造函数, 析构函数, 赋值运算符都作为inline, 而inline函数是静态链接(static linkage)的, 不会被编译模块(即文件)以外的看到. 如果函数太复杂, 作为inline不合适, 就会合成一个显式non-inline静态(explicit non-inline static)实例.</p>
+<p>我们知道, 类对象是必须要初始化的, 当一个类的成员有其他类对象时, 就必须在构造函数中对类成员进行初始化. 如果是编译器合成的默认构造函数, 就在合成的默认构造函数中按类成员声明顺序调用它们的默认构造函数(当然, 如果没有就会引起错误). 注意一点, 对于显式定义的构造函数, 如果没有对部分类成员对象的初始化, 编译器会自动插入一些代码, 使得用户代码被执行之前, 先调用必要的默认构造函数. 成员初始化顺序与声明顺序相同, 即使初始化语句有的是由编译器插入, 有的由用户显式声明(初始化列表).</p>
+<h3 id="带有默认构造函数的基类">带有默认构造函数的基类</h3>
+<p>如果一个子类的基类带有默认构造函数, 那么在合成子类的构造函数时, 会在其中插入对基类的默认构造函数的调用代码, 这个代码在成员的默认构造函数调用代码之前. 即先初始化基类, 再按声明顺序初始化子类成员.</p>
+<h3 id="带有一个虚函数的类">带有一个虚函数的类</h3>
+<p>对于带有虚函数的类, 不论是直接声明的还是直接/间接继承而来的, 都有虚函数表, 对应对象有虚函数表指针(vptr)作为数据成员. 那么vptr是如何确定的呢? 显然, 虚函数表是在编译阶段就可以确定的, 因此它由编译器合成. 但是vptr的确定就要分情况讨论了:</p>
+<ul>
+<li>对于静态初始化的对象, vptr由编译器初始化.</li>
+<li>对于动态初始化的对象, <strong>vptr由构造函数初始化</strong>. 因此编译器会在所有的构造函数中插入一些代码来完成这个任务.</li>
+</ul>
+<h3 id="带有一个虚基类的类">带有一个虚基类的类</h3>
+<p>当存在虚基类时, 通过虚基类指针/引用访问其非虚函数和数据成员时, 照理来说是不属于多态的, 但是仍然在运行时才能决定. 指针所指对象的实际类型很多时候是未知的, 在不同类型中, 由于采用了虚继承, 同一变量偏移可能不一样(这是由实现决定的), 简而言之就是编译器不知道成员在指针所指对象的什么位置. 因此, 存在虚基类时, 就需要提供某种方法, 使我们能够通过虚基类指针访问虚基类的非虚函数和数据成员. 一种方法是在子类中插入一个指向虚基类的指针, 将原始的通过虚基类指针访问那些成员的代码替换为先访问这个指针, 再访问成员的代码. 如下所示:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">virtualBasePointer-&gt;virtualBaseData; <span class="comment">// 原始代码</span></span><br><span class="line">virtualBasePointer-&gt;virtualBaseVptr-&gt;virtualBaseData; <span class="comment">// 编译器替换后的代码</span></span><br></pre></td></tr></table></figure>
+<p>而这个<strong>虚基类指针的初始化</strong>就是由构造函数完成的.</p>
+<p>上面的讨论表明不止虚函数会导致编译器在对象开始处插入一个指针(vptr), 虚继承同样如此. 但是这里的指针就不再是 vptr, 而是 virtual-table table(VTT), 指向一个保存虚表地址的数组. 相关讨论可以参考<a href="https://zhuanlan.zhihu.com/p/41309205" target="_blank" rel="noopener">C++中虚函数、虚继承内存模型</a>.</p>
+<p>注意几个问题:</p>
+<ol type="1">
+<li>类的默认构造函数只有真正需要时才会被合成, 而不是没有定义构造函数时就会合成.</li>
+<li>对于一个类的所有类成员对象, 如果没有显式初始化, 编译器会对其进行默认初始化. 但是对于内置类型, 例如int, 指针类型等, 不会进行初始化, 这是程序员的工作.</li>
+</ol>
+<h2 id="copy-constructor的构造操作">Copy Constructor的构造操作</h2>
+<p>3种情况下会调用复制构造函数:</p>
+<ol type="1">
+<li>用一个对象作为参数初始化另一个对象时.</li>
+<li>对象作为函数参数时, 会用参数对象在函数作用域构造一个新的对象.</li>
+<li>对象作为返回值时, 会用函数内部的对象在返回值所在作用域构造一个新的对象.</li>
+</ol>
+<p>注意, 2, 3不一定会发生, 因为可能会存在右值参数, 返回值优化等, 具体情况不做详述.</p>
+<p>如果不显式定义复制构造函数, 编译器有两种复制对象的方法: <em>bitwise copy</em> 和 <em>default memberwise copy</em>, 区别如下:</p>
+<ul>
+<li><p>bitwise copy 并不调用复制构造函数, 可能的实现方式如利用 memcpy 等, 因此效率更高, 复制出的对象和原对象完全相同.</p></li>
+<li><p>default memberwise copy 就如同对每个成员分别赋值一样, 对于内置类型直接初始化, 而对于类类型, 递归调用其默认复制构造函数来初始化. 默认构造函数是由编译器合成的, 或者被声明为default. 其产生的新对象的用户定义的数据成员与原对象是一样的, 但是隐式的成员(如vptr), 内存布局(如用子类初始化父类时)等不一定相同.</p></li>
+</ul>
+<blockquote>
+<p><strong>注意:</strong></p>
+<p>bitwise copy和浅复制(shallow copy)是不同的, 浅复制更侧重于当在类内部保存指针成员, 用指针指向实际数据的时候, 复制时仅仅复制指针的值. 这种情况包含在bitwise copy中.</p>
+</blockquote>
+<p>那么在没有定义复制构造函数的时候, 编译器在什么情况下采用bitwise copy, 在什么情况下合成默认复制构造函数(即采用default memberwise copy)? 下面四种情况, 会采用后者, 其他情况采用前者.</p>
+<ol type="1">
+<li>当类含有类对象成员, 且这个成员含有复制构造函数时(不论是编译器合成的还是显式定义的).</li>
+<li>当类继承自一个基类, 并且基类含有复制构造函数时(不论是编译器合成的还是显式定义的).</li>
+<li>当类含有虚函数时.</li>
+<li>当类有虚基类时.</li>
+</ol>
+<p>上面的情况很容易理解. 对于1和2, 由于复制对象时, 要复制数据成员和基类, 既然它们提供了复制构造函数, 就可以认为需要在它们的复制构造函数中进行某些bitwise copy无法实现的操作, 因此不能采用bitwise copy. 对于3, 由于含有虚函数, 所以需要初始化对象的vtpr, 而vptr的值显然不一定等于参数对象的值, 例如用子类对象初始化父类对象时. 所以bitwise不能满足需求. 对于4, 由于含有虚基类, 父子基类的内存布局可能存在区别, 也不能采用bitwise copy.</p>
+<!-- 当合成/用户定义的复制构造函数的语意和bitwise copy相同时, 是否应该用bitwise copy替换复制构造函数? -->
+<h2 id="程序转化语意学program-transformation-semantics">程序转化语意学(Program Transformation Semantics)</h2>
+<p>尽管在程序中可以使用不同的形式来初始化一个类对象, 但在编译阶段都会被转化成相同的形式. 例如:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span>;</span></span><br><span class="line"><span class="function">X <span class="title">x0</span><span class="params">(paras)</span></span>;</span><br><span class="line">X x1 = X(paras);</span><br><span class="line"><span class="function">X <span class="title">x2</span><span class="params">(x0)</span></span>;</span><br><span class="line">X x3 = x0;</span><br><span class="line">X x4 = X(x0);</span><br></pre></td></tr></table></figure>
+<p>会被转化为:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">X x0; <span class="comment">// 声明但不初始化</span></span><br><span class="line">X x1; <span class="comment">// 声明但不初始化</span></span><br><span class="line">X x2; <span class="comment">// 声明但不初始化</span></span><br><span class="line">X x3; <span class="comment">// 声明但不初始化</span></span><br><span class="line">X x4; <span class="comment">// 声明但不初始化</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用构造函数初始化对象</span></span><br><span class="line">x0.X::X(paras)</span><br><span class="line">x1.X::X(paras)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用复制构造函数初始化对象</span></span><br><span class="line">x2.X::X(x0)</span><br><span class="line">x3.X::X(x0)</span><br><span class="line">x4.X::X(x0)</span><br></pre></td></tr></table></figure>
+<p>参数复制优化和返回值优化都是指省略不必要的复制构造函数的调用, 后面统称为复制优化或copy elision. 从C++17开始, 标准规定了必须进行copy elision的情况:</p>
+<ol type="1">
+<li><p>类似下面的情形:</p>
+<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T t = T(T(T())); <span class="comment">// 只会调用一次复制/移动构造函数, 要求类型相同(不考虑cv).</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>在返回类对象时, 如果直接在return语句中创建对象, 并且该对象与函数返回值类型一致(不考虑cv)时, 一般称这个优化为RVO(return value optimization)(注意, RVO在C++17之前都不是强制的, 从C++17开始才规定为mandatory的.). 如下例子:</p>
+<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">T <span class="title">f</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ......</span><br><span class="line">    <span class="keyword">return</span> T();</span><br><span class="line">&#125;</span><br><span class="line">T t = f(); <span class="comment">// 只会调用一次复制/移动构造函数.</span></span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<p>同样也规定了可以实施copy elision, 但不强制的情况, 比如NRVO(named return value optimization), 是指函数返回一个具名对象, 该对象是函数体内部定义的自动存储期变量, 并且是non-volatile的, 与函数返回值具有相同类型(不考虑cv). 具体可以参考<a href="https://en.cppreference.com/w/cpp/language/copy_elision" title="cppreference" target="_blank" rel="noopener">copy elision</a></p>
+<p>注意几个问题:</p>
+<ol type="1">
+<li>只有当存在复制构造函数(不论是显式定义的还是编译器生成的)时, 编译器才有可能实施复制优化.</li>
+<li>谨慎对待copy elision, 因为类设计者可能需要在复制/移动构造函数中进行某些特殊操作, 省略了之后可能带来难以调试的错误.</li>
+</ol>
+<h2 id="成员初始化列表member-initialization-list">成员初始化列表(Member Initialization List)</h2>
+<p>应该用成员初始化列表来初始化变量的情况:</p>
+<ol type="1">
+<li>初始化一个引用时.(也可以在类内给出默认值)</li>
+<li>初始化一个常量成员时.(也可以在类内给出默认值)</li>
+<li>调用基类的构造函数, 并且这个构造函数有一组参数时.</li>
+<li>调用类成员的构造函数, 并且这个构造函数有一组参数时.</li>
+</ol>
+<p>类成员的初始化顺序与初始化列表的顺序无关, 而是与成员在类声明中的顺序一致. 所以, 尽量使初始化列表的顺序与声明顺序一致, 最好不要用一个成员来初始化另一个成员. 在编译阶段, 会将初始化列表转化为成员的初始化代码, 并置于构造函数体内的代码之前.</p>
+<p>注意一点, 用成员函数的返回值来作为初始化列表的参数语法上是没有问题的, 但是需要保证这个成员函数不依赖于成员的数据对象, 因为很可能这个在调用此函数时还没有初始化其依赖的数据成员, 这就会引起难以发现的错误. 另外, 最好不要将其用于初始化基类成员, 详情见后面的讨论.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-spinnaker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/论文研读/paper-spinnaker/" itemprop="url">
+                  论文研读之Spinnaker
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-19 00:00:00" itemprop="dateCreated datePublished" datetime="2018-09-19T00:00:00+08:00">2018-09-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-26 17:05:31" itemprop="dateModified" datetime="2019-09-26T17:05:31+08:00">2019-09-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="motivation">Motivation</h2>
+<ul>
+<li>可扩展性要求: 随着数据量增加, 要求增加新的设备存放数据. 一种做法就是将数据库按Key拆分, 分布在不同机器上, 每个机器负责一定Key范围内的数据. 而手动实现拆分繁琐, 容易出现问题. 所以需要一种架构支持拆分.</li>
+<li>容错性: 数据库保存在成百上千的普通机器上, 因此非常容易出现问题. 为了保证高可用性, 必须实现容错.</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<ul>
+<li><p>基于 Zookeeper 和 Paxos.</p></li>
+<li><p>将数据库按Key拆分. 如Key为0-500, 可拆分为0-199, 200-399, 400-500三个范围, 分别包含对应的行.</p></li>
+<li><p>使用3副本, 每个副本分别存放在不同机器上, 存放一个范围的多个机器称为一个 <em>cohort</em>. 一个 cohort 中有一个机器作为 Leader, 其他机器作为此 cohort 的 Follower. 不同范围的数据可以保存在同一机器上, 因此一个机器可以属于多个 cohort. 因此一个机器可能在某个 cohort 中是 Leader, 在另一个 cohort 中是 Follower.</p></li>
+<li><p>用 <em>log sequence number(LSN)</em> 来唯一标识 cohort 中的日志, LSN 随日志单调递增.</p></li>
+<li><p>一般情况下每个请求都是针对一行数据.</p></li>
+</ul>
+<h2 id="replication-protocol">Replication Protocol</h2>
+<h3 id="写请求的处理">写请求的处理</h3>
+<ol type="1">
+<li>处理写请求 W 时, 请求首先被导向请求写的数据所属的 cohort 的 Leader, Leader 首先在日志中记录此请求. 然后, 在将日志写到磁盘的同时, 将 W 附加到 commit queue 的末尾, 并发送 propose message 到它的 Follower.</li>
+<li>Follower 收到写请求时, 记录对应日志到磁盘, 在将 W 附加到 commit queue 末尾, 然后向 Leader 返回 ack.</li>
+<li>由于使用3副本, Leader 只要收到一个 ack 就可以保证大多数的要求. 所以, 当收到一个 ack 时, Leader 将 W 应用到 memtable, 并 commit W. 最后回复请求, 表明写请求执行成功.</li>
+<li>Leader 周期性地向 Follower 发送包含一个 LSN 值的 commit message, 通知 Follower 将小于等于此 LSN 的 log 都 commit. 节点记录最后提交的日志的LSN, 记为 <strong>last committed LSN</strong>, 保存到磁盘中.</li>
+</ol>
+<h3 id="读请求的处理">读请求的处理</h3>
+<p>读数据时, 可以通过参数指明是 strong consistency 还是 timeline consistency. 前者将向 Leader 请求数据, 后者可以向 Follower 请求数据, 以减小 Leader 的负载, 但是可能会读到旧数据.</p>
+<h3 id="leader选举">Leader选举</h3>
+<p>通过 Zookeeper 实现, 同一 cohort 的每个机器在相同目录下创建文件, 文件包含了自己的最后一个日志的 LSN, 记为 <strong>n.lst</strong>. 选择 n.lst 最大的节点作为 Leader.</p>
+<h2 id="recovery">Recovery</h2>
+<h3 id="follower-recovery">Follower Recovery</h3>
+<p>记 <strong>f.cmt</strong> 和 <strong>f.lst</strong> 分别代表节点日志中已 commit 的最后一个 LSN 和已保存的最后一个 LSN. Follower恢复分为两个阶段:</p>
+<ol type="1">
+<li>local recovery 节点从最近的 checkpoint 重放小于等于 f.cmt 的日志, 节点便恢复到 f.cmt 对应的状态.</li>
+<li>catch up 节点向 Leader 发送 f.cmt, Leader 就可以确定节点的状态, 并向其发送 f.cmt 之后的日志记录.</li>
+</ol>
+<h3 id="leader-takeover">Leader Takeover</h3>
+<p>当 Leader 节点发生错误时, 需要选举出新的 Leader. 新的 Leader 必须包含所有之前的 Leader 已经 commit 的 log. 选举策略如上所述.</p>
+<p>但是可能存在这样的情况, 上一个 leader fail 后, 可能已经 commit 了部分 write 操作, 但是消息没有被其他 Follower 接收到. 因此产生新的leader后, 它就要查看 follower 的最后 commit 的写操作是否落后于自己. 如果是, 就再次发送该写消息, 并通知 folower commit. 当存在 follower 已经与 leader 同步, 就可以开始响应客户端的写操作.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-chubby/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/论文研读/paper-chubby/" itemprop="url">
+                  论文研读之Chubby
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-18 00:00:00 / Modified: 16:09:10" itemprop="dateCreated datePublished" datetime="2018-09-18T00:00:00+08:00">2018-09-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Chubby是谷歌提出的在分布式环境下方便节点间的协调的服务. 论文为: The Chubby lock service for loosely-coupled distributed systems</p>
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#design">Design</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#files-directories-and-handles">Files, directories, and handles</a></li>
+<li><a href="#locks-and-sequencers">Locks and sequencers</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#caching">Caching</a></li>
+<li><a href="#sessions-and-keepalives">Sessions and KeepAlives</a></li>
+<li><a href="#fail-overs">Fail-overs</a></li>
+</ul>
+<h1 id="motivation">Motivation</h1>
+<ul>
+<li>为primary election问题提供通用的解决方案, 不需要特别实现和人工干预.</li>
+<li>为客户端提供 <strong>粗粒度</strong> 的同步, 协调服务, 解决客户端的共识问题.</li>
+<li>可靠性和可用性, 支持大量客户端.</li>
+<li>语义简单, 易于使用.</li>
+<li>不要求提供高吞吐率.</li>
+</ul>
+<h1 id="design">Design</h1>
+<ul>
+<li>对外提供锁服务来说实现客户端间的协调, 比如客户端leader选举问题, 客户端向chubby申请获取锁, 获得锁的客户端即为leader. 这样可以保证即使只有一个客户端可用时, 客户端系统仍然可用. 这就相 当于将部分保证一致性的任务转移到了chubby.</li>
+<li>leader通过将信息写到小文件中来向其他节点广播消息.</li>
+<li>客户端数量可能非常多, 因此需要允许大量客户端observe(观察?)上面提到的小文件, 并且不需要在 chubby端部署很多服务器.</li>
+<li>客户端可能希望当观察的文件发生变化时得到通知, 因此可以使用事件通知机制, 在客户端订阅的事件发 生时向其发送通知, 减少客户端的polling.</li>
+<li>需要支持 <strong>consistent caching</strong> 和访问控制.</li>
+<li>使用粗粒度的锁(coarse-grained lock), 因为实际中客户端持有锁的时间可能达到几小时甚至几天, 并且锁请求的数量与事务的数量是弱相关的. 并且, 锁从一个客户端转移到另一个客户端的代价很大, 所 以不希望chubby服务的崩溃-恢复丢失对原来锁的记录, 导致客户端服务器重新获取锁.</li>
+</ul>
+<h1 id="architecture">Architecture</h1>
+<ul>
+<li>chubby包含两部分: 服务器集群和库, 二者通过RPC通讯. 库可以与客户端应用链接, 为客户端提供接 口.</li>
+</ul>
+<figure>
+<img src="/images/chubby-architecture.png" alt=""><figcaption>chubby架构</figcaption>
+</figure>
+<ul>
+<li><p>服务器集群通过一致性算法选举出leader, 并获得一个leader lease, 副本服务器在lease内不会选 举新的leader, lease可以由副本服务器定时更新(怎么实现的?怎么进行协商?), 以延长此lease. 副本服务器维护数据库的副本, 由master控制对数据库的读写, 副本服务器仅仅是按照master的要求更 新数据库?(什么意思? 只由master负责响应客户端的对请求吗?)</p></li>
+<li><p>DNS保存了chubby服务器集群的地址列表, 客户端通过向表中的机器发送 <strong>master location request</strong> 来获得master的地址, 副本服务器将会返回master的位置(地址?). 客户端获得master的位置后, 将所有请求发送到master, 直到master停止回复(cease to respond, 什么意思?)或声明不再是master. 对于写请求, master将其通过一致性协议发送到所有副本服务器, 当大多数副本ack后, master即可向 客户端发送ack. (<em>如果在这个阶段master lease到期, 怎么处理?</em>) 对于读请求, 由master直接回复.</p></li>
+<li><p>如果一个副本服务器崩溃, 并且数个小时没有恢复, <strong>replacement system</strong> 就会在从空闲机器池中 选择一个新的机器来代替它, 并更新DNS. master周期性地检查DNS, 发现这个更改后, 将此更新更新到 集群所有服务器的数据库中. 同时, 新的副本服务器通保存在文件服务器的备份和其他活动副本服务器(active replicate)的更新来 获得最近的数据库副本. 一旦这个新的副本服务器处理了一个当前master等待commit的请求, 即可参与 到将来的master选举, 在此之前不允许其参与.</p></li>
+</ul>
+<h1 id="files-directories-and-handles">Files, directories, and handles</h1>
+<ul>
+<li><p>chubby向客户端提供了一个类似Unix文件系统接口的接口, 逻辑上对外的数据结构是一个树状的文件 系统. 文件系统由文件和目录组成, 一个目录可以称为一个chubby cell, 作为一个独立的单位, 在cell 下可以进行如文件删除创建等操作.</p></li>
+<li><p>文件和目录统称为node. 每个node都有很多<strong>元数据</strong>(meta-data).</p>
+<ul>
+<li>3个ACL(access control list)名字, 分别用来控制对node的读, 写权限和修改ACL名字权限, 这 些名字分别对应了此cell中权限控制目录下的一个目录, 比如node abc写权限的名字为abc_wr, 那 么abc所在cell的权限控制目录下有一个目录abc_wr, abc_wr下的文件的名字就对应着一个对abc有 写权限的用户名. node可以是永久(permant)的或临时(ephemeral)的, 每个node可以被显式地删 除, 对于临时节点, 满足某些条件时会被自动删除. 比如没有客户端保持对临时节点的打开, 临时目录 下为空(目录下没有node). 经常用一个临时文件表示客户端是否存活.</li>
+<li>an instance number</li>
+<li>a content generation number(files only)</li>
+<li>a lock generation number</li>
+<li>an ACL generation number</li>
+</ul></li>
+<li><p>成功打开一个node后可以获得一个handle, 以后可以用这个handle来对文件进行各种操作, 类似Unix 中的文件描述符. Unix中, 只有打开文件描述符时才会进行权限检查, 以后对fd调用操作函数时不会检查 权限, 但在chubby中, 会对每个操作进行权限检查. chubby周期性地检查打开文件/持有锁的客户端是否alive, 当发现客户端已经fail时, 会自动进行相应 处理. handle同样包含元数据:</p>
+<ul>
+<li>check digits: 防止恶意客户端猜测, 非法创建handle.</li>
+<li>a sequence number: master可以通过这个判断此handle是由自己生成还是之前的master生成的.</li>
+<li>mode information: provided at open time to allow the master to recreate its state if an old handle is presented to a newly restarted master. (当一个master fail-over之后, 收到一个fail-over前创建的handle, 可以用此handle的 mode information<em>重建自己的状态</em>?)</li>
+</ul></li>
+</ul>
+<h1 id="locks-and-sequencers">Locks and sequencers</h1>
+<ul>
+<li>每个node都可以作为一个读写锁, 注意, 这里使用的是advisory lock.</li>
+<li><strong>消息乱序问题</strong>: 客户端C0获取锁L, 发送一个请求R, R到达之前C0崩溃, 客户端C1获取锁L, 之后, R到达, 由于使用的 是advisory lock, 因此请求R将被执行. 显然这是非法的. 因此必须保证消息的处理顺序和每个参与者 观察到的顺序一致.(参与者? 观察到的顺序?) 可以注意到, 这里消息乱序的仅仅指不同客户端的的消息 乱序, 不包括同一客户端发出的消息. 解决办法是为每个成功的锁请求分配一个 <strong>sequencer</strong>, 包 含锁的名字, 类型(r/w)和上文提到的lock generation number. 客户端发出请求时附带此 sequencer, chubby通过验证sequencer来判断顺序是否正确.</li>
+</ul>
+<h1 id="events">Events</h1>
+<p>客户端创建了handle后, 可以订阅一系列事件, 在相应事件发生时, 客户端会收到通知.</p>
+<h1 id="caching">Caching</h1>
+<p>客户端可以缓存文件数据和元数据(meta-data), 为保证缓存一致性, 当chubby要对数据写时, 首先检查 数据是否被客户端缓存, 如果是, 那么先向客户端发送命令, 是客户端将其缓存标记为无效, 命令成功后再 进行写操作.</p>
+<p>不仅如此, 客户端还可以缓存打开的handle, 所以当客户端多次调用open打开一个文件时, 只需要第一次 将请求发送到chubby集群.</p>
+<p>客户端可以缓存锁. 当有其他客户端请求该锁时, 客户端会收到通知, 已执行相应动作, 如释放锁.</p>
+<h1 id="sessions-and-keepalives">Sessions and KeepAlives</h1>
+<p>客户端和chubby cell间的连接称为session, 客户端第一次联系cell或master时, 可以请求一个session, session通过周期性的KeepAlives消息来维护, 客户端可以主动结束session.下面主要讨论session的 维持:</p>
+<p>每个session都有一个lease, 在lease未超时前chubby保证session的有效性. 当客户端建立一个session 时, 立即向cell发送一个KeepAlive请求, cell并不会立即回复, 而是估计lease即将超时时才会回复, 回复可以延长此lease一定时间, 客户端收到此回复时又立刻发送新的KeepAlive请求, 后面的步骤如上.</p>
+<p>lease在下面3种情况下可以被延长:</p>
+<ul>
+<li>on creation of session</li>
+<li>when a master fail-over occurs</li>
+<li>when a master responses to a KeepAlive RPC from client</li>
+</ul>
+<p>KeepAlive消息附带其他的信息, 比如通知客户端使缓存无效的事件等.</p>
+<p>当lease超时, 即客户端没有及时收到chubby的KeepAlive回复时, lease处于jeopardy, 客户端无法 确定此时session的状态, 因此会将缓存标记为无效, 等待chubby的KeepAlive回复. 此状态会持续一段 时间, 这段时间称为grace period. 如果在此时间内客户端和chubby成功交换了一轮KeepAlive消息, 就会恢复缓存, 开始新的lease, chubby library会向客户端应用发送一个<em>safe event</em>. 如果grace period超时, 则向客户端应用发送一个<em>expired event</em>.</p>
+<h1 id="fail-overs">Fail-overs</h1>
+<ul>
+<li>master fail后恢复session</li>
+</ul>
+<p>如上所述, 如果chubby能在lease超时前或grace peroid超时前选举新的leader, 恢复session等数据 到内存中, 客户端只需要通过和新的master通信即可继续维护session.</p>
+<ul>
+<li>新master状态恢复</li>
+</ul>
+<p>可以从下面几个方向重建状态:</p>
+<ul>
+<li>通过记录的磁盘的数据</li>
+<li>通过从客户端获取的数据</li>
+<li>通过客户端的消息中包含的数据(如打开的handle名)</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-gfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/论文研读/paper-gfs/" itemprop="url">
+                  论文研读之GFS
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-18 00:00:00 / Modified: 16:20:47" itemprop="dateCreated datePublished" datetime="2018-09-18T00:00:00+08:00">2018-09-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>GFS是谷歌内部使用的一种分布式文件系统. 论文为: The Google File System</p>
+<ul>
+<li><a href="#assumption-and-motivation">Assumption and Motivation</a></li>
+<li><a href="#架构">架构</a></li>
+<li><a href="#master的功能">master的功能</a></li>
+<li><a href="#chunkserver的任务">chunkserver的任务</a></li>
+<li><a href="#操作日志operation-log和checkpoint">操作日志(Operation Log)和checkpoint</a></li>
+<li><a href="#chunk-lease">chunk lease</a></li>
+<li><a href="#文件读取">文件读取</a></li>
+<li><a href="#append">Append</a></li>
+<li><a href="#容错">容错</a></li>
+<li><a href="#快照snapshot">快照(Snapshot)</a></li>
+</ul>
+<h1 id="assumption-and-motivation">Assumption and Motivation</h1>
+<ul>
+<li>部件错误很常见.</li>
+<li>文件非常大, GB大小的文件很常见.</li>
+<li>绝大多数的文件修改操作是append, 也支持随机写.</li>
+<li>读操作主要是顺序读取大量数据, 随机读取少量数据.</li>
+<li>为多个客户端同时对同一文件append提供高效的同步支持, 保证append的原子性.</li>
+<li>稳定的网络比低延迟更加重要.</li>
+</ul>
+<h1 id="架构">架构</h1>
+<ul>
+<li><p>一个master和很多chunkserver, 多个客户端可以并发访问, 见Figure 1. 显然存在单点故障问题.</p></li>
+<li><p>一个文件被划分为多个固定大小的部分, 称为chunk, 每个chunk都有一个chunk handle唯一标识, 是 在创建该chunk时由master分配的(由于只有一个master, 可以保证其唯一性).</p></li>
+<li><p>每个chunk会被复制多份(一般是3份), 分散到不同chunkserver, 以保证容错. 由master选择其中一 个chunk授权, 称为lease, 其余称为replica, 获得lease的chunk所在chunkserver控制了这些副 本间的同步.</p></li>
+<li><p>chunk由64KB大小的块组成, 称为block, 每个block在<em>内存</em>中有32bit的校验码. master记录了文 件系统的所有状态, 文件名到对应chunk handle的映射, 所有chunk所在的chunkserver, 同一 chunk中的lease, 等等。有的信息保存在磁盘, 有的只保存在内存中, 加快了这些信息的返回速度, 但 是每次master重启时都需要询问chunkserver来获取这些信息(chunk所在服务器地址).</p></li>
+<li><p>master定期和每个chunkserver联系, 以发送指令或获取信息. 客户端和master的交互只涉及控制信 息, 状态信息等, 而没有数据. 数据直接在chunserver和客户端间流动, 减小了master的负载。</p></li>
+<li><p>客户端不缓存数据, 但是客户端会缓存部分状态信息. 系统或其他部件实现的缓存不在讨论范围内. 在系 统中, 很容易根据服务器的ip获取最佳路径.</p></li>
+</ul>
+<h1 id="master的功能">master的功能</h1>
+<ul>
+<li>维护层次文件系统结构, 文件系统用<em>前缀树</em>来保存。</li>
+<li>维护filename-chunk映射</li>
+<li>记录每个chunk的位置</li>
+<li>管理并发数据修改操作的顺序, 采用读写锁来实现同步。注意<em>GFS没有目录的概念</em>。</li>
+<li>lease管理</li>
+<li>检测, 处理失效chunk
+<ul>
+<li>定期检查chunk是否有效, 无效则重复制以保证副本数量。</li>
+<li>采用lazy deletion, 客户端请求删除chunk时, 并不立即删除chunk, 只是将其标记为无效, 定时 删除这些chunk。</li>
+</ul></li>
+<li>复制chunk, 保证至少有3个副本, 或满足LB的需要, 当某个chunk成为瓶颈时, 会增加此chunk的副本数量。</li>
+<li>副本位置迁移
+<ul>
+<li>根据访问, 迁移副本的位置, 以提高带宽。</li>
+<li>为了平衡chunkserver的数据量, 迁移副本。</li>
+</ul></li>
+</ul>
+<h1 id="chunkserver的任务">chunkserver的任务</h1>
+<ul>
+<li>保存chunk</li>
+<li>同步对chunk的写操作</li>
+</ul>
+<h1 id="操作日志operation-log和checkpoint">操作日志(Operation Log)和checkpoint</h1>
+<ul>
+<li><p>checkpoint记录了某个时刻master的所有状态, master可以通过一个checkpoint恢复到那个时刻的 状态.</p></li>
+<li><p>操作日志记录了master的写操作.</p></li>
+<li><p>先载入最近的checkpoint, 再重放此checkpoint之后的所有操作日志, 即可恢复master的状态. 因 此, 采用日志先写的原则, 并将日志保存到磁盘中. master在日志达到一定大小后就建立checkpoint.</p></li>
+</ul>
+<h1 id="chunk-lease">chunk lease</h1>
+<ul>
+<li>由于每个chunk有多个副本, 因此在写chunk时, 需要考虑如何保证副本间的一致性. GFS使用了<em>Lease</em> 的概念, 即授予一个chunk lease, 获得lease的chunk所在的服务器协调副本的写, 称此副本为 primary. 这个想法最初是来自论文 &lt;&lt;Leases: An Efficient Fault-Tolerant Mechanism for Distributed File CacheConsistency.pdf&gt;&gt;. 详细的写入步骤在<a href="#文件append">文件append</a>中.</li>
+</ul>
+<h1 id="文件读取">文件读取</h1>
+<p>下面是理想情况下的步骤:</p>
+<ol type="1">
+<li>client根据文件偏移计算对应chunk号, 向master发送消息询问chunk地址, 消息包含: 文件名, chunk号.</li>
+<li>master返回：chunk handle, chunk所在服务器ip列表(因为有多个副本).</li>
+<li>client根据ip计算最近服务器, 发送消息请求数据。消息包含: chunk handle, 要读取的数据范围 (byte range).</li>
+<li>chunkserver返回数据.</li>
+</ol>
+<p>之后一段时间client会缓存该chunk的地址, 再次读取chunk时不需要与master交互。</p>
+<h1 id="append">Append</h1>
+<p>下面是理想情况下的步骤:</p>
+<ol type="1">
+<li>client询问要append的chunk的primary及其地址。</li>
+<li>master如果发现此chunk还没有授予lease, 就选择一个授予lease. 返回primary和其他副本 (secondary)的地址.</li>
+<li>client通过所有副本的ip地址, 计算出<em>一条</em>分发数据的路径, 然后推送数据. 中间收到数据的副本 所在服务器在收到部分数据后就立即向其他副本所在服务器转发. 而不是等到所有数据都受到后才转发. 收到的数据被还没有写入.</li>
+<li>副本所在服务器收到数据后, 向client返回ack, 并包含一个id以标记此数据.</li>
+<li>client收到所有副本的ack之后, 向primary请求开始写入. 请求中必须包含此数据的id(副本返回的).</li>
+<li>primary收到写入请求, 尝试写入, 如果成功就为之赋予一个序号, 以此将所有写入序列化, 并将请求 转发到secondary. 如果失败则向client返回错误, return.</li>
+<li>secondary完成写入后, 回复primary.</li>
+<li>当primary收到所有secondary的写入成功回复后, 即回复写入成功. 否则返回写入失败.</li>
+</ol>
+<h1 id="容错">容错</h1>
+<ul>
+<li><p>当append时, primary写入失败, 如何处理?</p>
+<p>此时primary chunk有错误数据, 而secondary对应区域没有数据, 关键就是保证副本间的一致性. GFS的处理简单粗暴, 放弃这个区域, 重新选择一个区域append.</p></li>
+<li><p>那么又有问题了, 再之后顺序读取中, 如何识别区域是无效的呢?</p>
+<p>好像文章里没有说, 不过实现起来应该很简单. 因为有检验码, 或者有其他标志.</p></li>
+<li><p>如果primary成功, 某些secondary失败呢?</p>
+<p>参照上面的方法处理.</p></li>
+<li><p>在chunkserver向客户端或其他chunkserver返回数据时, 都会检查每个chunk的校验码, 防止错误数 据扩散.</p></li>
+<li><p>master的状态会复制到多个机器上, 这些机器作为备份。操作日志会保证先写到这些备份机器上再在 master执行. master重启速度非常快, 并且从各个chunkserver获取chunk位置的速度也很快.</p></li>
+</ul>
+<h1 id="快照snapshot">快照(Snapshot)</h1>
+<p>复制一个文件/目录, 采用copy-on-write策略. 因此每个文件有一个引用计数, 当修改引用计数超过1的 文件时, 需要将其复制一份才能修改.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-zab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/论文研读/paper-zab/" itemprop="url">
+                  论文研读之Zab协议
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-18 00:00:00 / Modified: 19:40:50" itemprop="dateCreated datePublished" datetime="2018-09-18T00:00:00+08:00">2018-09-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Zab是ZooKeeper中使用的用来保证可用性和一致性的协议. 论文为: A simple totally ordered broadcast protocol</p>
+<ul>
+<li><a href="#zookeeper对广播协议的要求">ZooKeeper对广播协议的要求:</a></li>
+<li><a href="#two-types-of-causal-relationships">Two types of Causal Relationships</a></li>
+<li><a href="#recovery">Recovery</a></li>
+<li><a href="#broadcast">Broadcast</a></li>
+</ul>
+<p>写请求都通过一个leader服务器来执行, 这样就可以将非幂等(non-idempotent)的请求转化为幂等(idempotent) 的请求. 读请求可以在客户端直接连接的服务器执行, 但是返回的数据可能陈旧的或无效的, 当然, 可以通过参数指 明采用同步读以从leader读取最新数据.</p>
+<h1 id="zookeeper对广播协议的要求">ZooKeeper对广播协议的要求:</h1>
+<ul>
+<li><p><strong>Reliabl delivery</strong>: If a message, <em>m</em>, is delivered by one server, then it will be eventually delivered by all correct servers.</p></li>
+<li><p><strong>Total order</strong>: If a message <em>a</em> is delivered before message <em>b</em> by one server, then every server that delivers <em>a</em> and <em>b</em> delivers <em>a</em> before <em>b</em>.</p></li>
+<li><p><strong>Causal order</strong>: If a message <em>a</em> causally precedes message <em>b</em> and both messages are delivered, then <em>a</em> must be ordered before <em>b</em>.</p></li>
+<li><p><strong>Prefix property</strong>: If <em>m</em> is the last message delivered for a leader <em>L</em>, any message proposed before <em>m</em> by <em>L</em> must also be delivered.</p></li>
+</ul>
+<h1 id="two-types-of-causal-relationships">Two types of <strong>Causal Relationships</strong></h1>
+<ul>
+<li><p>If two messages, <em>a</em> and <em>b</em>, are sent by the same server and <em>a</em> is proposed before <em>b</em>, we say that <em>a</em> causally precedes <em>b</em>;</p></li>
+<li><p>Zab assumes a single leader server at a time that can commit proposals. If a leader changes, any previously proposed messages causally precedes messages proposed by the new leader.</p></li>
+</ul>
+<p>Zab中没有特别说明如何实现leader选举, 主要包含两部分内容:</p>
+<ul>
+<li><strong><a href="#recovery">recovery</a></strong>: 当服务刚刚启动或leader fail后, 就进入recovery mode.</li>
+<li><strong><a href="#broadcast">broadcast</a></strong>: 当产生新的leader, 并且leader已与大多数服务器同步, 即可开 始broadcast.</li>
+</ul>
+<h1 id="recovery">Recovery</h1>
+<p>当服务刚开始或发生leader failure之后, Zab就进入recovery mode, 直至产生新的leader, 并且 leader和大多数follower的状态已同步. 而完成这两个步骤之后, leader就可以广播消息.</p>
+<p>选举新的leader时, 需要保证发生fail之前的消息不能被遗忘, 因此规定选举新选举的leader必须具有最 高的proposal number. 这样还可以避免新的leader向follower同步proposal.</p>
+<p>另一种情况是上一轮被丢弃的消息由于延迟, 在选举出新的leader后出现, 必须保证能够正确丢弃这些 proposal. 解决办法是为proposal赋予一个 <strong>zxid</strong>, 假设为64bit, 高32bit作为 <strong>epoch</strong>, 低32bit作为计数器. 每次选举出一个leader, 就产生一个新的 <strong>epoch number</strong>, 并重置计数器为0. 所有的proposal都会附带当前leader产生的epoch number和计数器. 这样, 即可通过epoch number识 别proposal是否是陈旧的.</p>
+<h1 id="broadcast">Broadcast</h1>
+<p>使用简化版本的两步提交(2-phase commit, 2PC), 由leader向follower发出proposal, follower 收到proposal时, 将其记录到磁盘, 但并不commit, 并向leader返回ack. 当leader收到大多数 follower的ack时, 即可commit该proposal, 并向follower发送COMMIT消息, 表明可以commit该 proposal.</p>
+<p>broadcast使用的是FIFO信道(FIFO channel), 基于TCP即可实现, 这样就能保证消息的有序性.</p>
+<p>leader会为每个proposal消息附带一个zxid, 详情见上文<a href="#recovery">recovery</a>.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oven-yang.github.io/论文研读/paper-zookeeper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="oven yang">
+      <meta itemprop="description" content="一蓑烟雨任平生">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨文的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/论文研读/paper-zookeeper/" itemprop="url">
+                  论文研读之ZooKeeper
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-18 00:00:00 / Modified: 16:14:03" itemprop="dateCreated datePublished" datetime="2018-09-18T00:00:00+08:00">2018-09-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文研读/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>论文为: ZooKeeper: Wait-free coordination for Internet-scale systems</p>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#原子广播atomic-broadcast">原子广播(atomic broadcast)</a></li>
+<li><a href="#replicated-database">Replicated Database</a></li>
+<li><a href="#client-server-interactions">Client-Server Interactions</a></li>
+</ul>
+<h1 id="description">Description</h1>
+<p>ZooKeeper是为分布式应用提供的协调服务的组件, 想法源于谷歌的chubby, 在其上做了很多修改.</p>
+<p>ZooKeeper具有一下特征:</p>
+<ul>
+<li>采用事件驱动机制, 因此能提供 <strong>wait-free</strong> 的接口.</li>
+<li>高可用性, 相比chubby, 更加注重效率.</li>
+<li>对于同一客户端的请求, 能保证FIFO地执行.</li>
+<li>对于所有改变ZooKeeper状态的请求, 能保证全局有序.</li>
+</ul>
+<p>ZooKeeper采用专门设计的 <strong>原子广播协议(<em>atomic broadcast protocol</em>)</strong> --- <strong>Zab</strong>来保 证一致性.</p>
+<p>改变ZooKeeper状态的请求都通过master顺序处理, 读请求则可以通过follower处理, 这是保证ZooKeeper 高效率的关键.</p>
+<h1 id="原子广播atomic-broadcast">原子广播(atomic broadcast)</h1>
+<p>由原子广播保证server间的一致性, 提供fail-over. 在文章<a href="/论文研读/paper-zab/" title="论文研读之Zab协议">论文研读之Zab协议</a>里有总结.</p>
+<p>详情可以参考:</p>
+<ul>
+<li>A simple totally ordered broadcast protocol ---简单介绍了Zab.</li>
+<li>Zab: High-performance broadcast for primary-backup systems ---相比上一篇更加详细.</li>
+</ul>
+<h1 id="replicated-database">Replicated Database</h1>
+<p>ZooKeeper周期性地创建快照(snapshots), 复制自身的状态, 但是创建快照时并不对整个文件系统加锁, 而是深度遍历所有节点, 原子地复制所有节点. 这就导致最后的快照可能不对应任何一个有效状态, 即节 点间状态不一致. 但是由于所有的写操作都是idempotent的, 所以只需要重放在开始创建快照时刻之后的 写操作, 即可使快照有效.</p>
+<h1 id="client-server-interactions">Client-Server Interactions</h1>
+<p>client可以连接到ZooKeeper中的任何一个server, 与server建立session后, 即可向其发送请求. 对于读请求, 可以由server在本地处理, 并在回复中附带zxid, 以表明当前server的状态. 对于写请求, 如果server不是master, 就需要将请求转发到master, 由master处理, 再返回给client.</p>
+<p>读请求的处理方式会导致client读到的数据可能是无效的, 如果client需要保证一定读取最新的数据, ZooKeeper提供sync接口, client通过调用sync通知连接的server与master同步状态, 同步完成后再 读取数据即可获得最新数据.</p>
+<p>ZooKeeper规定, 当client连接到一个新的server时, 必须保证此server的zxid &gt;= client最后请求 的zxid. 即server的状态不能落后的client观察到的最新的状态. 这对于保证durability非常重要.</p>
+<p>ZooKeeper使用超时机制检测session failure, 设超时时间为session timeout, 建立session的 client为session client.</p>
+<ul>
+<li><p>当master发现在session timeout内ZooKeeper没有收到session client的请求时, 即认为发生了 failure. 因此, 客户端必须在一定时间内发送消息给server, 如果没有请求时, 则需要发送heartbeat 消息.</p></li>
+<li><p>设session timeout为s, 那么当session在 s/3 时间内没有消息时, client向server发送heartbeat 消息, 在 2s/3 时间内没有收到回复时, 与其他server尝试建立session. 这样做是为了防止当server 发生failure, 导致master认为client长时间没有发送消息, 而将session关闭.</p></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">oven yang</p>
+              <p class="site-description motion-element" itemprop="description">一蓑烟雨任平生</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oven yang</span>
+
+  
+
+  
 </div>
 
 
 
 
-<script src="/js/search.js"></script>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
 <script type="text/javascript">
-    //theme config datas
-    var copyrightObj = {};
-    copyrightObj.enable = 'true';
-    copyrightObj.triggerCopyLength = '200';
-    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
-    var leancloudObj = {};
-    leancloudObj.enable = 'true';
-    leancloudObj.className = 'BlogCounter';
-    leancloudObj.limits = '10';
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
-<script type="text/javascript">
-    var search = {};
-    var search_path = "search.xml";
-    if (!search_path) {
-        search_path = "search.xml";
-    }
-    search.path = "/" + search_path;
-    search.func =  _ajax.init();
-</script>
-<script src="/js/app.js"></script>
 
 
-    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
-    <script>
-        if (window.mermaid) {
-            mermaid.initialize({theme: 'forest'});
-        }
-    </script>
 
 
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
 </body>
 </html>
